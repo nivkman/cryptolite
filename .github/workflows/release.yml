@@ -1,0 +1,60 @@
+# Publishes cryptolite to npm with provenance.
+#
+# Runs ONLY when a tag matching v* is pushed, never on branches or pull requests. Publishing
+# therefore requires the owner (nivkman) to create and push the release tag, for example
+#   git tag v1.0.0 && git push origin v1.0.0
+# after setting package.json "version" to the same number, and requires the NPM_TOKEN repository
+# secret (an npm automation/granular token with publish rights for cryptolite) to exist.
+# The "npm" environment below is where the owner can add required reviewers as a second gate.
+name: Release
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  checks:
+    # Same checks as every push: Node 20/22/24, typecheck, build, test, lint:pkg.
+    uses: ./.github/workflows/ci.yml
+
+  publish:
+    needs: checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write # npm provenance (signed build attestation)
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+
+      - name: Tag matches package.json version
+        run: |
+          version="v$(node -p "require('./package.json').version")"
+          if [ "$version" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $version"
+            exit 1
+          fi
+
+      - run: npm ci
+
+      - run: npm run build
+
+      # prepack (scripts/verify-dist.mjs) refuses to publish a missing, partial or stale build.
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

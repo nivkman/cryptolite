@@ -61,8 +61,11 @@ describe('Documented difference — unimplemented legacy ciphers throw', () => {
   });
 
   it.each(CIPHERS)('cryptolite.algo.%s.create()/.createEncryptor()/.createDecryptor() all throw', (name) => {
-    expect(() => CryptoJS.algo[name].create()).toThrow(/does not implement/i);
-    expect(() => CryptoJS.algo[name].createEncryptor()).toThrow(/does not implement/i);
-    expect(() => CryptoJS.algo[name].createDecryptor()).toThrow(/does not implement/i);
+    // These stubs exist at runtime but are deliberately not in the public types.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const algo = CryptoJS.algo as unknown as Record<string, any>;
+    expect(() => algo[name].create()).toThrow(/does not implement/i);
+    expect(() => algo[name].createEncryptor()).toThrow(/does not implement/i);
+    expect(() => algo[name].createDecryptor()).toThrow(/does not implement/i);
   });
 });

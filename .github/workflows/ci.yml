@@ -1,0 +1,50 @@
+# Checks every push to a branch and every pull request. Also called by release.yml, so a release
+# runs exactly these checks before anything is published.
+name: CI
+
+on:
+  push:
+    branches: ['**'] # branches only; tags are handled by release.yml
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'workflow_call' }}
+
+jobs:
+  checks:
+    name: Node ${{ matrix.node }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [20, 22, 24]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run typecheck
+
+      - run: npm run build
+
+      # The build regenerates package.json "exports"/"files" from scripts/subpaths.mjs; a diff
+      # means the committed package.json is out of date.
+      - name: package.json is in sync with scripts/subpaths.mjs
+        run: git diff --exit-code -- package.json
+
+      - run: npm test
+
+      - run: npm run lint:pkg

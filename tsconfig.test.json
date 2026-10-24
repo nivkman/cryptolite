@@ -1,0 +1,22 @@
+{
+  // Type-checks tests and tooling (npm run typecheck, second step). Node and test APIs are
+  // allowed here, unlike in tsconfig.json (library source).
+  // test/package/types-corpus is compiled by test/package/types.test.ts under its own settings.
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2022"],
+    "types": ["node"],
+    // Tooling packages (tsup, rollup-plugin-dts) ship declarations written for TypeScript <= 6 and
+    // optional peers; the shipped dist declarations are checked with skipLibCheck off by
+    // scripts/build.mjs and test/package/types.test.ts instead.
+    "skipLibCheck": true,
+    "allowJs": true,
+    "checkJs": false,
+    "noEmit": true
+  },
+  // scripts/cjs-entry.cts is not listed: it mixes an ESM import with `export =`, which esbuild
+  // compiles to a scope-hoisted `module.exports = CryptoJS` but tsc rejects (TS1293). Its output is
+  // verified by scripts/build.mjs and test/package/runtime.test.ts instead.
+  "include": ["test/**/*.ts", "scripts/**/*.mjs", "tsup.config.ts", "vitest.config.ts"],
+  "exclude": ["test/package/types-corpus/**", "test/package/fixtures/**"]
+}

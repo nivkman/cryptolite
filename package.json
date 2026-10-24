@@ -1,14 +1,1114 @@
 {
   "name": "cryptolite",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Drop-in replacement for the deprecated crypto-js: same API, same module paths, same output, built on audited @noble cryptography. Plus authenticated encryption. Zero dependencies.",
+  "keywords": [
+    "crypto-js",
+    "cryptojs",
+    "crypto",
+    "aes",
+    "sha256",
+    "hmac",
+    "pbkdf2",
+    "md5",
+    "encryption",
+    "hash",
+    "react-native",
+    "webcrypto",
+    "noble"
+  ],
+  "homepage": "https://github.com/nivkman/cryptolite#readme",
+  "bugs": {
+    "url": "https://github.com/nivkman/cryptolite/issues"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nivkman/cryptolite.git"
+  },
+  "license": "MIT",
+  "author": "Niv Kaufman",
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "types": "./dist/index.d.cts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./core": {
+      "import": {
+        "types": "./dist/core.d.ts",
+        "default": "./dist/core.js"
+      },
+      "require": {
+        "types": "./dist/core.d.cts",
+        "default": "./dist/core.cjs"
+      }
+    },
+    "./core.js": {
+      "import": {
+        "types": "./dist/core.d.ts",
+        "default": "./dist/core.js"
+      },
+      "require": {
+        "types": "./dist/core.d.cts",
+        "default": "./dist/core.cjs"
+      }
+    },
+    "./index": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./index.js": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    },
+    "./crypto-js": {
+      "import": {
+        "types": "./dist/crypto-js.d.ts",
+        "default": "./dist/crypto-js.js"
+      },
+      "require": {
+        "types": "./dist/crypto-js.d.cts",
+        "default": "./dist/crypto-js.cjs"
+      }
+    },
+    "./crypto-js.js": {
+      "import": {
+        "types": "./dist/crypto-js.d.ts",
+        "default": "./dist/crypto-js.js"
+      },
+      "require": {
+        "types": "./dist/crypto-js.d.cts",
+        "default": "./dist/crypto-js.cjs"
+      }
+    },
+    "./x64-core": {
+      "import": {
+        "types": "./dist/x64-core.d.ts",
+        "default": "./dist/x64-core.js"
+      },
+      "require": {
+        "types": "./dist/x64-core.d.cts",
+        "default": "./dist/x64-core.cjs"
+      }
+    },
+    "./x64-core.js": {
+      "import": {
+        "types": "./dist/x64-core.d.ts",
+        "default": "./dist/x64-core.js"
+      },
+      "require": {
+        "types": "./dist/x64-core.d.cts",
+        "default": "./dist/x64-core.cjs"
+      }
+    },
+    "./cipher-core": {
+      "import": {
+        "types": "./dist/cipher-core.d.ts",
+        "default": "./dist/cipher-core.js"
+      },
+      "require": {
+        "types": "./dist/cipher-core.d.cts",
+        "default": "./dist/cipher-core.cjs"
+      }
+    },
+    "./cipher-core.js": {
+      "import": {
+        "types": "./dist/cipher-core.d.ts",
+        "default": "./dist/cipher-core.js"
+      },
+      "require": {
+        "types": "./dist/cipher-core.d.cts",
+        "default": "./dist/cipher-core.cjs"
+      }
+    },
+    "./hmac": {
+      "import": {
+        "types": "./dist/hmac.d.ts",
+        "default": "./dist/hmac.js"
+      },
+      "require": {
+        "types": "./dist/hmac.d.cts",
+        "default": "./dist/hmac.cjs"
+      }
+    },
+    "./hmac.js": {
+      "import": {
+        "types": "./dist/hmac.d.ts",
+        "default": "./dist/hmac.js"
+      },
+      "require": {
+        "types": "./dist/hmac.d.cts",
+        "default": "./dist/hmac.cjs"
+      }
+    },
+    "./lib-typedarrays": {
+      "import": {
+        "types": "./dist/lib-typedarrays.d.ts",
+        "default": "./dist/lib-typedarrays.js"
+      },
+      "require": {
+        "types": "./dist/lib-typedarrays.d.cts",
+        "default": "./dist/lib-typedarrays.cjs"
+      }
+    },
+    "./lib-typedarrays.js": {
+      "import": {
+        "types": "./dist/lib-typedarrays.d.ts",
+        "default": "./dist/lib-typedarrays.js"
+      },
+      "require": {
+        "types": "./dist/lib-typedarrays.d.cts",
+        "default": "./dist/lib-typedarrays.cjs"
+      }
+    },
+    "./enc-base64": {
+      "import": {
+        "types": "./dist/enc-base64.d.ts",
+        "default": "./dist/enc-base64.js"
+      },
+      "require": {
+        "types": "./dist/enc-base64.d.cts",
+        "default": "./dist/enc-base64.cjs"
+      }
+    },
+    "./enc-base64.js": {
+      "import": {
+        "types": "./dist/enc-base64.d.ts",
+        "default": "./dist/enc-base64.js"
+      },
+      "require": {
+        "types": "./dist/enc-base64.d.cts",
+        "default": "./dist/enc-base64.cjs"
+      }
+    },
+    "./enc-base64url": {
+      "import": {
+        "types": "./dist/enc-base64url.d.ts",
+        "default": "./dist/enc-base64url.js"
+      },
+      "require": {
+        "types": "./dist/enc-base64url.d.cts",
+        "default": "./dist/enc-base64url.cjs"
+      }
+    },
+    "./enc-base64url.js": {
+      "import": {
+        "types": "./dist/enc-base64url.d.ts",
+        "default": "./dist/enc-base64url.js"
+      },
+      "require": {
+        "types": "./dist/enc-base64url.d.cts",
+        "default": "./dist/enc-base64url.cjs"
+      }
+    },
+    "./enc-hex": {
+      "import": {
+        "types": "./dist/enc-hex.d.ts",
+        "default": "./dist/enc-hex.js"
+      },
+      "require": {
+        "types": "./dist/enc-hex.d.cts",
+        "default": "./dist/enc-hex.cjs"
+      }
+    },
+    "./enc-hex.js": {
+      "import": {
+        "types": "./dist/enc-hex.d.ts",
+        "default": "./dist/enc-hex.js"
+      },
+      "require": {
+        "types": "./dist/enc-hex.d.cts",
+        "default": "./dist/enc-hex.cjs"
+      }
+    },
+    "./enc-latin1": {
+      "import": {
+        "types": "./dist/enc-latin1.d.ts",
+        "default": "./dist/enc-latin1.js"
+      },
+      "require": {
+        "types": "./dist/enc-latin1.d.cts",
+        "default": "./dist/enc-latin1.cjs"
+      }
+    },
+    "./enc-latin1.js": {
+      "import": {
+        "types": "./dist/enc-latin1.d.ts",
+        "default": "./dist/enc-latin1.js"
+      },
+      "require": {
+        "types": "./dist/enc-latin1.d.cts",
+        "default": "./dist/enc-latin1.cjs"
+      }
+    },
+    "./enc-utf16": {
+      "import": {
+        "types": "./dist/enc-utf16.d.ts",
+        "default": "./dist/enc-utf16.js"
+      },
+      "require": {
+        "types": "./dist/enc-utf16.d.cts",
+        "default": "./dist/enc-utf16.cjs"
+      }
+    },
+    "./enc-utf16.js": {
+      "import": {
+        "types": "./dist/enc-utf16.d.ts",
+        "default": "./dist/enc-utf16.js"
+      },
+      "require": {
+        "types": "./dist/enc-utf16.d.cts",
+        "default": "./dist/enc-utf16.cjs"
+      }
+    },
+    "./enc-utf8": {
+      "import": {
+        "types": "./dist/enc-utf8.d.ts",
+        "default": "./dist/enc-utf8.js"
+      },
+      "require": {
+        "types": "./dist/enc-utf8.d.cts",
+        "default": "./dist/enc-utf8.cjs"
+      }
+    },
+    "./enc-utf8.js": {
+      "import": {
+        "types": "./dist/enc-utf8.d.ts",
+        "default": "./dist/enc-utf8.js"
+      },
+      "require": {
+        "types": "./dist/enc-utf8.d.cts",
+        "default": "./dist/enc-utf8.cjs"
+      }
+    },
+    "./md5": {
+      "import": {
+        "types": "./dist/md5.d.ts",
+        "default": "./dist/md5.js"
+      },
+      "require": {
+        "types": "./dist/md5.d.cts",
+        "default": "./dist/md5.cjs"
+      }
+    },
+    "./md5.js": {
+      "import": {
+        "types": "./dist/md5.d.ts",
+        "default": "./dist/md5.js"
+      },
+      "require": {
+        "types": "./dist/md5.d.cts",
+        "default": "./dist/md5.cjs"
+      }
+    },
+    "./sha1": {
+      "import": {
+        "types": "./dist/sha1.d.ts",
+        "default": "./dist/sha1.js"
+      },
+      "require": {
+        "types": "./dist/sha1.d.cts",
+        "default": "./dist/sha1.cjs"
+      }
+    },
+    "./sha1.js": {
+      "import": {
+        "types": "./dist/sha1.d.ts",
+        "default": "./dist/sha1.js"
+      },
+      "require": {
+        "types": "./dist/sha1.d.cts",
+        "default": "./dist/sha1.cjs"
+      }
+    },
+    "./sha224": {
+      "import": {
+        "types": "./dist/sha224.d.ts",
+        "default": "./dist/sha224.js"
+      },
+      "require": {
+        "types": "./dist/sha224.d.cts",
+        "default": "./dist/sha224.cjs"
+      }
+    },
+    "./sha224.js": {
+      "import": {
+        "types": "./dist/sha224.d.ts",
+        "default": "./dist/sha224.js"
+      },
+      "require": {
+        "types": "./dist/sha224.d.cts",
+        "default": "./dist/sha224.cjs"
+      }
+    },
+    "./sha256": {
+      "import": {
+        "types": "./dist/sha256.d.ts",
+        "default": "./dist/sha256.js"
+      },
+      "require": {
+        "types": "./dist/sha256.d.cts",
+        "default": "./dist/sha256.cjs"
+      }
+    },
+    "./sha256.js": {
+      "import": {
+        "types": "./dist/sha256.d.ts",
+        "default": "./dist/sha256.js"
+      },
+      "require": {
+        "types": "./dist/sha256.d.cts",
+        "default": "./dist/sha256.cjs"
+      }
+    },
+    "./sha384": {
+      "import": {
+        "types": "./dist/sha384.d.ts",
+        "default": "./dist/sha384.js"
+      },
+      "require": {
+        "types": "./dist/sha384.d.cts",
+        "default": "./dist/sha384.cjs"
+      }
+    },
+    "./sha384.js": {
+      "import": {
+        "types": "./dist/sha384.d.ts",
+        "default": "./dist/sha384.js"
+      },
+      "require": {
+        "types": "./dist/sha384.d.cts",
+        "default": "./dist/sha384.cjs"
+      }
+    },
+    "./sha512": {
+      "import": {
+        "types": "./dist/sha512.d.ts",
+        "default": "./dist/sha512.js"
+      },
+      "require": {
+        "types": "./dist/sha512.d.cts",
+        "default": "./dist/sha512.cjs"
+      }
+    },
+    "./sha512.js": {
+      "import": {
+        "types": "./dist/sha512.d.ts",
+        "default": "./dist/sha512.js"
+      },
+      "require": {
+        "types": "./dist/sha512.d.cts",
+        "default": "./dist/sha512.cjs"
+      }
+    },
+    "./sha3": {
+      "import": {
+        "types": "./dist/sha3.d.ts",
+        "default": "./dist/sha3.js"
+      },
+      "require": {
+        "types": "./dist/sha3.d.cts",
+        "default": "./dist/sha3.cjs"
+      }
+    },
+    "./sha3.js": {
+      "import": {
+        "types": "./dist/sha3.d.ts",
+        "default": "./dist/sha3.js"
+      },
+      "require": {
+        "types": "./dist/sha3.d.cts",
+        "default": "./dist/sha3.cjs"
+      }
+    },
+    "./ripemd160": {
+      "import": {
+        "types": "./dist/ripemd160.d.ts",
+        "default": "./dist/ripemd160.js"
+      },
+      "require": {
+        "types": "./dist/ripemd160.d.cts",
+        "default": "./dist/ripemd160.cjs"
+      }
+    },
+    "./ripemd160.js": {
+      "import": {
+        "types": "./dist/ripemd160.d.ts",
+        "default": "./dist/ripemd160.js"
+      },
+      "require": {
+        "types": "./dist/ripemd160.d.cts",
+        "default": "./dist/ripemd160.cjs"
+      }
+    },
+    "./hmac-md5": {
+      "import": {
+        "types": "./dist/hmac-md5.d.ts",
+        "default": "./dist/hmac-md5.js"
+      },
+      "require": {
+        "types": "./dist/hmac-md5.d.cts",
+        "default": "./dist/hmac-md5.cjs"
+      }
+    },
+    "./hmac-md5.js": {
+      "import": {
+        "types": "./dist/hmac-md5.d.ts",
+        "default": "./dist/hmac-md5.js"
+      },
+      "require": {
+        "types": "./dist/hmac-md5.d.cts",
+        "default": "./dist/hmac-md5.cjs"
+      }
+    },
+    "./hmac-sha1": {
+      "import": {
+        "types": "./dist/hmac-sha1.d.ts",
+        "default": "./dist/hmac-sha1.js"
+      },
+      "require": {
+        "types": "./dist/hmac-sha1.d.cts",
+        "default": "./dist/hmac-sha1.cjs"
+      }
+    },
+    "./hmac-sha1.js": {
+      "import": {
+        "types": "./dist/hmac-sha1.d.ts",
+        "default": "./dist/hmac-sha1.js"
+      },
+      "require": {
+        "types": "./dist/hmac-sha1.d.cts",
+        "default": "./dist/hmac-sha1.cjs"
+      }
+    },
+    "./hmac-sha224": {
+      "import": {
+        "types": "./dist/hmac-sha224.d.ts",
+        "default": "./dist/hmac-sha224.js"
+      },
+      "require": {
+        "types": "./dist/hmac-sha224.d.cts",
+        "default": "./dist/hmac-sha224.cjs"
+      }
+    },
+    "./hmac-sha224.js": {
+      "import": {
+        "types": "./dist/hmac-sha224.d.ts",
+        "default": "./dist/hmac-sha224.js"
+      },
+      "require": {
+        "types": "./dist/hmac-sha224.d.cts",
+        "default": "./dist/hmac-sha224.cjs"
+      }
+    },
+    "./hmac-sha256": {
+      "import": {
+        "types": "./dist/hmac-sha256.d.ts",
+        "default": "./dist/hmac-sha256.js"
+      },
+      "require": {
+        "types": "./dist/hmac-sha256.d.cts",
+        "default": "./dist/hmac-sha256.cjs"
+      }
+    },
+    "./hmac-sha256.js": {
+      "import": {
+        "types": "./dist/hmac-sha256.d.ts",
+        "default": "./dist/hmac-sha256.js"
+      },
+      "require": {
+        "types": "./dist/hmac-sha256.d.cts",
+        "default": "./dist/hmac-sha256.cjs"
+      }
+    },
+    "./hmac-sha384": {
+      "import": {
+        "types": "./dist/hmac-sha384.d.ts",
+        "default": "./dist/hmac-sha384.js"
+      },
+      "require": {
+        "types": "./dist/hmac-sha384.d.cts",
+        "default": "./dist/hmac-sha384.cjs"
+      }
+    },
+    "./hmac-sha384.js": {
+      "import": {
+        "types": "./dist/hmac-sha384.d.ts",
+        "default": "./dist/hmac-sha384.js"
+      },
+      "require": {
+        "types": "./dist/hmac-sha384.d.cts",
+        "default": "./dist/hmac-sha384.cjs"
+      }
+    },
+    "./hmac-sha512": {
+      "import": {
+        "types": "./dist/hmac-sha512.d.ts",
+        "default": "./dist/hmac-sha512.js"
+      },
+      "require": {
+        "types": "./dist/hmac-sha512.d.cts",
+        "default": "./dist/hmac-sha512.cjs"
+      }
+    },
+    "./hmac-sha512.js": {
+      "import": {
+        "types": "./dist/hmac-sha512.d.ts",
+        "default": "./dist/hmac-sha512.js"
+      },
+      "require": {
+        "types": "./dist/hmac-sha512.d.cts",
+        "default": "./dist/hmac-sha512.cjs"
+      }
+    },
+    "./hmac-sha3": {
+      "import": {
+        "types": "./dist/hmac-sha3.d.ts",
+        "default": "./dist/hmac-sha3.js"
+      },
+      "require": {
+        "types": "./dist/hmac-sha3.d.cts",
+        "default": "./dist/hmac-sha3.cjs"
+      }
+    },
+    "./hmac-sha3.js": {
+      "import": {
+        "types": "./dist/hmac-sha3.d.ts",
+        "default": "./dist/hmac-sha3.js"
+      },
+      "require": {
+        "types": "./dist/hmac-sha3.d.cts",
+        "default": "./dist/hmac-sha3.cjs"
+      }
+    },
+    "./hmac-ripemd160": {
+      "import": {
+        "types": "./dist/hmac-ripemd160.d.ts",
+        "default": "./dist/hmac-ripemd160.js"
+      },
+      "require": {
+        "types": "./dist/hmac-ripemd160.d.cts",
+        "default": "./dist/hmac-ripemd160.cjs"
+      }
+    },
+    "./hmac-ripemd160.js": {
+      "import": {
+        "types": "./dist/hmac-ripemd160.d.ts",
+        "default": "./dist/hmac-ripemd160.js"
+      },
+      "require": {
+        "types": "./dist/hmac-ripemd160.d.cts",
+        "default": "./dist/hmac-ripemd160.cjs"
+      }
+    },
+    "./pbkdf2": {
+      "import": {
+        "types": "./dist/pbkdf2.d.ts",
+        "default": "./dist/pbkdf2.js"
+      },
+      "require": {
+        "types": "./dist/pbkdf2.d.cts",
+        "default": "./dist/pbkdf2.cjs"
+      }
+    },
+    "./pbkdf2.js": {
+      "import": {
+        "types": "./dist/pbkdf2.d.ts",
+        "default": "./dist/pbkdf2.js"
+      },
+      "require": {
+        "types": "./dist/pbkdf2.d.cts",
+        "default": "./dist/pbkdf2.cjs"
+      }
+    },
+    "./evpkdf": {
+      "import": {
+        "types": "./dist/evpkdf.d.ts",
+        "default": "./dist/evpkdf.js"
+      },
+      "require": {
+        "types": "./dist/evpkdf.d.cts",
+        "default": "./dist/evpkdf.cjs"
+      }
+    },
+    "./evpkdf.js": {
+      "import": {
+        "types": "./dist/evpkdf.d.ts",
+        "default": "./dist/evpkdf.js"
+      },
+      "require": {
+        "types": "./dist/evpkdf.d.cts",
+        "default": "./dist/evpkdf.cjs"
+      }
+    },
+    "./format-openssl": {
+      "import": {
+        "types": "./dist/format-openssl.d.ts",
+        "default": "./dist/format-openssl.js"
+      },
+      "require": {
+        "types": "./dist/format-openssl.d.cts",
+        "default": "./dist/format-openssl.cjs"
+      }
+    },
+    "./format-openssl.js": {
+      "import": {
+        "types": "./dist/format-openssl.d.ts",
+        "default": "./dist/format-openssl.js"
+      },
+      "require": {
+        "types": "./dist/format-openssl.d.cts",
+        "default": "./dist/format-openssl.cjs"
+      }
+    },
+    "./format-hex": {
+      "import": {
+        "types": "./dist/format-hex.d.ts",
+        "default": "./dist/format-hex.js"
+      },
+      "require": {
+        "types": "./dist/format-hex.d.cts",
+        "default": "./dist/format-hex.cjs"
+      }
+    },
+    "./format-hex.js": {
+      "import": {
+        "types": "./dist/format-hex.d.ts",
+        "default": "./dist/format-hex.js"
+      },
+      "require": {
+        "types": "./dist/format-hex.d.cts",
+        "default": "./dist/format-hex.cjs"
+      }
+    },
+    "./mode-cfb": {
+      "import": {
+        "types": "./dist/mode-cfb.d.ts",
+        "default": "./dist/mode-cfb.js"
+      },
+      "require": {
+        "types": "./dist/mode-cfb.d.cts",
+        "default": "./dist/mode-cfb.cjs"
+      }
+    },
+    "./mode-cfb.js": {
+      "import": {
+        "types": "./dist/mode-cfb.d.ts",
+        "default": "./dist/mode-cfb.js"
+      },
+      "require": {
+        "types": "./dist/mode-cfb.d.cts",
+        "default": "./dist/mode-cfb.cjs"
+      }
+    },
+    "./mode-ctr": {
+      "import": {
+        "types": "./dist/mode-ctr.d.ts",
+        "default": "./dist/mode-ctr.js"
+      },
+      "require": {
+        "types": "./dist/mode-ctr.d.cts",
+        "default": "./dist/mode-ctr.cjs"
+      }
+    },
+    "./mode-ctr.js": {
+      "import": {
+        "types": "./dist/mode-ctr.d.ts",
+        "default": "./dist/mode-ctr.js"
+      },
+      "require": {
+        "types": "./dist/mode-ctr.d.cts",
+        "default": "./dist/mode-ctr.cjs"
+      }
+    },
+    "./mode-ctr-gladman": {
+      "import": {
+        "types": "./dist/mode-ctr-gladman.d.ts",
+        "default": "./dist/mode-ctr-gladman.js"
+      },
+      "require": {
+        "types": "./dist/mode-ctr-gladman.d.cts",
+        "default": "./dist/mode-ctr-gladman.cjs"
+      }
+    },
+    "./mode-ctr-gladman.js": {
+      "import": {
+        "types": "./dist/mode-ctr-gladman.d.ts",
+        "default": "./dist/mode-ctr-gladman.js"
+      },
+      "require": {
+        "types": "./dist/mode-ctr-gladman.d.cts",
+        "default": "./dist/mode-ctr-gladman.cjs"
+      }
+    },
+    "./mode-ofb": {
+      "import": {
+        "types": "./dist/mode-ofb.d.ts",
+        "default": "./dist/mode-ofb.js"
+      },
+      "require": {
+        "types": "./dist/mode-ofb.d.cts",
+        "default": "./dist/mode-ofb.cjs"
+      }
+    },
+    "./mode-ofb.js": {
+      "import": {
+        "types": "./dist/mode-ofb.d.ts",
+        "default": "./dist/mode-ofb.js"
+      },
+      "require": {
+        "types": "./dist/mode-ofb.d.cts",
+        "default": "./dist/mode-ofb.cjs"
+      }
+    },
+    "./mode-ecb": {
+      "import": {
+        "types": "./dist/mode-ecb.d.ts",
+        "default": "./dist/mode-ecb.js"
+      },
+      "require": {
+        "types": "./dist/mode-ecb.d.cts",
+        "default": "./dist/mode-ecb.cjs"
+      }
+    },
+    "./mode-ecb.js": {
+      "import": {
+        "types": "./dist/mode-ecb.d.ts",
+        "default": "./dist/mode-ecb.js"
+      },
+      "require": {
+        "types": "./dist/mode-ecb.d.cts",
+        "default": "./dist/mode-ecb.cjs"
+      }
+    },
+    "./pad-pkcs7": {
+      "import": {
+        "types": "./dist/pad-pkcs7.d.ts",
+        "default": "./dist/pad-pkcs7.js"
+      },
+      "require": {
+        "types": "./dist/pad-pkcs7.d.cts",
+        "default": "./dist/pad-pkcs7.cjs"
+      }
+    },
+    "./pad-pkcs7.js": {
+      "import": {
+        "types": "./dist/pad-pkcs7.d.ts",
+        "default": "./dist/pad-pkcs7.js"
+      },
+      "require": {
+        "types": "./dist/pad-pkcs7.d.cts",
+        "default": "./dist/pad-pkcs7.cjs"
+      }
+    },
+    "./pad-ansix923": {
+      "import": {
+        "types": "./dist/pad-ansix923.d.ts",
+        "default": "./dist/pad-ansix923.js"
+      },
+      "require": {
+        "types": "./dist/pad-ansix923.d.cts",
+        "default": "./dist/pad-ansix923.cjs"
+      }
+    },
+    "./pad-ansix923.js": {
+      "import": {
+        "types": "./dist/pad-ansix923.d.ts",
+        "default": "./dist/pad-ansix923.js"
+      },
+      "require": {
+        "types": "./dist/pad-ansix923.d.cts",
+        "default": "./dist/pad-ansix923.cjs"
+      }
+    },
+    "./pad-iso10126": {
+      "import": {
+        "types": "./dist/pad-iso10126.d.ts",
+        "default": "./dist/pad-iso10126.js"
+      },
+      "require": {
+        "types": "./dist/pad-iso10126.d.cts",
+        "default": "./dist/pad-iso10126.cjs"
+      }
+    },
+    "./pad-iso10126.js": {
+      "import": {
+        "types": "./dist/pad-iso10126.d.ts",
+        "default": "./dist/pad-iso10126.js"
+      },
+      "require": {
+        "types": "./dist/pad-iso10126.d.cts",
+        "default": "./dist/pad-iso10126.cjs"
+      }
+    },
+    "./pad-iso97971": {
+      "import": {
+        "types": "./dist/pad-iso97971.d.ts",
+        "default": "./dist/pad-iso97971.js"
+      },
+      "require": {
+        "types": "./dist/pad-iso97971.d.cts",
+        "default": "./dist/pad-iso97971.cjs"
+      }
+    },
+    "./pad-iso97971.js": {
+      "import": {
+        "types": "./dist/pad-iso97971.d.ts",
+        "default": "./dist/pad-iso97971.js"
+      },
+      "require": {
+        "types": "./dist/pad-iso97971.d.cts",
+        "default": "./dist/pad-iso97971.cjs"
+      }
+    },
+    "./pad-zeropadding": {
+      "import": {
+        "types": "./dist/pad-zeropadding.d.ts",
+        "default": "./dist/pad-zeropadding.js"
+      },
+      "require": {
+        "types": "./dist/pad-zeropadding.d.cts",
+        "default": "./dist/pad-zeropadding.cjs"
+      }
+    },
+    "./pad-zeropadding.js": {
+      "import": {
+        "types": "./dist/pad-zeropadding.d.ts",
+        "default": "./dist/pad-zeropadding.js"
+      },
+      "require": {
+        "types": "./dist/pad-zeropadding.d.cts",
+        "default": "./dist/pad-zeropadding.cjs"
+      }
+    },
+    "./pad-nopadding": {
+      "import": {
+        "types": "./dist/pad-nopadding.d.ts",
+        "default": "./dist/pad-nopadding.js"
+      },
+      "require": {
+        "types": "./dist/pad-nopadding.d.cts",
+        "default": "./dist/pad-nopadding.cjs"
+      }
+    },
+    "./pad-nopadding.js": {
+      "import": {
+        "types": "./dist/pad-nopadding.d.ts",
+        "default": "./dist/pad-nopadding.js"
+      },
+      "require": {
+        "types": "./dist/pad-nopadding.d.cts",
+        "default": "./dist/pad-nopadding.cjs"
+      }
+    },
+    "./aes": {
+      "import": {
+        "types": "./dist/aes.d.ts",
+        "default": "./dist/aes.js"
+      },
+      "require": {
+        "types": "./dist/aes.d.cts",
+        "default": "./dist/aes.cjs"
+      }
+    },
+    "./aes.js": {
+      "import": {
+        "types": "./dist/aes.d.ts",
+        "default": "./dist/aes.js"
+      },
+      "require": {
+        "types": "./dist/aes.d.cts",
+        "default": "./dist/aes.cjs"
+      }
+    },
+    "./tripledes": {
+      "import": {
+        "types": "./dist/tripledes.d.ts",
+        "default": "./dist/tripledes.js"
+      },
+      "require": {
+        "types": "./dist/tripledes.d.cts",
+        "default": "./dist/tripledes.cjs"
+      }
+    },
+    "./tripledes.js": {
+      "import": {
+        "types": "./dist/tripledes.d.ts",
+        "default": "./dist/tripledes.js"
+      },
+      "require": {
+        "types": "./dist/tripledes.d.cts",
+        "default": "./dist/tripledes.cjs"
+      }
+    },
+    "./rc4": {
+      "import": {
+        "types": "./dist/rc4.d.ts",
+        "default": "./dist/rc4.js"
+      },
+      "require": {
+        "types": "./dist/rc4.d.cts",
+        "default": "./dist/rc4.cjs"
+      }
+    },
+    "./rc4.js": {
+      "import": {
+        "types": "./dist/rc4.d.ts",
+        "default": "./dist/rc4.js"
+      },
+      "require": {
+        "types": "./dist/rc4.d.cts",
+        "default": "./dist/rc4.cjs"
+      }
+    },
+    "./rabbit": {
+      "import": {
+        "types": "./dist/rabbit.d.ts",
+        "default": "./dist/rabbit.js"
+      },
+      "require": {
+        "types": "./dist/rabbit.d.cts",
+        "default": "./dist/rabbit.cjs"
+      }
+    },
+    "./rabbit.js": {
+      "import": {
+        "types": "./dist/rabbit.d.ts",
+        "default": "./dist/rabbit.js"
+      },
+      "require": {
+        "types": "./dist/rabbit.d.cts",
+        "default": "./dist/rabbit.cjs"
+      }
+    },
+    "./rabbit-legacy": {
+      "import": {
+        "types": "./dist/rabbit-legacy.d.ts",
+        "default": "./dist/rabbit-legacy.js"
+      },
+      "require": {
+        "types": "./dist/rabbit-legacy.d.cts",
+        "default": "./dist/rabbit-legacy.cjs"
+      }
+    },
+    "./rabbit-legacy.js": {
+      "import": {
+        "types": "./dist/rabbit-legacy.d.ts",
+        "default": "./dist/rabbit-legacy.js"
+      },
+      "require": {
+        "types": "./dist/rabbit-legacy.d.cts",
+        "default": "./dist/rabbit-legacy.cjs"
+      }
+    },
+    "./blowfish": {
+      "import": {
+        "types": "./dist/blowfish.d.ts",
+        "default": "./dist/blowfish.js"
+      },
+      "require": {
+        "types": "./dist/blowfish.d.cts",
+        "default": "./dist/blowfish.cjs"
+      }
+    },
+    "./blowfish.js": {
+      "import": {
+        "types": "./dist/blowfish.d.ts",
+        "default": "./dist/blowfish.js"
+      },
+      "require": {
+        "types": "./dist/blowfish.d.cts",
+        "default": "./dist/blowfish.cjs"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "core",
+    "index",
+    "crypto-js",
+    "x64-core",
+    "cipher-core",
+    "hmac",
+    "lib-typedarrays",
+    "enc-base64",
+    "enc-base64url",
+    "enc-hex",
+    "enc-latin1",
+    "enc-utf16",
+    "enc-utf8",
+    "md5",
+    "sha1",
+    "sha224",
+    "sha256",
+    "sha384",
+    "sha512",
+    "sha3",
+    "ripemd160",
+    "hmac-md5",
+    "hmac-sha1",
+    "hmac-sha224",
+    "hmac-sha256",
+    "hmac-sha384",
+    "hmac-sha512",
+    "hmac-sha3",
+    "hmac-ripemd160",
+    "pbkdf2",
+    "evpkdf",
+    "format-openssl",
+    "format-hex",
+    "mode-cfb",
+    "mode-ctr",
+    "mode-ctr-gladman",
+    "mode-ofb",
+    "mode-ecb",
+    "pad-pkcs7",
+    "pad-ansix923",
+    "pad-iso10126",
+    "pad-iso97971",
+    "pad-zeropadding",
+    "pad-nopadding",
+    "aes",
+    "tripledes",
+    "rc4",
+    "rabbit",
+    "rabbit-legacy",
+    "blowfish"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.test.json",
+    "test": "npm run build && vitest run",
+    "test:unit": "vitest run --project unit",
+    "test:package": "npm run build && vitest run --project package",
+    "lint:pkg": "publint --strict && node scripts/attw.mjs",
+    "prepack": "node scripts/verify-dist.mjs"
+  },
   "devDependencies": {
     "@arethetypeswrong/cli": "0.18.5",
     "@noble/ciphers": "2.4.0",
@@ -16,8 +1116,11 @@
     "@types/crypto-js": "4.2.2",
     "@types/node": "26.6.5",
     "@typescript/typescript6": "6.0.2",
+    "acorn": "8.19.0",
     "crypto-js": "4.2.0",
     "publint": "0.3.25",
+    "rollup": "4.65.0",
+    "rollup-plugin-dts": "6.5.1",
     "tsup": "9.0.0",
     "typescript": "7.0.2",
     "vitest": "5.0.5"

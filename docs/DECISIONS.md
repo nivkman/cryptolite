@@ -78,3 +78,15 @@ is stored in the token, so a later change of default never breaks old tokens.
 and reject an encoded surrogate in `fatal` mode) and otherwise uses crypto-js's own
 `unescape(encodeURIComponent())` / `decodeURIComponent(escape())`, which are plain ES and exist on
 Hermes. **Why:** exact crypto-js behaviour on every platform, with the fast native path where safe.
+
+## D12. Public types = @types/crypto-js 4.2.2, plus one additive fix
+`src/compat/types.ts` is a mechanical port of @types/crypto-js so existing TypeScript code compiles
+unchanged. One deliberate addition: `enc.Base64url` takes the optional `urlSafe` flag that
+crypto-js 4.2 has at runtime but @types omits. It stays assignable to and from @types' `Encoder`
+both ways. The unsupported cipher stubs (D6) are runtime-only and intentionally not typed.
+
+## D13. Subpath stub directories are generated, not committed
+The build writes 50 `<name>/package.json` stubs at the package root for resolvers that ignore
+`exports`. They ship via `files` and are gitignored. Known gap: `cryptolite/<name>.js` (with the
+suffix) does not resolve under those old resolvers; everything that honours `exports` is fine.
+No UMD/`<script>` global build in v1.

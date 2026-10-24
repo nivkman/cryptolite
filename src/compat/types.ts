@@ -52,6 +52,15 @@ export type X64Word = CryptoJS.x64.Word;
 /**
  * Encoding strategy.
  */
+/**
+ * An {@link Encoder} whose `stringify`/`parse` take an optional `urlSafe` flag (default `true`).
+ * cryptolite addition; see `enc.Base64url`.
+ */
+export interface UrlSafeEncoder extends Encoder {
+    stringify(wordArray: WordArray, urlSafe?: boolean): string;
+    parse(str: string, urlSafe?: boolean): WordArray;
+}
+
 export interface Encoder {
     /**
      * Converts a word array to a hex string.
@@ -1110,8 +1119,12 @@ export declare namespace CryptoJS {
         const Base64: Encoder;
         /**
          * Base64url encoding strategy.
+         *
+         * cryptolite addition (crypto-js 4.2 runtime API that @types/crypto-js omits): `urlSafe`
+         * defaults to `true`; pass `false` to use the standard `+/=` alphabet. Additive only —
+         * still assignable to and from `Encoder` in both directions.
          */
-        const Base64url: Encoder;
+        const Base64url: UrlSafeEncoder;
     }
 
     /**

@@ -1,0 +1,25 @@
+{
+  // Type-checks the library source (npm run typecheck). Tests and tooling have their own config
+  // (tsconfig.test.json) so Node/test globals cannot leak into the universal runtime code.
+  //
+  // lib is ES2020 with no DOM and no @types/node on purpose: the runtime targets React Native
+  // (Hermes), browsers, Deno, Bun and Workers, so platform APIs must be typed locally where used.
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020"],
+    "types": [],
+    "module": "preserve",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": false,
+    "noImplicitOverride": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": false,
+    "noEmit": true
+  },
+  "include": ["src/**/*.ts"]
+}

@@ -1,0 +1,28 @@
+# Dependency update PRs. cryptolite has no runtime dependencies: @noble/* are devDependencies that
+# are bundled into dist, so a noble update only reaches users through a cryptolite release (see
+# docs/DECISIONS.md D5). Their updates are grouped separately so they are never buried.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    allow:
+      - dependency-type: development
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: chore(deps-dev)
+    groups:
+      noble:
+        patterns: ['@noble/*']
+      typescript:
+        patterns: ['typescript', '@typescript/*']
+      build-and-test:
+        patterns: ['tsup', 'rollup', 'rollup-plugin-dts', 'vitest', 'acorn', 'publint', '@arethetypeswrong/*', '@types/node']
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    commit-message:
+      prefix: chore(ci)
