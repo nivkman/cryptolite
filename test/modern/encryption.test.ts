@@ -116,7 +116,7 @@ describe('token format matches the spec (independent node:crypto implementation)
     }
   });
 
-  it('we decrypt tokens built by node:crypto, at any iteration count in [10000, 10000000]', async () => {
+  it('we decrypt tokens built by node:crypto, at any iteration count in [10000, 2000000]', async () => {
     for (const iterations of [10_000, 12_345, 100_000]) {
       const token = nodeSeal(Buffer.from('from openssl'), PW, iterations, nodeRandomBytes(16), nodeRandomBytes(12));
       expect(await decrypt(token, PW)).toBe('from openssl');

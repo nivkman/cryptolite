@@ -92,21 +92,21 @@ describe('strict parsing rejects non-canonical tokens (ERR_FORMAT)', () => {
 });
 
 describe('iteration bounds on decrypt', () => {
-  it('rejects tokens below 10000 or above 10000000 without deriving a key', async () => {
+  it('rejects tokens below 10000 or above 2000000 without deriving a key', async () => {
     const token = await makeToken();
     const rest = token.split('.').slice(2).join('.');
-    for (const it of ['9999', '1', '10000001', '99999999', '100000000', '4294967296', '9'.repeat(400)]) {
+    for (const it of ['9999', '1', '2000001', '10000000', '99999999', '100000000', '4294967296', '9'.repeat(400)]) {
       const e = await expectCode(() => decrypt(`cl1.${it}.${rest}`, PW), 'ERR_FORMAT');
       expect(e.message).toContain('outside the accepted range');
       expect(e.message).not.toContain('Infinity');
     }
   });
 
-  it('accepts exactly 10000 and 10000000 (the latter checked at the parser, not run)', async () => {
+  it('accepts exactly 10000 and 2000000 (the latter checked at the parser, not run)', async () => {
     const token = await makeToken('lower bound', 10_000);
     expect(await decrypt(token, PW)).toBe('lower bound');
     const rest = token.split('.').slice(2).join('.');
-    expect(parseCl1(`cl1.${MAX_ITERATIONS}.${rest}`).iterations).toBe(10_000_000);
+    expect(parseCl1(`cl1.${MAX_ITERATIONS}.${rest}`).iterations).toBe(2_000_000);
     expect(parseCl1(`cl1.10000.${rest}`).iterations).toBe(10_000);
   });
 });

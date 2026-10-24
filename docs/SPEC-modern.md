@@ -22,8 +22,8 @@ accepts cl1 tokens (R4).
 ### Token format `cl1`
 `cl1.<iterations>.<salt>.<iv>.<ciphertext>`
 - `iterations`: base-10 integer, PBKDF2 iteration count. Default **600000** (OWASP 2023 for
-  PBKDF2-HMAC-SHA256). `encrypt` accepts `options.iterations` in [100000, 10000000].
-  `decrypt` rejects tokens outside [10000, 10000000] (bounds DoS from hostile tokens and
+  PBKDF2-HMAC-SHA256). `encrypt` accepts `options.iterations` in [100000, 2000000].
+  `decrypt` rejects tokens outside [10000, 2000000] (bounds DoS from hostile tokens and
   refuses trivially weak ones).
 - `salt`: 16 random bytes, base64url (no padding).
 - `iv`: 12 random bytes, base64url.
@@ -48,7 +48,7 @@ accepts cl1 tokens (R4).
 Throw `CryptoliteError` (exported class, `name = 'CryptoliteError'`, `code` string):
 - `ERR_DECRYPT` — wrong password or tampered/corrupted data (single generic message, no oracle detail).
 - `ERR_FORMAT` — not a cl1 token (and not legacy when legacy allowed), including a cl1 token
-  whose iteration count is outside [10000, 10000000] (R1).
+  whose iteration count is outside [10000, 2000000] (R1).
 - `ERR_LEGACY_NOT_ALLOWED` — the input is a crypto-js ciphertext but `legacy` was not enabled;
   message tells the user to pass `{ legacy: true }` or call `upgrade()`.
 - `ERR_PARAMS` — `options.iterations` out of range, empty password, wrong argument types,
@@ -151,3 +151,15 @@ Each entry: what changed relative to the original text above, then why.
 canonical `base64*`/`base64Url*`), `hex.ts`, `random.ts`, `bytes.ts` (`isBytes`, `plainBytes`,
 `concatBytes`, `charCodesToString`), `errors.ts` (`CryptoliteError`). No constant-time compare: nothing
 in the modern API needs one (GCM tag checks happen inside noble/Web Crypto).
+
+## Security-review changes (2026-10-24, see docs/reviews/security.md)
+- **S1 (M1)** Options are read from a null-prototype copy of the caller's own keys, so a polluted
+  `Object.prototype` cannot change `iterations` or `legacy`.
+- **S2 (M2)** Hard iteration cap lowered from 10,000,000 to **2,000,000** (≈0.4 s Web Crypto /
+  ≈7 s pure JS for a hostile token on a 2026 server CPU), and `decrypt`/`decryptBytes`/`upgrade`
+  take `maxIterations` (10000..2000000, default 2000000) to refuse higher counts before any work.
+  Unreleased format, so no compatibility impact.
+- **S3 (L1)** A Web Crypto `OperationError` on decrypt (GCM authentication failure) is final; only
+  other platform errors fall back to noble.
+- **S4 (L2)** A throwing `getRandomValues` surfaces as `ERR_RANDOM`.
+- **S5 (L3)** `upgrade()` JSDoc states the integrity caveat for legacy input.

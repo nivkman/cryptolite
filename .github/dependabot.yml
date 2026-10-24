@@ -10,6 +10,10 @@ updates:
     allow:
       - dependency-type: development
     open-pull-requests-limit: 10
+    # Wait a week before proposing a new release (security updates are not delayed), so a
+    # compromised or broken upstream publish has time to be caught before it is bundled.
+    cooldown:
+      default-days: 7
     commit-message:
       prefix: chore(deps-dev)
     groups:

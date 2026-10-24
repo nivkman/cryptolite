@@ -47,13 +47,18 @@ export function requireString(value: unknown, fn: string, name: string): string 
 /**
  * Validates an options object: `undefined`, or a plain object whose own keys are all in `allowed`.
  * Unknown keys are rejected so a typo (`{ iteration: 200000 }`) is an error, not a silent default.
+ *
+ * Returns a null-prototype copy of the caller's OWN properties, so a polluted `Object.prototype`
+ * (e.g. `Object.prototype.iterations = 1e5` or `Object.prototype.legacy = true`) can never
+ * change a security default.
  */
 export function readOptions<K extends string>(
   options: unknown,
   fn: string,
   allowed: readonly K[],
 ): Partial<Record<K, unknown>> {
-  if (options === undefined) return {};
+  const out = Object.create(null) as Partial<Record<K, unknown>>;
+  if (options === undefined) return out;
   if (typeof options !== 'object' || options === null || Array.isArray(options)) {
     throw paramsError(`${fn}(): options must be an object.`);
   }
@@ -61,8 +66,9 @@ export function readOptions<K extends string>(
     if (!(allowed as readonly string[]).includes(key)) {
       throw paramsError(`${fn}(): unknown option "${key}" (supported: ${allowed.join(', ')}).`);
     }
+    out[key as K] = (options as Record<string, unknown>)[key];
   }
-  return options as Partial<Record<K, unknown>>;
+  return out;
 }
 
 /** Validates an integer option in [min, max], returning `fallback` when it is absent. */

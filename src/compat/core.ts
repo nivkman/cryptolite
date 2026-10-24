@@ -38,7 +38,12 @@ function getCrypto(): Any {
 export function secureRandomInt(): number {
   const crypto = getCrypto();
   if (crypto && typeof crypto.getRandomValues === 'function') {
-    return crypto.getRandomValues(new Uint32Array(1))[0] | 0;
+    // Like crypto-js: a failing source falls through to the "could not be used" error below.
+    try {
+      return crypto.getRandomValues(new Uint32Array(1))[0] | 0;
+    } catch {
+      // fall through
+    }
   }
   throw new Error(
     'Native crypto module could not be used to get secure random number. ' +

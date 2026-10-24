@@ -15,6 +15,7 @@ import {
   MAX_ITERATIONS,
   MAX_PLAINTEXT_BYTES,
   MIN_ENCRYPT_ITERATIONS,
+  MIN_TOKEN_ITERATIONS,
   openCl1,
   parseCl1,
   SALT_BYTES,
@@ -26,7 +27,7 @@ import { legacyDecrypt, parseLegacy } from './legacy';
 /** Options for {@link encrypt} and {@link upgrade}. */
 export interface EncryptOptions {
   /**
-   * PBKDF2-HMAC-SHA256 iteration count: an integer from 100000 to 10000000.
+   * PBKDF2-HMAC-SHA256 iteration count: an integer from 100000 to 2000000.
    * Default **600000** (OWASP 2023 guidance). The count is stored in the token, so tokens made
    * with different counts can all be decrypted; raising it later only affects new tokens
    * (re-encrypt old ones with {@link upgrade}).
@@ -50,19 +51,48 @@ export interface DecryptOptions {
    * {@link upgrade} to re-encrypt it as soon as it is read.
    */
   legacy?: boolean;
+  /**
+   * Refuse cl1 tokens whose iteration count is above this (`ERR_FORMAT`), before doing any work.
+   * An integer from 10000 to 2000000; default 2000000 (the format's hard limit).
+   *
+   * Anyone can write a token with a high count, and decrypting it costs that many PBKDF2
+   * iterations even with no password. If you decrypt tokens from untrusted sources (a server
+   * receiving them from clients, say), set this to the count you actually issue, e.g. 600000.
+   */
+  maxIterations?: number;
+}
+
+/** Options for {@link upgrade}: `iterations` for the new token, `maxIterations` for the input. */
+export interface UpgradeOptions extends EncryptOptions {
+  /** See {@link DecryptOptions.maxIterations}; applies to a cl1 token passed in. */
+  maxIterations?: number;
 }
 
 const ENCRYPT_OPTION_KEYS = ['iterations'] as const;
-const DECRYPT_OPTION_KEYS = ['legacy'] as const;
+const DECRYPT_OPTION_KEYS = ['legacy', 'maxIterations'] as const;
+const UPGRADE_OPTION_KEYS = ['iterations', 'maxIterations'] as const;
+
+function iterationsOption(value: unknown, fn: string): number {
+  return integerOption(value, fn, 'iterations', MIN_ENCRYPT_ITERATIONS, MAX_ITERATIONS, DEFAULT_ITERATIONS);
+}
+
+function maxIterationsOption(value: unknown, fn: string): number {
+  return integerOption(value, fn, 'maxIterations', MIN_TOKEN_ITERATIONS, MAX_ITERATIONS, MAX_ITERATIONS);
+}
 
 function encryptIterations(options: unknown, fn: string): number {
   const { iterations } = readOptions(options, fn, ENCRYPT_OPTION_KEYS);
-  return integerOption(iterations, fn, 'iterations', MIN_ENCRYPT_ITERATIONS, MAX_ITERATIONS, DEFAULT_ITERATIONS);
+  return iterationsOption(iterations, fn);
 }
 
-function allowLegacy(options: unknown, fn: string): boolean {
-  const { legacy } = readOptions(options, fn, DECRYPT_OPTION_KEYS);
-  return booleanOption(legacy, fn, 'legacy');
+interface DecryptPolicy {
+  readonly legacy: boolean;
+  readonly maxIterations: number;
+}
+
+function decryptPolicy(options: unknown, fn: string): DecryptPolicy {
+  const { legacy, maxIterations } = readOptions(options, fn, DECRYPT_OPTION_KEYS);
+  return { legacy: booleanOption(legacy, fn, 'legacy'), maxIterations: maxIterationsOption(maxIterations, fn) };
 }
 
 function checkPlaintextSize(plaintext: Uint8Array, fn: string): void {
@@ -83,9 +113,17 @@ interface Opened {
   readonly legacy: boolean;
 }
 
-async function open(token: string, password: Uint8Array, legacyAllowed: boolean, fn: string): Promise<Opened> {
+async function open(token: string, password: Uint8Array, policy: DecryptPolicy, fn: string): Promise<Opened> {
+  const legacyAllowed = policy.legacy;
   if (looksLikeCl1(token)) {
-    return { plaintext: await openCl1(platformEngine(), parseCl1(token), password), legacy: false };
+    const parsed = parseCl1(token);
+    if (parsed.iterations > policy.maxIterations) {
+      throw new CryptoliteError(
+        'ERR_FORMAT',
+        `${fn}(): this cl1 token asks for ${parsed.iterations} PBKDF2 iterations, more than options.maxIterations (${policy.maxIterations}).`,
+      );
+    }
+    return { plaintext: await openCl1(platformEngine(), parsed, password), legacy: false };
   }
   const legacy = parseLegacy(token);
   if (legacy) {
@@ -183,7 +221,8 @@ export async function encrypt(
  * Tokens are parsed strictly: anything that is not exactly what `encrypt` produces (extra
  * whitespace, padding, a different base64 alphabet, a leading zero in the iteration count) is
  * rejected with `ERR_FORMAT` before any key derivation. Tokens whose iteration count is outside
- * 10000–10000000 are rejected too, which bounds the work a hostile token can cause.
+ * 10000–2000000 are rejected too, which bounds the work a hostile token can cause; lower the
+ * bound with `maxIterations` when decrypting tokens from untrusted sources.
  *
  * With `{ legacy: true }`, crypto-js ciphertexts (`CryptoJS.AES.encrypt(text, passphrase)
  * .toString()`, default settings) are accepted as well. They are not authenticated; see
@@ -217,7 +256,7 @@ export async function decrypt(token: string, password: string, options?: Decrypt
   const input = requireString(token, 'decrypt', 'token');
   const pw = passwordBytes(password, 'decrypt');
   try {
-    const opened = await open(input, pw, allowLegacy(options, 'decrypt'), 'decrypt');
+    const opened = await open(input, pw, decryptPolicy(options, 'decrypt'), 'decrypt');
     try {
       return decodeText(opened, 'decrypt');
     } finally {
@@ -254,7 +293,7 @@ export async function decryptBytes(token: string, password: string, options?: De
   const input = requireString(token, 'decryptBytes', 'token');
   const pw = passwordBytes(password, 'decryptBytes');
   try {
-    return (await open(input, pw, allowLegacy(options, 'decryptBytes'), 'decryptBytes')).plaintext;
+    return (await open(input, pw, decryptPolicy(options, 'decryptBytes'), 'decryptBytes')).plaintext;
   } finally {
     pw.fill(0);
   }
@@ -295,7 +334,14 @@ export function isLegacy(token: string): boolean {
  *
  * @param token - a crypto-js ciphertext or a `cl1` token
  * @param password - the password the token was encrypted with (also used for the new token)
- * @param options - see {@link EncryptOptions}; `iterations` applies to the new token
+ * Integrity caveat: a legacy ciphertext carries no authentication, so `upgrade()` cannot prove it
+ * was not modified. Whatever it decrypts to becomes an authenticated cl1 token, so tampering done
+ * BEFORE the upgrade is "laundered" into a valid-looking token. Random corruption is very likely
+ * caught by the UTF-8 check (`ERR_DECRYPT`), but that check is probabilistic, and the
+ * `decryptBytes` + `encrypt` route for binary data has no check at all. Upgrade data you trust.
+ *
+ * @param options - see {@link UpgradeOptions}; `iterations` applies to the new token,
+ *   `maxIterations` to a cl1 token passed in
  * @returns a new `cl1` token with the same plaintext
  * @throws {CryptoliteError} (as a rejected promise) `ERR_DECRYPT`, `ERR_FORMAT`, `ERR_PARAMS`,
  *   `ERR_RANDOM`.
@@ -310,12 +356,14 @@ export function isLegacy(token: string): boolean {
  * }
  * ```
  */
-export async function upgrade(token: string, password: string, options?: EncryptOptions): Promise<string> {
+export async function upgrade(token: string, password: string, options?: UpgradeOptions): Promise<string> {
   const input = requireString(token, 'upgrade', 'token');
   const pw = passwordBytes(password, 'upgrade');
   try {
-    const iterations = encryptIterations(options, 'upgrade');
-    const opened = await open(input, pw, true, 'upgrade');
+    const opts = readOptions(options, 'upgrade', UPGRADE_OPTION_KEYS);
+    const iterations = iterationsOption(opts.iterations, 'upgrade');
+    const maxIterations = maxIterationsOption(opts.maxIterations, 'upgrade');
+    const opened = await open(input, pw, { legacy: true, maxIterations }, 'upgrade');
     try {
       if (opened.legacy) decodeText(opened, 'upgrade');
       checkPlaintextSize(opened.plaintext, 'upgrade');

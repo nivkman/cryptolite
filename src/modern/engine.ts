@@ -117,7 +117,12 @@ export function platformEngine(): Cl1Engine {
       web.deriveKey(password, salt, iterations).catch(() => nobleEngine.deriveKey(password, salt, iterations)),
     seal: (key, iv, aad, plaintext) =>
       web.seal(key, iv, aad, plaintext).catch(() => nobleEngine.seal(key, iv, aad, plaintext)),
+    // An OperationError from decrypt is GCM authentication failing (wrong password or tampered
+    // data): final, and not worth a second, pure-JS pass over attacker-sized input.
     open: (key, iv, aad, sealed) =>
-      web.open(key, iv, aad, sealed).catch(() => nobleEngine.open(key, iv, aad, sealed)),
+      web.open(key, iv, aad, sealed).catch((err: unknown) => {
+        if ((err as { name?: unknown } | null)?.name === 'OperationError') throw err;
+        return nobleEngine.open(key, iv, aad, sealed);
+      }),
   };
 }

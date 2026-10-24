@@ -27,7 +27,7 @@ interface RandomSource {
  * @param length - number of bytes, an integer from 0 to 2147483647
  * @returns a new `Uint8Array` of `length` random bytes
  * @throws {CryptoliteError} `ERR_PARAMS` if `length` is not an integer in range.
- * @throws {CryptoliteError} `ERR_RANDOM` if `globalThis.crypto.getRandomValues` is unavailable.
+ * @throws {CryptoliteError} `ERR_RANDOM` if `globalThis.crypto.getRandomValues` is unavailable or throws.
  *
  * @example
  * ```ts
@@ -52,9 +52,18 @@ export function randomBytes(length: number): Uint8Array {
     );
   }
   const out = new Uint8Array(length);
-  for (let i = 0; i < length; i += GET_RANDOM_VALUES_QUOTA) {
-    // Called as a method: Web Crypto throws "Illegal invocation" on a detached getRandomValues.
-    (source as RandomSource).getRandomValues(out.subarray(i, Math.min(length, i + GET_RANDOM_VALUES_QUOTA)));
+  try {
+    for (let i = 0; i < length; i += GET_RANDOM_VALUES_QUOTA) {
+      // Called as a method: Web Crypto throws "Illegal invocation" on a detached getRandomValues.
+      (source as RandomSource).getRandomValues(out.subarray(i, Math.min(length, i + GET_RANDOM_VALUES_QUOTA)));
+    }
+  } catch (err) {
+    throw new CryptoliteError(
+      'ERR_RANDOM',
+      `No secure random number generator: globalThis.crypto.getRandomValues threw (${String(
+        (err as { name?: unknown } | null)?.name ?? 'error',
+      )}).`,
+    );
   }
   return out;
 }

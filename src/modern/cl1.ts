@@ -26,8 +26,12 @@ export const DEFAULT_ITERATIONS = 600_000;
 export const MIN_ENCRYPT_ITERATIONS = 100_000;
 /** Smallest iteration count a token may carry: refuses trivially weak tokens. */
 export const MIN_TOKEN_ITERATIONS = 10_000;
-/** Largest iteration count anywhere: bounds the work a hostile token can demand. */
-export const MAX_ITERATIONS = 10_000_000;
+/**
+ * Largest iteration count anywhere: bounds the work a hostile token can demand without knowing
+ * any password (about 0.4 s with Web Crypto and 7 s in pure JS on a 2026 server CPU). Callers
+ * that decrypt untrusted tokens can lower it further with `maxIterations`.
+ */
+export const MAX_ITERATIONS = 2_000_000;
 
 const SALT_CHARS = 22; // ceil(16 * 4 / 3), unpadded
 const IV_CHARS = 16; // 12 * 4 / 3

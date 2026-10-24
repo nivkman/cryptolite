@@ -7,7 +7,7 @@
  * @module
  */
 export { decrypt, decryptBytes, encrypt, isLegacy, upgrade } from './encryption';
-export type { DecryptOptions, EncryptOptions } from './encryption';
+export type { DecryptOptions, EncryptOptions, UpgradeOptions } from './encryption';
 
 export { hmac, md5, sha1, sha256, sha3_256, sha3_512, sha384, sha512 } from './hash';
 export type { Encoding, HashFunction, HmacAlgorithm } from './hash';
