@@ -75,7 +75,7 @@ function selectCipherStrategy(key: Any): Any {
 
 export const StreamCipher: Any = (C_lib.StreamCipher = Cipher.extend({
   _doFinalize(this: Any): Any {
-    return this._process(!!'flush');
+    return this._process(true /* flush */);
   },
   blockSize: 1,
 }));
@@ -201,9 +201,9 @@ export const BlockCipher: Any = (C_lib.BlockCipher = Cipher.extend({
 
     if (this._xformMode == this._ENC_XFORM_MODE) {
       padding.pad(this._data, this.blockSize);
-      finalProcessedBlocks = this._process(!!'flush');
+      finalProcessedBlocks = this._process(true /* flush */);
     } else {
-      finalProcessedBlocks = this._process(!!'flush');
+      finalProcessedBlocks = this._process(true /* flush */);
       padding.unpad(finalProcessedBlocks);
     }
 

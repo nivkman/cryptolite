@@ -13,6 +13,7 @@ import {
   IV_BYTES,
   looksLikeCl1,
   MAX_ITERATIONS,
+  MAX_PLAINTEXT_BYTES,
   MIN_ENCRYPT_ITERATIONS,
   openCl1,
   parseCl1,
@@ -62,6 +63,15 @@ function encryptIterations(options: unknown, fn: string): number {
 function allowLegacy(options: unknown, fn: string): boolean {
   const { legacy } = readOptions(options, fn, DECRYPT_OPTION_KEYS);
   return booleanOption(legacy, fn, 'legacy');
+}
+
+function checkPlaintextSize(plaintext: Uint8Array, fn: string): void {
+  if (plaintext.length > MAX_PLAINTEXT_BYTES) {
+    throw new CryptoliteError(
+      'ERR_PARAMS',
+      `${fn}(): plaintext is too large (${plaintext.length} bytes; the maximum is ${MAX_PLAINTEXT_BYTES}).`,
+    );
+  }
 }
 
 function seal(plaintext: Uint8Array, password: Uint8Array, iterations: number): Promise<string> {
@@ -129,12 +139,14 @@ function decodeText(opened: Opened, fn: string): string {
  * The password is the only secret. Use a long, high-entropy passphrase or a generated secret:
  * PBKDF2 slows down guessing, but cannot make a weak password strong.
  *
- * @param plaintext - text (encoded as UTF-8) or bytes to encrypt; may be empty
+ * @param plaintext - text (encoded as UTF-8) or bytes to encrypt; may be empty; at most
+ *   256 MiB once encoded. Bytes are copied when the call starts, so later changes to the array
+ *   do not affect the token.
  * @param password - non-empty string, encoded as UTF-8
  * @param options - see {@link EncryptOptions}
  * @returns a `cl1` token
- * @throws {CryptoliteError} (as a rejected promise) `ERR_PARAMS` for a non-string/non-bytes
- *   plaintext, an empty or non-string password, unknown options, or iterations out of range;
+ * @throws {CryptoliteError} (as a rejected promise) `ERR_PARAMS` for a non-string/non-bytes or
+ *   oversized plaintext, an empty or non-string password, unknown options, or iterations out of range;
  *   `ERR_UTF8` if a string contains a lone surrogate; `ERR_RANDOM` if no secure RNG exists.
  *
  * @example
@@ -151,13 +163,17 @@ export async function encrypt(
   password: string,
   options?: EncryptOptions,
 ): Promise<string> {
-  const data = inputBytes(plaintext, 'encrypt', 'plaintext');
+  const input = inputBytes(plaintext, 'encrypt', 'plaintext');
+  checkPlaintextSize(input, 'encrypt');
   const pw = passwordBytes(password, 'encrypt');
+  // Key derivation is asynchronous: snapshot caller-owned bytes so the token reflects the
+  // plaintext as it was at call time, and so wiping below never touches the caller's array.
+  const data = typeof plaintext === 'string' ? input : input.slice();
   try {
     return await seal(data, pw, encryptIterations(options, 'encrypt'));
   } finally {
     pw.fill(0);
-    if (typeof plaintext === 'string') data.fill(0); // our copy; never wipe the caller's bytes
+    data.fill(0);
   }
 }
 
@@ -302,6 +318,7 @@ export async function upgrade(token: string, password: string, options?: Encrypt
     const opened = await open(input, pw, true, 'upgrade');
     try {
       if (opened.legacy) decodeText(opened, 'upgrade');
+      checkPlaintextSize(opened.plaintext, 'upgrade');
       return await seal(opened.plaintext, pw, iterations);
     } finally {
       opened.plaintext.fill(0);

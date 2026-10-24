@@ -62,3 +62,19 @@ Unlike the auto-patch-on-every-push pipeline used in the owner's other packages,
 library needs a test gate and signed provenance. CI runs tests on every push/PR; publishing
 happens only from a `v*` tag via `npm publish --provenance`. Nothing is published without the
 owner's explicit go-ahead.
+
+## D10. Keep the 600,000-iteration default everywhere, including React Native
+Measured: PBKDF2-HMAC-SHA256 at 600k iterations takes 128 ms via Web Crypto and 1,644 ms via
+pure-JS noble on Node 20 (V8 JIT). React Native has no `crypto.subtle`, so it takes the pure-JS
+path; on Hermes (no JIT) it will be slower — **not measured yet**.
+**Decision:** we do not silently lower the security parameter per platform. The default stays at
+600k (OWASP 2023). Docs tell React Native users their options: a native Web Crypto provider, or
+an explicit `{ iterations: 100000 }` (the lowest `encrypt` accepts) as a conscious trade-off.
+**Why:** a token's strength must not depend on which device created it, and the iteration count
+is stored in the token, so a later change of default never breaks old tokens.
+
+## D11. Compat UTF-8 uses TextEncoder/TextDecoder only when they behave correctly
+`src/compat/core.ts` feature-detects both on `globalThis` at load time (TextDecoder must keep a BOM
+and reject an encoded surrogate in `fatal` mode) and otherwise uses crypto-js's own
+`unescape(encodeURIComponent())` / `decodeURIComponent(escape())`, which are plain ES and exist on
+Hermes. **Why:** exact crypto-js behaviour on every platform, with the fast native path where safe.

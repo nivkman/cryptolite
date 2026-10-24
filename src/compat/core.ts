@@ -248,16 +248,38 @@ export const Latin1: Any = (C_enc.Latin1 = {
 // rules — encoding throws URIError on lone surrogates, decoding rejects any byte sequence that
 // isn't well-formed UTF-8 and keeps a leading BOM — and fall back to crypto-js's own
 // expressions where those APIs are missing (e.g. older React Native).
-const textEncoder: Any = typeof TextEncoder !== 'undefined' ? new TextEncoder() : undefined;
-let textDecoder: Any;
-try {
-  textDecoder =
-    typeof TextDecoder !== 'undefined'
-      ? new TextDecoder('utf-8', { fatal: true, ignoreBOM: true })
-      : undefined;
-} catch {
-  textDecoder = undefined;
-}
+// Platform APIs are looked up on globalThis (not typed globals) because the library is typed
+// against plain ES2020: React Native/Hermes may not have them, or may have partial versions.
+const g: Any = typeof globalThis !== 'undefined' ? globalThis : {};
+
+const textEncoder: Any = (() => {
+  try {
+    const te = typeof g.TextEncoder === 'function' ? new g.TextEncoder() : undefined;
+    // Sanity check: must produce standard UTF-8.
+    const probe = te && te.encode('\u00e9\ud83d\ude00');
+    return probe && probe.length === 6 && probe[0] === 0xc3 && probe[2] === 0xf0 ? te : undefined;
+  } catch {
+    return undefined;
+  }
+})();
+
+const textDecoder: Any = (() => {
+  try {
+    if (typeof g.TextDecoder !== 'function') return undefined;
+    const td = new g.TextDecoder('utf-8', { fatal: true, ignoreBOM: true });
+    // Only trust it if it really keeps a BOM and really rejects invalid input; otherwise use
+    // crypto-js's own expression, whose behaviour we must match exactly.
+    if (td.decode(new Uint8Array([0xef, 0xbb, 0xbf, 0x41])) !== '\ufeffA') return undefined;
+    try {
+      td.decode(new Uint8Array([0xed, 0xa0, 0x80])); // encoded surrogate: must throw
+      return undefined;
+    } catch {
+      return td;
+    }
+  } catch {
+    return undefined;
+  }
+})();
 
 const LONE_OR_ANY_SURROGATE = /[\uD800-\uDFFF]/;
 function isWellFormed(s: string): boolean {

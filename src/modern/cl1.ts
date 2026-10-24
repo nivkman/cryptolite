@@ -32,8 +32,15 @@ export const MAX_ITERATIONS = 10_000_000;
 const SALT_CHARS = 22; // ceil(16 * 4 / 3), unpadded
 const IV_CHARS = 16; // 12 * 4 / 3
 const MIN_SEALED_CHARS = 22; // the 16-byte tag alone (empty plaintext)
-// 1-8 digits without a leading zero; the numeric bounds are checked afterwards.
-const ITERATIONS_PATTERN = /^[1-9][0-9]{0,7}$/;
+// Decimal digits without a leading zero; the numeric bounds are checked afterwards.
+const ITERATIONS_PATTERN = /^[1-9][0-9]*$/;
+const MAX_ITERATIONS_DIGITS = String(MAX_ITERATIONS).length;
+
+/**
+ * Largest plaintext `encrypt`/`upgrade` accept (256 MiB). A token is a single string, and its
+ * base64url form must stay below JavaScript engines' maximum string length (about 512 MiB in V8).
+ */
+export const MAX_PLAINTEXT_BYTES = 256 * 1024 * 1024;
 
 /** A syntactically valid cl1 token, decoded. */
 export interface Cl1Token {
@@ -79,11 +86,11 @@ export function parseCl1(token: string): Cl1Token {
   if (parts.length !== 5 || parts[0] !== CL1_VERSION) throw malformed('wrong number of parts');
   const [, iterationsText, saltText, ivText, sealedText] = parts as [string, string, string, string, string];
   if (!ITERATIONS_PATTERN.test(iterationsText)) throw malformed('iterations is not a canonical decimal integer');
-  const iterations = Number(iterationsText);
+  const iterations = iterationsText.length > MAX_ITERATIONS_DIGITS ? Infinity : Number(iterationsText);
   if (iterations < MIN_TOKEN_ITERATIONS || iterations > MAX_ITERATIONS) {
     throw new CryptoliteError(
       'ERR_FORMAT',
-      `This cl1 token uses ${iterations} PBKDF2 iterations; accepted tokens use ${MIN_TOKEN_ITERATIONS} to ${MAX_ITERATIONS}.`,
+      `This cl1 token's PBKDF2 iteration count is outside the accepted range (${MIN_TOKEN_ITERATIONS} to ${MAX_ITERATIONS}).`,
     );
   }
   const salt = decodePart(saltText, 'salt', SALT_CHARS);
