@@ -1,0 +1,25 @@
+{
+  "name": "cryptolite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@arethetypeswrong/cli": "0.18.5",
+    "@noble/ciphers": "2.4.0",
+    "@noble/hashes": "2.4.0",
+    "@types/crypto-js": "4.2.2",
+    "@types/node": "26.6.5",
+    "@typescript/typescript6": "6.0.2",
+    "crypto-js": "4.2.0",
+    "publint": "0.3.25",
+    "tsup": "9.0.0",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5"
+  }
+}
