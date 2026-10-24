@@ -86,6 +86,17 @@ export function prngString(n: number): string {
   return s;
 }
 
+/**
+ * ZeroPadding (crypto-js and cryptolite alike) cannot distinguish a real trailing 0x00 byte from
+ * padding: unpad() strips every trailing zero byte. That is a documented limitation of the
+ * padding scheme itself, identical on both libraries — not a cryptolite bug. Tests that exercise
+ * ZeroPadding round trips must avoid messages whose encoded bytes end in 0x00, or they'll see
+ * "corruption" that both libraries agree on and that has nothing to do with correctness.
+ */
+export function avoidZeroPaddingTrap(s: string): string {
+  return s.length > 0 && s.charCodeAt(s.length - 1) === 0 ? s + 'x' : s;
+}
+
 export function bytesToHex(bytes: Uint8Array): string {
   return Array.from(bytes, (b) => b.toString(16).padStart(2, '0')).join('');
 }

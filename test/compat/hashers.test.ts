@@ -105,6 +105,16 @@ describe('SHA3 — configurable outputLength', () => {
     expect(outputs[0]).toBe(outputs[1]);
   });
 
+  it('matches crypto-js on a large input (100000 bytes), default and non-default outputLength', () => {
+    const bytes = prngBytes(100_000);
+    for (const outputLength of [512, 256]) {
+      const outputs = libEntries.map(([, CJS]) =>
+        CJS.SHA3(CJS.lib.WordArray.create(bytes), { outputLength }).toString(),
+      );
+      expect(outputs[0]).toBe(outputs[1]);
+    }
+  });
+
   it('default outputLength is 512', () => {
     const outputs = libEntries.map(([, CJS]) => CJS.SHA3('abc').toString());
     expect(outputs[0]).toBe(outputs[1]);
