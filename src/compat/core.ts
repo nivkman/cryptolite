@@ -34,21 +34,28 @@ function getCrypto(): Any {
   return g && g.crypto;
 }
 
-/** One secure random 32-bit integer (signed, like crypto-js's `readInt32LE` path). */
-export function secureRandomInt(): number {
+/**
+ * `count` secure random 32-bit words. Like crypto-js's `getRandomValues` path the words are
+ * unsigned, and a missing or failing source raises crypto-js's own error. Filled in chunks
+ * because Web Crypto limits one call to 65536 bytes.
+ */
+export function secureRandomWords(count: number): number[] {
   const crypto = getCrypto();
   if (crypto && typeof crypto.getRandomValues === 'function') {
-    // Like crypto-js: a failing source falls through to the "could not be used" error below.
     try {
-      return crypto.getRandomValues(new Uint32Array(1))[0] | 0;
+      const out = new Uint32Array(count);
+      for (let i = 0; i < count; i += 16384) {
+        crypto.getRandomValues(out.subarray(i, Math.min(count, i + 16384)));
+      }
+      return Array.from(out);
     } catch {
-      // fall through
+      // fall through to the error below, as crypto-js does
     }
   }
   throw new Error(
     'Native crypto module could not be used to get secure random number. ' +
-      '(cryptolite: globalThis.crypto.getRandomValues is missing; on React Native install ' +
-      "and import 'react-native-get-random-values' first.)",
+      '(cryptolite: globalThis.crypto.getRandomValues is missing or failed; on React Native ' +
+      "install and import 'react-native-get-random-values' first.)",
   );
 }
 
@@ -154,10 +161,8 @@ export const WordArray: Any = (C_lib.WordArray = Base.extend({
   },
 
   random(nBytes: number): Any {
-    const words: number[] = [];
-    for (let i = 0; i < nBytes; i += 4) {
-      words.push(secureRandomInt());
-    }
+    // Same word count as crypto-js's `for (i = 0; i < nBytes; i += 4)`.
+    const words = secureRandomWords(nBytes > 0 ? Math.ceil(nBytes / 4) : 0);
     return new WordArray.init(words, nBytes);
   },
 }));
@@ -296,7 +301,7 @@ function isWellFormed(s: string): boolean {
 
 /** UTF-8 bytes of `s`, with crypto-js's error behaviour (URIError on lone surrogates). */
 export function utf8Encode(s: string): Uint8Array {
-  if (textEncoder && isWellFormed(s)) {
+  if (textEncoder && typeof s === 'string' && isWellFormed(s)) {
     return textEncoder.encode(s);
   }
   const bin = unescape(encodeURIComponent(s));
@@ -311,7 +316,7 @@ export const Utf8: Any = (C_enc.Utf8 = {
   stringify(wordArray: Any): string {
     if (textDecoder) {
       try {
-        return textDecoder.decode(toBytes(wordArray));
+        return textDecoder.decode(wordArrayBytes(wordArray));
       } catch {
         throw new Error('Malformed UTF-8 data');
       }
@@ -344,13 +349,37 @@ export function isWordArrayLike(x: Any): boolean {
   );
 }
 
-/** WordArray | string (UTF-8) → bytes. Reads exactly `sigBytes` bytes. */
+/**
+ * True for input whose bytes are unambiguous, i.e. where hashing exactly `toBytes(x)` matches
+ * crypto-js: a string, or a WordArray with a whole number of bytes and no bits set beyond them
+ * in its last word (crypto-js's padding would pick those up). Everything else goes through the
+ * verbatim crypto-js code paths.
+ */
+export function isCleanMessage(x: Any): boolean {
+  if (typeof x === 'string') return true;
+  if (!isWordArrayLike(x)) return false;
+  const tail = x.sigBytes % 4;
+  return tail === 0 || (x.words[x.sigBytes >>> 2] << (tail * 8)) === 0;
+}
+
+/**
+ * WordArray | string (UTF-8) → bytes. Reads `sigBytes` bytes, rounding a fractional count up
+ * the way crypto-js's byte loops (`for (i = 0; i < sigBytes; i++)`) do.
+ */
 export function toBytes(data: Any): Uint8Array {
   if (typeof data === 'string') {
     return utf8Encode(data);
   }
+  return wordArrayBytes(data);
+}
+
+/**
+ * The bytes crypto-js's byte loops read from a WordArray-shaped value — never treating a string
+ * as text (a string has no `words`/`sigBytes`, so crypto-js reads nothing from it).
+ */
+export function wordArrayBytes(data: Any): Uint8Array {
   const words = data.words;
-  const sigBytes = data.sigBytes > 0 ? data.sigBytes : 0;
+  const sigBytes = data.sigBytes > 0 ? Math.ceil(data.sigBytes) : 0;
   const out = new Uint8Array(sigBytes);
   const fullWords = sigBytes >>> 2;
   let j = 0;

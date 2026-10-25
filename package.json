@@ -1095,7 +1095,10 @@
     "rc4",
     "rabbit",
     "rabbit-legacy",
-    "blowfish"
+    "blowfish",
+    "MIGRATION.md",
+    "SECURITY.md",
+    "CHANGELOG.md"
   ],
   "engines": {
     "node": ">=20"
@@ -1107,6 +1110,7 @@
     "test:unit": "vitest run --project unit",
     "test:package": "npm run build && vitest run --project package",
     "lint:pkg": "publint --strict && node scripts/attw.mjs",
+    "bench": "npm run build && node --expose-gc bench/run.mjs && node bench/size.mjs",
     "prepack": "node scripts/verify-dist.mjs"
   },
   "devDependencies": {
@@ -1121,6 +1125,7 @@
     "publint": "0.3.25",
     "rollup": "4.65.0",
     "rollup-plugin-dts": "6.5.1",
+    "tinybench": "6.2.2",
     "tsup": "9.0.0",
     "typescript": "7.0.2",
     "vitest": "5.0.5"

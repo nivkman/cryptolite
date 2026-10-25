@@ -315,7 +315,8 @@ export function exportsMap() {
 }
 
 export function filesList() {
-  return ['dist', ...SUBPATHS.map(({ name }) => name)];
+  // README.md and LICENSE ship automatically; these docs are linked from the README.
+  return ['dist', ...SUBPATHS.map(({ name }) => name), 'MIGRATION.md', 'SECURITY.md', 'CHANGELOG.md'];
 }
 
 function syncPackageJson() {

@@ -54,11 +54,37 @@ export const Utf16LE: Any = (C_enc.Utf16LE = {
   },
 });
 
+/** crypto-js's own Base64 loop, for WordArrays with a fractional `sigBytes` (already clamped). */
+function stringifyVerbatim(wordArray: Any, map: string): string {
+  const words = wordArray.words;
+  const sigBytes = wordArray.sigBytes;
+  const base64Chars: string[] = [];
+  for (let i = 0; i < sigBytes; i += 3) {
+    const byte1 = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
+    const byte2 = (words[(i + 1) >>> 2] >>> (24 - ((i + 1) % 4) * 8)) & 0xff;
+    const byte3 = (words[(i + 2) >>> 2] >>> (24 - ((i + 2) % 4) * 8)) & 0xff;
+    const triplet = (byte1 << 16) | (byte2 << 8) | byte3;
+    for (let j = 0; j < 4 && i + j * 0.75 < sigBytes; j++) {
+      base64Chars.push(map.charAt((triplet >>> (6 * (3 - j))) & 0x3f));
+    }
+  }
+  const paddingChar = map.charAt(64);
+  if (paddingChar) {
+    while (base64Chars.length % 4) {
+      base64Chars.push(paddingChar);
+    }
+  }
+  return base64Chars.join('');
+}
+
 function stringifyWithMap(wordArray: Any, map: string): string {
   // crypto-js clamps the caller's WordArray in place (and throws on a negative sigBytes there);
   // keep that side effect, then encode bytes with a lookup table. Output is identical to
   // crypto-js's per-character loop, including for custom `_map` alphabets.
   wordArray.clamp();
+  if (!Number.isInteger(wordArray.sigBytes)) {
+    return stringifyVerbatim(wordArray, map);
+  }
   const bytes = toBytes(wordArray);
   const n = bytes.length;
   const chars: string[] = [];

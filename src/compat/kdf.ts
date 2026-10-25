@@ -9,9 +9,46 @@
  */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { pbkdf2 as noblePbkdf2 } from '@noble/hashes/pbkdf2.js';
-import { Base, C, C_algo, WordArray, fromBytes, isWordArrayLike, toBytes, type Any } from './core';
-import { MD5, NOBLE_EQUIVALENT, SHA256 } from './hashers';
+import { Base, C, C_algo, WordArray, fromBytes, isCleanMessage, isWordArrayLike, toBytes, type Any } from './core';
+import { MD5, NOBLE_EQUIVALENT, SHA224, SHA256, SHA384 } from './hashers';
 import { HMAC } from './hmac';
+
+/**
+ * noble PBKDF2 when it provably gives crypto-js's result, else undefined.
+ * - password is the HMAC key: a string, a clean WordArray, or a WordArray no longer than the
+ *   hash block (crypto-js clamps those in place first — we do the same);
+ * - salt only needs a whole number of bytes: crypto-js's next append clamps away anything
+ *   beyond them before it is hashed;
+ * - the result has crypto-js's word layout: whole hash blocks, `sigBytes = keySize * 4`.
+ */
+function pbkdf2Fast(hasher: Any, keySize: number, iterations: number, password: Any, salt: Any): Any {
+  const nobleHash = NOBLE_EQUIVALENT.get(hasher);
+  if (!nobleHash || hasher === SHA224 || hasher === SHA384) return undefined;
+  const dkLen = keySize * 4;
+  if (!Number.isInteger(iterations) || iterations < 1 || !Number.isInteger(dkLen) || dkLen <= 0) {
+    return undefined;
+  }
+  if (!(typeof salt === 'string' || isWordArrayLike(salt))) return undefined;
+
+  let passwordBytes: Uint8Array;
+  if (typeof password === 'string') {
+    passwordBytes = toBytes(password);
+  } else if (!isWordArrayLike(password)) {
+    return undefined;
+  } else if (password.sigBytes > nobleHash.blockLen) {
+    if (!isCleanMessage(password)) return undefined;
+    passwordBytes = toBytes(password);
+  } else {
+    password.clamp();
+    passwordBytes = toBytes(password);
+  }
+
+  const blockLen: number = nobleHash.outputLen;
+  const fullLen = Math.ceil(dkLen / blockLen) * blockLen;
+  const derivedKey = fromBytes(noblePbkdf2(nobleHash, passwordBytes, toBytes(salt), { c: iterations, dkLen: fullLen }));
+  derivedKey.sigBytes = dkLen;
+  return derivedKey;
+}
 
 export const PBKDF2: Any = (C_algo.PBKDF2 = Base.extend({
   cfg: Base.extend({
@@ -29,19 +66,8 @@ export const PBKDF2: Any = (C_algo.PBKDF2 = Base.extend({
     const keySize = cfg.keySize;
     const iterations = cfg.iterations;
 
-    const nobleHash = NOBLE_EQUIVALENT.get(cfg.hasher);
-    const dkLen = keySize * 4;
-    if (
-      nobleHash &&
-      Number.isInteger(iterations) &&
-      iterations >= 1 &&
-      Number.isInteger(dkLen) &&
-      dkLen > 0
-    ) {
-      return fromBytes(
-        noblePbkdf2(nobleHash, toBytes(password), toBytes(salt), { c: iterations, dkLen }),
-      );
-    }
+    const fast = pbkdf2Fast(cfg.hasher, keySize, iterations, password, salt);
+    if (fast) return fast;
 
     // Generic path: verbatim crypto-js.
     const hmac = HMAC.create(cfg.hasher, password);
@@ -91,8 +117,8 @@ function evpFast(cfg: Any, password: Any, salt: Any): Any {
   const iterations = cfg.iterations;
   if (!nobleHash || !Number.isInteger(iterations) || iterations < 1) return undefined;
   if (!Number.isInteger(keySize * 4) || keySize <= 0) return undefined;
-  if (!isMessage(password)) return undefined;
-  if (!(salt === undefined || salt === '' || isMessage(salt))) return undefined;
+  if (!isCleanMessage(password)) return undefined;
+  if (!(salt === undefined || salt === '' || isCleanMessage(salt))) return undefined;
 
   const pw = toBytes(password);
   const sl = salt ? toBytes(salt) : new Uint8Array(0);
@@ -119,7 +145,6 @@ function evpFast(cfg: Any, password: Any, salt: Any): Any {
   return derivedKey;
 }
 
-const isMessage = (m: Any): boolean => typeof m === 'string' || isWordArrayLike(m);
 
 export const EvpKDF: Any = (C_algo.EvpKDF = Base.extend({
   cfg: Base.extend({

@@ -90,3 +90,22 @@ The build writes 50 `<name>/package.json` stubs at the package root for resolver
 `exports`. They ship via `files` and are gitignored. Known gap: `cryptolite/<name>.js` (with the
 suffix) does not resolve under those old resolvers; everything that honours `exports` is fine.
 No UMD/`<script>` global build in v1.
+
+## D14. Compat hashers reproduce crypto-js exactly, including its non-standard digests (2026-10-25)
+The code review (docs/reviews/code-review.md, H1/H2) showed crypto-js hashes bytes *beyond*
+`sigBytes` in a WordArray's last word into its padding (e.g. hashing `AES.decrypt` output
+directly), and hashes fractional `sigBytes` (e.g. `Hex.parse('abc')`) as bit-length messages.
+**Decision:** reproduce it. Hasher objects now run crypto-js's own buffering and verbatim
+`_doFinalize` padding, delegating only the compression function to noble (`process()`/`get()`
+on noble's MD classes, `keccakP` for Keccak). One-shot helpers keep a pure-noble fast path for
+"clean" input (strings; WordArrays with whole bytes and nothing beyond them), which is where
+the standard and crypto-js agree.
+**Why:** a drop-in replacement — especially via `overrides` into dependencies — must not
+silently change stored digests or keys. This still implements no primitive (D4): padding and
+buffering are framework code; compression is noble's. The noble internals used are pinned and
+bundled (D5) and covered by the differential suite.
+**Remaining deliberate differences** (all are cases where crypto-js produces unusable output,
+hangs, or which cannot matter): non-WordArray AES keys and AES keys that aren't 16/24/32 bytes
+throw; SHA3 `outputLength` must be a multiple of 32 in 0..768 (crypto-js loops forever on some
+values); a digest WordArray returned by crypto-js is its live internal state (mutating it changed
+later `finalize()` results) — ours are independent copies; the unsupported ciphers (D6).

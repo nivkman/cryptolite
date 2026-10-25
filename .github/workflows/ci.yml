@@ -47,4 +47,11 @@ jobs:
 
       - run: npm test
 
+      # Wider differential fuzzing against crypto-js (fresh random seed each run; printed on failure).
+      - name: Fuzz (compat vs crypto-js)
+        if: matrix.node == 22
+        run: npx vitest run test/compat
+        env:
+          FUZZ: '1'
+
       - run: npm run lint:pkg
