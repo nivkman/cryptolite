@@ -1,0 +1,745 @@
+{
+  "env": {
+    "date": "2026-10-25T02:48:19.975Z",
+    "cpu": "AMD EPYC 7713 64-Core Processor",
+    "logicalCpus": 4,
+    "ramGiB": 7.8,
+    "os": "Linux 6.12.88+deb13-amd64 x64",
+    "node": "v20.19.2",
+    "v8": "11.3.244.8-node.38",
+    "loadavg1m": 0.73,
+    "cryptolite": "1.0.0",
+    "crypto-js": "4.2.0",
+    "tinybench": "6.2.2",
+    "esbuild": "0.28.2",
+    "build": {
+      "entry": "dist/index.js",
+      "sha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+      "builtAt": "2026-10-25T02:45:38.785Z",
+      "gitHead": "f7442a1",
+      "uncommittedBuildInputs": []
+    },
+    "cryptoliteResolvedTo": "file:///root/cryptolite/dist/index.js",
+    "gcExposed": true,
+    "loadavg1mEnd": 1.66,
+    "finished": "2026-10-25T02:52:27.571Z"
+  },
+  "quick": false,
+  "rows": [
+    {
+      "table": "compat",
+      "title": "MD5 short (43 B string)",
+      "call": "CryptoJS.MD5(str).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 181,
+          "samples": 1481,
+          "msPerOp": 0.00746302492716211,
+          "opsPerSec": 133993.92468333346,
+          "rme": 0.7641154532800103,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 353,
+          "samples": 897,
+          "msPerOp": 0.006318680856237824,
+          "opsPerSec": 158260.88114781055,
+          "rme": 1.894263274936725,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA1 short (43 B string)",
+      "call": "CryptoJS.SHA1(str).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 251,
+          "samples": 1057,
+          "msPerOp": 0.007544923303945999,
+          "opsPerSec": 132539.4519884648,
+          "rme": 0.8331842048438766,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 395,
+          "samples": 852,
+          "msPerOp": 0.005948375545254643,
+          "opsPerSec": 168113.12473331593,
+          "rme": 1.7779405053668904,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA256 short (43 B string)",
+      "call": "CryptoJS.SHA256(str).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 235,
+          "samples": 779,
+          "msPerOp": 0.010932150645945432,
+          "opsPerSec": 91473.30954233464,
+          "rme": 2.718186292114461,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 332,
+          "samples": 1007,
+          "msPerOp": 0.0059855803831014255,
+          "opsPerSec": 167068.17651688616,
+          "rme": 1.6199350731742093,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA512 short (43 B string)",
+      "call": "CryptoJS.SHA512(str).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 47,
+          "samples": 1169,
+          "msPerOp": 0.036413229055566654,
+          "opsPerSec": 27462.546605630556,
+          "rme": 1.4336912021763542,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 141,
+          "samples": 1123,
+          "msPerOp": 0.012631850545966668,
+          "opsPerSec": 79164.96449677348,
+          "rme": 2.4988990748392075,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA3 short (43 B string)",
+      "call": "CryptoJS.SHA3(str).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 24,
+          "samples": 1150,
+          "msPerOp": 0.07251082724637685,
+          "opsPerSec": 13791.043875450574,
+          "rme": 1.589126788913026,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 96,
+          "samples": 1114,
+          "msPerOp": 0.018707116247755846,
+          "opsPerSec": 53455.59340927079,
+          "rme": 2.5455617039596516,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "MD5 1 MiB (WordArray)",
+      "call": "CryptoJS.MD5(wordArray).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 53,
+          "msPerOp": 38.12440371698113,
+          "opsPerSec": 26.229918438162652,
+          "rme": 2.1321603195982166,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 106,
+          "msPerOp": 18.905278877358498,
+          "opsPerSec": 52.89527895817652,
+          "rme": 1.106545454038335,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA1 1 MiB (WordArray)",
+      "call": "CryptoJS.SHA1(wordArray).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 71,
+          "msPerOp": 28.53688732394366,
+          "opsPerSec": 35.04236424415348,
+          "rme": 1.7918632393183624,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 105,
+          "msPerOp": 19.049080190476197,
+          "opsPerSec": 52.495973033908555,
+          "rme": 1.619675312580595,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA256 1 MiB (WordArray)",
+      "call": "CryptoJS.SHA256(wordArray).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 76,
+          "msPerOp": 26.374471065789475,
+          "opsPerSec": 37.915452313927446,
+          "rme": 2.521483618421738,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 108,
+          "msPerOp": 18.60356890740742,
+          "opsPerSec": 53.753126885338006,
+          "rme": 1.3590949263799734,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA512 1 MiB (WordArray)",
+      "call": "CryptoJS.SHA512(wordArray).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 18,
+          "msPerOp": 174.11898716666667,
+          "opsPerSec": 5.743199040336711,
+          "rme": 2.298642820800268,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 65,
+          "msPerOp": 30.911044999999998,
+          "opsPerSec": 32.35089593379972,
+          "rme": 1.0830945627694588,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA3 1 MiB (WordArray)",
+      "call": "CryptoJS.SHA3(wordArray).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 8,
+          "msPerOp": 786.6008497500001,
+          "opsPerSec": 1.271292804117645,
+          "rme": 3.344650250831707,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 18,
+          "msPerOp": 171.92979399999996,
+          "opsPerSec": 5.816327564494146,
+          "rme": 0.8443945777928449,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA256 progressive: create() + 16 × 64 KiB update() + finalize()",
+      "call": "h = CryptoJS.algo.SHA256.create(); h.update(chunk) x16; h.finalize().toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 80,
+          "msPerOp": 25.087754187499986,
+          "opsPerSec": 39.86008442709677,
+          "rme": 2.5259397787579303,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 74,
+          "msPerOp": 27.15135394594595,
+          "opsPerSec": 36.830575815513356,
+          "rme": 3.7439002663179024,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "HmacSHA256 short",
+      "call": "CryptoJS.HmacSHA256(str, key).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 27,
+          "samples": 1475,
+          "msPerOp": 0.05023890066541115,
+          "opsPerSec": 19904.894150848475,
+          "rme": 4.26281904418305,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 85,
+          "samples": 1075,
+          "msPerOp": 0.02189418937346101,
+          "opsPerSec": 45674.21898762544,
+          "rme": 4.737021533631572,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "PBKDF2 SHA256, 10k iterations, keySize 8",
+      "call": "CryptoJS.PBKDF2(pw, salt, { keySize: 8, iterations: 10000, hasher: CryptoJS.algo.SHA256 })",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 71,
+          "msPerOp": 170.1082743661972,
+          "opsPerSec": 5.878608807983496,
+          "rme": 5.302181884318145,
+          "attempts": 3
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 63,
+          "msPerOp": 32.05871706349206,
+          "opsPerSec": 31.192764140233905,
+          "rme": 2.2608238067930917,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "PBKDF2 crypto-js 4.2 defaults (SHA256, 250k, keySize 4)",
+      "call": "CryptoJS.PBKDF2(pw, salt)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 3,
+          "msPerOp": 3543.2496173333334,
+          "opsPerSec": 0.28222679968920866,
+          "rme": 6.8624086968583855,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 3,
+          "msPerOp": 757.9769716666667,
+          "opsPerSec": 1.3193012946041942,
+          "rme": 8.683432649375831,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "AES passphrase encrypt + toString (short)",
+      "call": "CryptoJS.AES.encrypt(str, passphrase).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 8,
+          "samples": 1012,
+          "msPerOp": 0.24723070998023722,
+          "opsPerSec": 4044.804951941191,
+          "rme": 2.1349617009556763,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 6,
+          "samples": 1722,
+          "msPerOp": 0.19361956881533102,
+          "opsPerSec": 5164.767208803013,
+          "rme": 2.357532687566069,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "AES passphrase decrypt + toString(Utf8) (short)",
+      "call": "CryptoJS.AES.decrypt(ciphertext, passphrase).toString(CryptoJS.enc.Utf8)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 10,
+          "samples": 967,
+          "msPerOp": 0.2068888084798345,
+          "opsPerSec": 4833.51423089408,
+          "rme": 3.4616148907033955,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 10,
+          "samples": 1114,
+          "msPerOp": 0.17959516526032335,
+          "opsPerSec": 5568.078620326439,
+          "rme": 4.411980140399329,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "AES-256-CBC key+iv encrypt 1 MiB",
+      "call": "CryptoJS.AES.encrypt(wordArray, key, { iv, mode: CBC, padding: Pkcs7 })",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 47,
+          "msPerOp": 42.993620723404256,
+          "opsPerSec": 23.259264587958608,
+          "rme": 1.7183019838163651,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 60,
+          "msPerOp": 33.49589718333332,
+          "opsPerSec": 29.854402601210925,
+          "rme": 1.311514075976141,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "AES-256-CBC key+iv decrypt 1 MiB",
+      "call": "CryptoJS.AES.decrypt(cipherParams, key, { iv, mode: CBC, padding: Pkcs7 })",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 50,
+          "msPerOp": 40.14941616,
+          "opsPerSec": 24.906962432900293,
+          "rme": 1.8434107022582142,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 53,
+          "msPerOp": 38.20422462264152,
+          "opsPerSec": 26.17511570716071,
+          "rme": 2.884839479922332,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "Base64 stringify 1 MiB",
+      "call": "CryptoJS.enc.Base64.stringify(wordArray)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 33,
+          "msPerOp": 93.75859548484848,
+          "opsPerSec": 10.665688781159284,
+          "rme": 4.862558793573137,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 141,
+          "msPerOp": 85.2413716382979,
+          "opsPerSec": 11.73139264163028,
+          "rme": 3.6149032205952496,
+          "attempts": 3
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "Base64 parse 1 MiB",
+      "call": "CryptoJS.enc.Base64.parse(base64)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 103,
+          "msPerOp": 19.42036281553397,
+          "opsPerSec": 51.492343860853076,
+          "rme": 2.7519084678467416,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 119,
+          "msPerOp": 16.813815663865533,
+          "opsPerSec": 59.47489968913444,
+          "rme": 2.3031960436811407,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "Utf8 parse 1 MiB",
+      "call": "CryptoJS.enc.Utf8.parse(text)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 42,
+          "msPerOp": 47.63696040476191,
+          "opsPerSec": 20.992103431940162,
+          "rme": 1.595544506154634,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 397,
+          "msPerOp": 5.043750246851385,
+          "opsPerSec": 198.26516997431835,
+          "rme": 2.1766475968809695,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "Utf8 stringify 1 MiB",
+      "call": "CryptoJS.enc.Utf8.stringify(wordArray)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 34,
+          "msPerOp": 89.13655797058826,
+          "opsPerSec": 11.218741476757076,
+          "rme": 3.3295784306874197,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 300,
+          "msPerOp": 6.676291940000005,
+          "opsPerSec": 149.78374357907413,
+          "rme": 1.6166962493620047,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "modern",
+      "title": "encrypt() short, Web Crypto path, 600k iterations",
+      "call": "encrypt(str, password)",
+      "results": {
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 32,
+          "msPerOp": 125.21683109375,
+          "opsPerSec": 7.986146840366042,
+          "rme": 1.0607552436725871,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "modern",
+      "title": "decrypt() short, Web Crypto path, 600k iterations",
+      "call": "decrypt(token, password)",
+      "results": {
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 31,
+          "msPerOp": 132.85092406451614,
+          "opsPerSec": 7.527234056079068,
+          "rme": 2.7938868862627952,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "modern",
+      "title": "sha256() short (43 B string)",
+      "call": "sha256(str)  vs  CryptoJS.SHA256(str).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 240,
+          "samples": 1004,
+          "msPerOp": 0.00830619408200531,
+          "opsPerSec": 120392.08211693708,
+          "rme": 0.7785236059547812,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 341,
+          "samples": 1135,
+          "msPerOp": 0.005171490557701497,
+          "opsPerSec": 193367.8479816188,
+          "rme": 0.7767141405371962,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "modern",
+      "title": "sha256() 1 MiB (Uint8Array; crypto-js: WordArray)",
+      "call": "sha256(bytes)  vs  CryptoJS.SHA256(wordArray).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 74,
+          "msPerOp": 27.24152616216217,
+          "opsPerSec": 36.7086628717952,
+          "rme": 2.040795006189442,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 123,
+          "msPerOp": 16.321433016260162,
+          "opsPerSec": 61.26912992282933,
+          "rme": 1.0675223527421647,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "supplementary",
+      "title": "encrypt() short, noble path (crypto.subtle hidden), 600k",
+      "call": "encrypt(str, password) with globalThis.crypto.subtle removed",
+      "results": {
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 5,
+          "msPerOp": 2135.3864258000003,
+          "opsPerSec": 0.4682993147834404,
+          "rme": 2.6744984450298723,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "supplementary",
+      "title": "decrypt() short, noble path (crypto.subtle hidden), 600k",
+      "call": "decrypt(token, password) with globalThis.crypto.subtle removed",
+      "results": {
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 5,
+          "msPerOp": 2080.3584504,
+          "opsPerSec": 0.4806863931587008,
+          "rme": 5.904823860348429,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "supplementary",
+      "title": "compat PBKDF2 SHA256, 600k, keySize 8 (sync noble)",
+      "call": "CryptoJS.PBKDF2(pw, salt, { keySize: 8, iterations: 600000, hasher: CryptoJS.algo.SHA256 })",
+      "results": {
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 5,
+          "msPerOp": 1846.524331,
+          "opsPerSec": 0.5415579871934002,
+          "rme": 3.7054083039651307,
+          "attempts": 1
+        }
+      }
+    },
+    {
+      "table": "supplementary",
+      "title": "SHA256 of the 1 MiB UTF-8 text as a string",
+      "call": "CryptoJS.SHA256(text).toString()  /  modern sha256(text)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "batch": 1,
+          "samples": 39,
+          "msPerOp": 78.43333502564106,
+          "opsPerSec": 12.749680982876537,
+          "rme": 1.6008293852824877,
+          "attempts": 1
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "batch": 1,
+          "samples": 101,
+          "msPerOp": 19.963715207920796,
+          "opsPerSec": 50.09087685258305,
+          "rme": 0.6780562634038065,
+          "attempts": 1
+        },
+        "cryptolite modern": {
+          "label": "cryptolite modern",
+          "batch": 1,
+          "samples": 83,
+          "msPerOp": 24.321111891566268,
+          "opsPerSec": 41.11654123620745,
+          "rme": 0.9596372564531971,
+          "attempts": 1
+        }
+      }
+    }
+  ],
+  "sinkType": "string"
+}

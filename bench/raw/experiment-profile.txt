@@ -1,0 +1,72 @@
+== sha256-progressive: 27.0 ms/call over 111 calls (under the profiler)
+   52.3%  process dist/index.js:1479
+   19.1%  concat dist/index.js:164
+   11.7%  _process dist/index.js:387
+    3.5%  (garbage collector) :0
+    2.1%  compileForInternalLoader bootstrap/realm:383
+    2.0%  _append dist/index.js:380
+    1.0%  stringify dist/index.js:623
+    0.9%  encrypt dist/index.js:3502
+== sha256-short: 0.00579 ms/call over 517909 calls (under the profiler)
+   18.6%  encode node:internal/encoding:351
+   17.1%  process dist/index.js:1479
+   15.0%  createView dist/index.js:728
+   14.6%  __defNormalProp dist/index.js:83
+    4.5%  sha256-short experiments/profile.mjs:36
+    3.2%  (garbage collector) :0
+    2.4%  (anonymous) experiments/profile.mjs:1
+    2.3%  digestInto dist/index.js:991
+== aes-cbc-encrypt-1mib: 36.1 ms/call over 83 calls (under the profiler)
+   69.6%  encrypt dist/index.js:3502
+    6.8%  fromBytes dist/index.js:357
+    6.3%  (garbage collector) :0
+    5.5%  wordArrayBytes dist/index.js:339
+    3.7%  encrypt dist/index.js:3720
+    2.1%  compileForInternalLoader bootstrap/realm:383
+    0.9%  stringify dist/index.js:623
+    0.3%  bytesToWords bench/inputs.mjs:31
+== aes-cbc-decrypt-1mib: 42.3 ms/call over 71 calls (under the profiler)
+   64.7%  decrypt dist/index.js:3520
+   10.0%  decrypt dist/index.js:3753
+    5.5%  wordArrayBytes dist/index.js:339
+    5.1%  fromBytes dist/index.js:357
+    4.6%  (garbage collector) :0
+    2.0%  compileForInternalLoader bootstrap/realm:383
+    1.1%  encrypt dist/index.js:3502
+    0.9%  stringify dist/index.js:623
+== base64-stringify-1mib: 96.8 ms/call over 31 calls (under the profiler)
+   75.7%  (garbage collector) :0
+    8.4%  stringify dist/index.js:623
+    6.1%  stringifyWithMap dist/index.js:554
+    2.1%  compileForInternalLoader bootstrap/realm:383
+    1.8%  wordArrayBytes dist/index.js:339
+    1.0%  encrypt dist/index.js:3502
+    0.4%  bytesToWords bench/inputs.mjs:31
+    0.4%  compileSourceTextModule esm/utils:338
+== base64-parse-1mib: 20.5 ms/call over 146 calls (under the profiler)
+   81.3%  parseLoop dist/index.js:590
+    4.5%  parseWithMap dist/index.js:611
+    4.5%  (garbage collector) :0
+    2.2%  compileForInternalLoader bootstrap/realm:383
+    0.9%  encrypt dist/index.js:3502
+    0.9%  stringify dist/index.js:623
+    0.5%  compileSourceTextModule esm/utils:338
+    0.5%  bytesToWords bench/inputs.mjs:31
+== noble-sha256-1mib (ceiling): 10.1 ms/call over 298 calls (under the profiler)
+   87.8%  process hashes/sha2.js:72
+    2.1%  compileForInternalLoader bootstrap/realm:383
+    1.5%  (garbage collector) :0
+    1.2%  update hashes/_md.js:80
+    0.9%  encrypt dist/index.js:3502
+    0.9%  stringify dist/index.js:623
+    0.5%  compileSourceTextModule esm/utils:338
+    0.4%  bytesToWords bench/inputs.mjs:31
+== noble-cbc-encrypt-1mib (ceiling): 27.3 ms/call over 110 calls (under the profiler)
+   82.6%  encrypt ciphers/aes.js:232
+    4.9%  encrypt ciphers/aes.js:598
+    3.1%  (garbage collector) :0
+    2.0%  compileForInternalLoader bootstrap/realm:383
+    1.0%  encrypt dist/index.js:3502
+    0.8%  stringify dist/index.js:623
+    0.4%  compileSourceTextModule esm/utils:338
+    0.4%  bytesToWords bench/inputs.mjs:31

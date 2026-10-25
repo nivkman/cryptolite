@@ -1,0 +1,13 @@
+load average 1m: 0.56; ops/s, median of 15 windows, 3 fresh processes each
+CryptoJS.SHA256(str).toString() | dist/index.js | 146,098 | 182,307 | 189,213
+CryptoJS.SHA256(str).toString() | rebuild es2020 (91 __publicField calls) | 179,718 | 164,798 | 215,504
+CryptoJS.SHA256(str).toString() | rebuild es2022 (0 __publicField calls) | 261,631 | 238,426 | 256,514
+sha256(str) | dist/index.js | 144,893 | 145,371 | 142,648
+sha256(str) | rebuild es2020 (91 __publicField calls) | 142,684 | 145,083 | 152,657
+sha256(str) | rebuild es2022 (0 __publicField calls) | 190,191 | 172,313 | 173,733
+CryptoJS.HmacSHA256(str, key).toString() | dist/index.js | 57,291 | 53,380 | 61,960
+CryptoJS.HmacSHA256(str, key).toString() | rebuild es2020 (91 __publicField calls) | 58,852 | 55,420 | 59,267
+CryptoJS.HmacSHA256(str, key).toString() | rebuild es2022 (0 __publicField calls) | 69,399 | 80,741 | 79,504
+CryptoJS.AES.decrypt(ct, pass).toString(Utf8) | dist/index.js | 6,445 | 6,788 | 6,706
+CryptoJS.AES.decrypt(ct, pass).toString(Utf8) | rebuild es2020 (91 __publicField calls) | 6,657 | 7,120 | 7,045
+CryptoJS.AES.decrypt(ct, pass).toString(Utf8) | rebuild es2022 (0 __publicField calls) | 7,158 | 6,622 | 6,707

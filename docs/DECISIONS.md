@@ -109,3 +109,21 @@ hangs, or which cannot matter): non-WordArray AES keys and AES keys that aren't 
 throw; SHA3 `outputLength` must be a multiple of 32 in 0..768 (crypto-js loops forever on some
 values); a digest WordArray returned by crypto-js is its live internal state (mutating it changed
 later `finalize()` results) — ours are independent copies; the unsupported ciphers (D6).
+
+## D15. React Native: the modern password API needs native Web Crypto; defaults unchanged (2026-10-25)
+Measured (bench/RESULTS.md §3): on Hermes 0.12, pure-JS PBKDF2-SHA256 takes ~74 s at 600k and
+~12 s at 100k per `encrypt`/`decrypt` (≈40× slower than V8 on the same CPU). Hermes V1 and real
+devices are not measured.
+**Decision:** keep D10 (no per-platform lowering, `encrypt` minimum stays 100k). Document plainly
+that the modern password API on React Native requires a native `crypto.subtle` provider, and
+that the compat API (MD5-based crypto-js passphrase mode) is unaffected.
+**Why:** lowering the minimum to make pure JS tolerable on phones (~10k) would make tokens
+brute-forceable; a slow-but-correct API with an honest note is better than a fast weak one.
+**Revisit** when Hermes V1 numbers or a vetted native provider recommendation are available.
+
+## D16. No separate `cryptolite/modern` entry in v1 (2026-10-25)
+Tried: a separate modern bundle shared by the root. Measured with esbuild: modern-only imports
+dropped from 77.8 KB to 47 KB min, but the whole library grew from 77.8 KB to 109 KB because
+each bundle carried its own copy of @noble. **Decision:** reverted for v1; the whole library
+stays ~79 KB min / 27.8 KiB gzip (crypto-js: 71 KB / 25.5 KiB). Follow-up: a shared internal
+chunk for @noble (or code splitting) so a modern entry costs nothing for compat users.

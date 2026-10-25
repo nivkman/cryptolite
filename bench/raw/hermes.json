@@ -1,0 +1,103 @@
+{
+  "env": {
+    "date": "2026-10-25T03:28:32.582Z",
+    "cpu": "AMD EPYC 7713 64-Core Processor",
+    "logicalCpus": 4,
+    "ramGiB": 7.8,
+    "os": "Linux 6.12.88+deb13-amd64 x64",
+    "node": "v20.19.2",
+    "v8": "11.3.244.8-node.38",
+    "loadavg1m": 1.12,
+    "cryptolite": "1.0.0",
+    "crypto-js": "4.2.0",
+    "tinybench": "6.2.2",
+    "esbuild": "0.28.2",
+    "build": {
+      "entry": "dist/index.js",
+      "sha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+      "builtAt": "2026-10-25T02:49:19.949Z",
+      "gitHead": "4b858cd",
+      "uncommittedBuildInputs": []
+    },
+    "hermes": "0.12.0",
+    "hermesEngineCli": "0.12.0",
+    "babelCore": "7.29.7",
+    "reactNativeBabelPreset": "0.88.0",
+    "samples": {
+      "small": 3,
+      "large": 2
+    },
+    "loadavg1mEnd": 1.04
+  },
+  "records": [
+    {
+      "engine": "hermes",
+      "textEncoder": "undefined",
+      "subtle": "undefined"
+    },
+    {
+      "name": "PBKDF2 SHA256 10k, keySize 8 (compat call)",
+      "label": "crypto-js",
+      "ms": [
+        1367,
+        1355,
+        1346
+      ],
+      "meanMs": 1356
+    },
+    {
+      "name": "PBKDF2 SHA256 10k, keySize 8 (compat call)",
+      "label": "cryptolite",
+      "ms": [
+        1179,
+        1180,
+        1177
+      ],
+      "meanMs": 1178.6666666666667
+    },
+    {
+      "name": "encrypt() short, 100k iterations (lowest allowed), noble path",
+      "label": "cryptolite",
+      "ms": [
+        12242,
+        12295,
+        12271
+      ],
+      "token": "cl1.100000.6_c4WR1vn777e4DOgaf1DQ.A9YHv3M8Dbu3RspA.q75VsRjkRAtjQCEQ3Lv38tw5J1wrzpw12bwdRzOEhGwAdYOIozxC_n45bm0_vA9atMbLbPSdzAfRqss",
+      "tokenVerifiedOnNode": true,
+      "meanMs": 12269.333333333334
+    },
+    {
+      "name": "PBKDF2 SHA256 600k, keySize 8 (compat call, sync noble)",
+      "label": "cryptolite",
+      "ms": [
+        72945,
+        73281
+      ],
+      "meanMs": 73113
+    },
+    {
+      "name": "encrypt() short, default 600k iterations, noble path",
+      "label": "cryptolite",
+      "ms": [
+        73946,
+        74356
+      ],
+      "token": "cl1.600000.xJkVd3jAnohzu3D3Ck9wig.Q0KFkhlNF_-vuWiE.0ga9c8ySwIs1aeHqF3IKcmuz8VhDM1W0DXQOVneP6SJPoFX-M_exv9GfbieEXAhzOwOhL0-K6IG--9U",
+      "tokenVerifiedOnNode": true,
+      "meanMs": 74151
+    },
+    {
+      "name": "decrypt() short, 600k iterations, noble path",
+      "label": "cryptolite",
+      "ms": [
+        73352,
+        72772
+      ],
+      "meanMs": 73062
+    },
+    {
+      "done": true
+    }
+  ]
+}

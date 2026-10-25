@@ -1,0 +1,282 @@
+{
+  "env": {
+    "date": "2026-10-25T03:28:20.161Z",
+    "cpu": "AMD EPYC 7713 64-Core Processor",
+    "logicalCpus": 4,
+    "ramGiB": 7.8,
+    "os": "Linux 6.12.88+deb13-amd64 x64",
+    "node": "v20.19.2",
+    "v8": "11.3.244.8-node.38",
+    "loadavg1m": 1.23,
+    "cryptolite": "1.0.0",
+    "crypto-js": "4.2.0",
+    "tinybench": "6.2.2",
+    "esbuild": "0.28.2",
+    "build": {
+      "entry": "dist/index.js",
+      "sha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+      "builtAt": "2026-10-25T02:49:19.949Z",
+      "gitHead": "4b858cd",
+      "uncommittedBuildInputs": []
+    },
+    "esbuildApiVersion": "0.28.2"
+  },
+  "rows": [
+    {
+      "group": "Whole library",
+      "title": "import CryptoJS from 'crypto-js'",
+      "code": "import CryptoJS from 'crypto-js';\nconsole.log(typeof CryptoJS.AES, CryptoJS.SHA256('abc').toString());",
+      "synthetic": false,
+      "min": 71219,
+      "gzip": 26108,
+      "brotli": 21350,
+      "legalExtra": 1589,
+      "compatMarkers": [
+        "Malformed UTF-8 data"
+      ],
+      "modernMarkers": [],
+      "executed": "object ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    },
+    {
+      "group": "Whole library",
+      "title": "import CryptoJS from 'cryptolite'",
+      "code": "import CryptoJS from 'cryptolite';\nconsole.log(typeof CryptoJS.AES, CryptoJS.SHA256('abc').toString());",
+      "synthetic": false,
+      "min": 77827,
+      "gzip": 28061,
+      "brotli": 23947,
+      "legalExtra": 4049,
+      "compatMarkers": [
+        "Malformed UTF-8 data",
+        "MDHasher._newCore",
+        "MIGRATION.md#unsupported-ciphers"
+      ],
+      "modernMarkers": [
+        "ERR_LEGACY_NOT_ALLOWED"
+      ],
+      "executed": "object ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    },
+    {
+      "group": "One hash, crypto-js style",
+      "title": "import sha256 from 'crypto-js/sha256'",
+      "code": "import sha256 from 'crypto-js/sha256';\nconsole.log(sha256('abc').toString());",
+      "synthetic": false,
+      "min": 6418,
+      "gzip": 2709,
+      "brotli": 2469,
+      "legalExtra": 0,
+      "compatMarkers": [
+        "Malformed UTF-8 data"
+      ],
+      "modernMarkers": [],
+      "executed": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    },
+    {
+      "group": "One hash, crypto-js style",
+      "title": "import sha256 from 'cryptolite/sha256'",
+      "code": "import sha256 from 'cryptolite/sha256';\nconsole.log(sha256('abc').toString());",
+      "synthetic": false,
+      "min": 77823,
+      "gzip": 28060,
+      "brotli": 23957,
+      "legalExtra": 4049,
+      "compatMarkers": [
+        "Malformed UTF-8 data",
+        "MDHasher._newCore",
+        "MIGRATION.md#unsupported-ciphers"
+      ],
+      "modernMarkers": [
+        "ERR_LEGACY_NOT_ALLOWED"
+      ],
+      "executed": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    },
+    {
+      "group": "One hash, crypto-js style",
+      "title": "import { SHA256 } from 'cryptolite'",
+      "code": "import { SHA256 } from 'cryptolite';\nconsole.log(SHA256('abc').toString());",
+      "synthetic": false,
+      "min": 77801,
+      "gzip": 28043,
+      "brotli": 23944,
+      "legalExtra": 4049,
+      "compatMarkers": [
+        "Malformed UTF-8 data",
+        "MDHasher._newCore",
+        "MIGRATION.md#unsupported-ciphers"
+      ],
+      "modernMarkers": [
+        "ERR_LEGACY_NOT_ALLOWED"
+      ],
+      "executed": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    },
+    {
+      "group": "AES via subpaths (extra)",
+      "title": "import AES from 'crypto-js/aes' + Utf8 from 'crypto-js/enc-utf8'",
+      "code": "import AES from 'crypto-js/aes';\nimport Utf8 from 'crypto-js/enc-utf8';\nconsole.log(AES.decrypt(AES.encrypt('a', 'b'), 'b').toString(Utf8));",
+      "synthetic": false,
+      "min": 18836,
+      "gzip": 6709,
+      "brotli": 5879,
+      "legalExtra": 0,
+      "compatMarkers": [
+        "Malformed UTF-8 data"
+      ],
+      "modernMarkers": [],
+      "executed": "a"
+    },
+    {
+      "group": "AES via subpaths (extra)",
+      "title": "import AES from 'cryptolite/aes' + Utf8 from 'cryptolite/enc-utf8'",
+      "code": "import AES from 'cryptolite/aes';\nimport Utf8 from 'cryptolite/enc-utf8';\nconsole.log(AES.decrypt(AES.encrypt('a', 'b'), 'b').toString(Utf8));",
+      "synthetic": false,
+      "min": 77867,
+      "gzip": 28090,
+      "brotli": 23965,
+      "legalExtra": 4049,
+      "compatMarkers": [
+        "Malformed UTF-8 data",
+        "MDHasher._newCore",
+        "MIGRATION.md#unsupported-ciphers"
+      ],
+      "modernMarkers": [
+        "ERR_LEGACY_NOT_ALLOWED"
+      ],
+      "executed": "a"
+    },
+    {
+      "group": "Modern API only",
+      "title": "import { sha256 } from 'cryptolite'",
+      "code": "import { sha256 } from 'cryptolite';\nconsole.log(sha256('abc').toString());",
+      "synthetic": false,
+      "min": 77801,
+      "gzip": 28052,
+      "brotli": 23947,
+      "legalExtra": 4049,
+      "compatMarkers": [
+        "Malformed UTF-8 data",
+        "MDHasher._newCore",
+        "MIGRATION.md#unsupported-ciphers"
+      ],
+      "modernMarkers": [
+        "ERR_LEGACY_NOT_ALLOWED"
+      ],
+      "executed": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    },
+    {
+      "group": "Modern API only",
+      "title": "import { encrypt, decrypt } from 'cryptolite'",
+      "code": "import { encrypt, decrypt } from 'cryptolite';\nencrypt('a', 'password').then((t) => decrypt(t, 'password')).then(console.log);",
+      "synthetic": false,
+      "min": 77830,
+      "gzip": 28056,
+      "brotli": 23930,
+      "legalExtra": 4049,
+      "compatMarkers": [
+        "Malformed UTF-8 data",
+        "MDHasher._newCore",
+        "MIGRATION.md#unsupported-ciphers"
+      ],
+      "modernMarkers": [
+        "ERR_LEGACY_NOT_ALLOWED"
+      ],
+      "executed": "a"
+    },
+    {
+      "group": "Diagnosis: dist/index.js minus `Object.assign(compat_default, modern_exports)` and `__export(modern_exports, {...})`",
+      "title": "{ sha256 } from patched dist",
+      "code": "import { sha256 } from \"<tmp>/dist-without-object-assign/index.js\";\nconsole.log(sha256('abc').toString());",
+      "synthetic": true,
+      "min": 63610,
+      "gzip": 22919,
+      "brotli": 19542,
+      "legalExtra": 4049,
+      "compatMarkers": [
+        "Malformed UTF-8 data",
+        "MDHasher._newCore",
+        "MIGRATION.md#unsupported-ciphers"
+      ],
+      "modernMarkers": [],
+      "executed": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    },
+    {
+      "group": "Diagnosis: dist/index.js minus `Object.assign(compat_default, modern_exports)` and `__export(modern_exports, {...})`",
+      "title": "{ encrypt, decrypt } from patched dist",
+      "code": "import { encrypt, decrypt } from \"<tmp>/dist-without-object-assign/index.js\";\nencrypt('a', 'password').then((t) => decrypt(t, 'password')).then(console.log);",
+      "synthetic": true,
+      "min": 75625,
+      "gzip": 27347,
+      "brotli": 23262,
+      "legalExtra": 4049,
+      "compatMarkers": [
+        "Malformed UTF-8 data",
+        "MDHasher._newCore",
+        "MIGRATION.md#unsupported-ciphers"
+      ],
+      "modernMarkers": [
+        "ERR_LEGACY_NOT_ALLOWED"
+      ],
+      "executed": "a"
+    },
+    {
+      "group": "Hypothetical entries (built from src/ like tsup.config.ts; not shipped)",
+      "title": "`cryptolite/modern` (= src/modern/index.ts): { sha256 }",
+      "code": "import { sha256 } from \"<tmp>/hyp-modern/index.js\";\nconsole.log(sha256('abc').toString());",
+      "synthetic": true,
+      "min": 9795,
+      "gzip": 4339,
+      "brotli": 3855,
+      "legalExtra": 136,
+      "compatMarkers": [],
+      "modernMarkers": [],
+      "executed": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    },
+    {
+      "group": "Hypothetical entries (built from src/ like tsup.config.ts; not shipped)",
+      "title": "`cryptolite/modern` (= src/modern/index.ts): { encrypt, decrypt }",
+      "code": "import { encrypt, decrypt } from \"<tmp>/hyp-modern/index.js\";\nencrypt('a', 'password').then((t) => decrypt(t, 'password')).then(console.log);",
+      "synthetic": true,
+      "min": 33939,
+      "gzip": 12769,
+      "brotli": 11317,
+      "legalExtra": 136,
+      "compatMarkers": [],
+      "modernMarkers": [
+        "ERR_LEGACY_NOT_ALLOWED"
+      ],
+      "executed": "a"
+    },
+    {
+      "group": "Hypothetical entries (built from src/ like tsup.config.ts; not shipped)",
+      "title": "split `cryptolite/sha256` (= src/compat core.ts + hashers.ts)",
+      "code": "import sha256 from \"<tmp>/hyp-sha256/index.js\";\nconsole.log(sha256('abc').toString());",
+      "synthetic": true,
+      "min": 31012,
+      "gzip": 11738,
+      "brotli": 10201,
+      "legalExtra": 0,
+      "compatMarkers": [
+        "Malformed UTF-8 data",
+        "MDHasher._newCore"
+      ],
+      "modernMarkers": [],
+      "executed": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    },
+    {
+      "group": "Hypothetical entries (built from src/ like tsup.config.ts; not shipped)",
+      "title": "compat object without the modern API (= src/compat/index.ts)",
+      "code": "import CryptoJS from \"<tmp>/hyp-compat-only/index.js\";\nconsole.log(typeof CryptoJS.AES, CryptoJS.SHA256('abc').toString());",
+      "synthetic": true,
+      "min": 59790,
+      "gzip": 21486,
+      "brotli": 18344,
+      "legalExtra": 136,
+      "compatMarkers": [
+        "Malformed UTF-8 data",
+        "MDHasher._newCore",
+        "MIGRATION.md#unsupported-ciphers"
+      ],
+      "modernMarkers": [],
+      "executed": "object ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad"
+    }
+  ]
+}

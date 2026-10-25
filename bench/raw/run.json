@@ -1,0 +1,4497 @@
+{
+  "env": {
+    "date": "2026-10-25T03:00:16.116Z",
+    "cpu": "AMD EPYC 7713 64-Core Processor",
+    "logicalCpus": 4,
+    "ramGiB": 7.8,
+    "os": "Linux 6.12.88+deb13-amd64 x64",
+    "node": "v20.19.2",
+    "v8": "11.3.244.8-node.38",
+    "loadavg1m": 0.46,
+    "cryptolite": "1.0.0",
+    "crypto-js": "4.2.0",
+    "tinybench": "6.2.2",
+    "esbuild": "0.28.2",
+    "build": {
+      "entry": "dist/index.js",
+      "sha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+      "builtAt": "2026-10-25T02:49:19.949Z",
+      "gitHead": "4b858cd",
+      "uncommittedBuildInputs": []
+    },
+    "cryptoliteResolvedTo": "file:///root/cryptolite/dist/index.js",
+    "gcExposed": true,
+    "mode": "isolated, 5 run(s) per case",
+    "loadavg1mEnd": 1.18,
+    "finished": "2026-10-25T03:22:12.366Z"
+  },
+  "quick": false,
+  "rows": [
+    {
+      "table": "compat",
+      "title": "MD5 short (43 B string)",
+      "call": "CryptoJS.MD5(str).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 135999.1334477559,
+          "msPerOp": 0.007352988027560853,
+          "rme": 0.6372699573135174,
+          "samples": 1555,
+          "batch": 175,
+          "spread": 13.633458313584413,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 160,
+              "samples": 1604,
+              "msPerOp": 0.007798071469763103,
+              "opsPerSec": 128236.83443752522,
+              "rme": 1.045505789546395,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 0.68
+            },
+            {
+              "label": "crypto-js",
+              "batch": 137,
+              "samples": 2051,
+              "msPerOp": 0.007118503791990371,
+              "opsPerSec": 140478.9586717906,
+              "rme": 0.5915744632390487,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.1
+            },
+            {
+              "label": "crypto-js",
+              "batch": 190,
+              "samples": 1495,
+              "msPerOp": 0.007044707283928889,
+              "opsPerSec": 141950.53956057236,
+              "rme": 0.6168219652263253,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.07
+            },
+            {
+              "label": "crypto-js",
+              "batch": 175,
+              "samples": 1555,
+              "msPerOp": 0.007352988027560853,
+              "opsPerSec": 135999.1334477559,
+              "rme": 0.6372699573135174,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.12
+            },
+            {
+              "label": "crypto-js",
+              "batch": 187,
+              "samples": 1122,
+              "msPerOp": 0.009535818367697095,
+              "opsPerSec": 104867.76922970069,
+              "rme": 2.3180892684779226,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.36
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 187272.6596267854,
+          "msPerOp": 0.005339807754067755,
+          "rme": 1.2697425746700817,
+          "samples": 1150,
+          "batch": 326,
+          "spread": 20.84317312380091,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 304,
+              "samples": 1066,
+              "msPerOp": 0.00617442596832724,
+              "opsPerSec": 161958.37558498047,
+              "rme": 1.5669344781289107,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 0.71
+            },
+            {
+              "label": "cryptolite",
+              "batch": 335,
+              "samples": 1011,
+              "msPerOp": 0.005906505038605187,
+              "opsPerSec": 169304.85853545443,
+              "rme": 1.4701165102702933,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.17
+            },
+            {
+              "label": "cryptolite",
+              "batch": 350,
+              "samples": 1120,
+              "msPerOp": 0.0051037307423469356,
+              "opsPerSec": 195935.1012981051,
+              "rme": 1.403273135676619,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.06
+            },
+            {
+              "label": "cryptolite",
+              "batch": 339,
+              "samples": 1417,
+              "msPerOp": 0.004166223920243649,
+              "opsPerSec": 240025.50490409505,
+              "rme": 0.8670243685099247,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.11
+            },
+            {
+              "label": "cryptolite",
+              "batch": 326,
+              "samples": 1150,
+              "msPerOp": 0.005339807754067754,
+              "opsPerSec": 187272.6596267854,
+              "rme": 1.2697425746700817,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.33
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA1 short (43 B string)",
+      "call": "CryptoJS.SHA1(str).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 137942.7218631956,
+          "msPerOp": 0.007249385734114685,
+          "rme": 0.763403185513234,
+          "samples": 1333,
+          "batch": 207,
+          "spread": 15.786618215514475,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 158,
+              "samples": 1639,
+              "msPerOp": 0.007727298294730491,
+              "opsPerSec": 129411.3365187331,
+              "rme": 0.9397038233300397,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 0.73
+            },
+            {
+              "label": "crypto-js",
+              "batch": 199,
+              "samples": 1063,
+              "msPerOp": 0.009455076043434475,
+              "opsPerSec": 105763.29533535498,
+              "rme": 2.111627240799284,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.17
+            },
+            {
+              "label": "crypto-js",
+              "batch": 207,
+              "samples": 1333,
+              "msPerOp": 0.007249385734114686,
+              "opsPerSec": 137942.7218631956,
+              "rme": 0.763403185513234,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.06
+            },
+            {
+              "label": "crypto-js",
+              "batch": 89,
+              "samples": 3228,
+              "msPerOp": 0.006963388500201873,
+              "opsPerSec": 143608.24474621937,
+              "rme": 0.5574038872517343,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.18
+            },
+            {
+              "label": "crypto-js",
+              "batch": 173,
+              "samples": 1727,
+              "msPerOp": 0.006697193499369083,
+              "opsPerSec": 149316.2770486184,
+              "rme": 0.5387136899938672,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.31
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 181971.74466162722,
+          "msPerOp": 0.005495358644054767,
+          "rme": 1.2552628295520774,
+          "samples": 1149,
+          "batch": 317,
+          "spread": 1.3690453030398653,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 166,
+              "samples": 2151,
+              "msPerOp": 0.005603766544560391,
+              "opsPerSec": 178451.40265000972,
+              "rme": 1.2649919578872912,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 0.73
+            },
+            {
+              "label": "cryptolite",
+              "batch": 347,
+              "samples": 1057,
+              "msPerOp": 0.005454586685715376,
+              "opsPerSec": 183331.9475183753,
+              "rme": 1.7945074784325765,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.16
+            },
+            {
+              "label": "cryptolite",
+              "batch": 316,
+              "samples": 1149,
+              "msPerOp": 0.005512309421511273,
+              "opsPerSec": 181412.16748421147,
+              "rme": 1.1705627873981477,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.14
+            },
+            {
+              "label": "cryptolite",
+              "batch": 317,
+              "samples": 1149,
+              "msPerOp": 0.005495358644054767,
+              "opsPerSec": 181971.74466162722,
+              "rme": 1.2552628295520774,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.18
+            },
+            {
+              "label": "cryptolite",
+              "batch": 322,
+              "samples": 1140,
+              "msPerOp": 0.00545155342704588,
+              "opsPerSec": 183433.95389630913,
+              "rme": 1.4329810313262192,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.31
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA256 short (43 B string)",
+      "call": "CryptoJS.SHA256(str).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 130939.5188999732,
+          "msPerOp": 0.007637113748401016,
+          "rme": 0.716605437865293,
+          "samples": 1185,
+          "batch": 221,
+          "spread": 1.1616550420835512,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 183,
+              "samples": 1415,
+              "msPerOp": 0.0077276913398598,
+              "opsPerSec": 129404.75441118519,
+              "rme": 0.7086718968133058,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.15
+            },
+            {
+              "label": "crypto-js",
+              "batch": 179,
+              "samples": 1441,
+              "msPerOp": 0.007757696118074425,
+              "opsPerSec": 128904.25002213348,
+              "rme": 0.6584441880145133,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.15
+            },
+            {
+              "label": "crypto-js",
+              "batch": 196,
+              "samples": 1346,
+              "msPerOp": 0.007582136993207381,
+              "opsPerSec": 131888.93855332228,
+              "rme": 0.6093002280571539,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.12
+            },
+            {
+              "label": "crypto-js",
+              "batch": 186,
+              "samples": 1419,
+              "msPerOp": 0.00757883612948691,
+              "opsPerSec": 131946.38106889644,
+              "rme": 0.5930675719971806,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.25
+            },
+            {
+              "label": "crypto-js",
+              "batch": 221,
+              "samples": 1185,
+              "msPerOp": 0.007637113748401016,
+              "opsPerSec": 130939.5188999732,
+              "rme": 0.716605437865293,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.28
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 159606.5311751774,
+          "msPerOp": 0.006265407766443105,
+          "rme": 1.5033534970344569,
+          "samples": 1613,
+          "batch": 198,
+          "spread": 14.609024566002434,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 198,
+              "samples": 1613,
+              "msPerOp": 0.006265407766443105,
+              "opsPerSec": 159606.5311751774,
+              "rme": 1.5033534970344569,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.22
+            },
+            {
+              "label": "cryptolite",
+              "batch": 283,
+              "samples": 1105,
+              "msPerOp": 0.006399293068768683,
+              "opsPerSec": 156267.2609698769,
+              "rme": 1.5364428353220816,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.15
+            },
+            {
+              "label": "cryptolite",
+              "batch": 343,
+              "samples": 1070,
+              "msPerOp": 0.005453125732268871,
+              "opsPerSec": 183381.06420002386,
+              "rme": 1.4049743601287605,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.12
+            },
+            {
+              "label": "cryptolite",
+              "batch": 305,
+              "samples": 1294,
+              "msPerOp": 0.005070063374464741,
+              "opsPerSec": 197236.19334552647,
+              "rme": 1.0325411837322733,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.31
+            },
+            {
+              "label": "cryptolite",
+              "batch": 278,
+              "samples": 1085,
+              "msPerOp": 0.006640005775287608,
+              "opsPerSec": 150602.27864887446,
+              "rme": 1.395544549884107,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.26
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA512 short (43 B string)",
+      "call": "CryptoJS.SHA512(str).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 27943.64360676945,
+          "msPerOp": 0.03578631384196964,
+          "rme": 1.1806590395395176,
+          "samples": 1996,
+          "batch": 28,
+          "spread": 2.254446287987271,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 27,
+              "samples": 2073,
+              "msPerOp": 0.035744310339282874,
+              "opsPerSec": 27976.480466626977,
+              "rme": 1.2397139092260852,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.22
+            },
+            {
+              "label": "crypto-js",
+              "batch": 28,
+              "samples": 1996,
+              "msPerOp": 0.03578631384196964,
+              "opsPerSec": 27943.64360676945,
+              "rme": 1.1806590395395176,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.21
+            },
+            {
+              "label": "crypto-js",
+              "batch": 31,
+              "samples": 1728,
+              "msPerOp": 0.037340399940262795,
+              "opsPerSec": 26780.64513502268,
+              "rme": 1.1799532152003716,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.11
+            },
+            {
+              "label": "crypto-js",
+              "batch": 30,
+              "samples": 1870,
+              "msPerOp": 0.03566258260249553,
+              "opsPerSec": 28040.594007065094,
+              "rme": 1.0044831413259856,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.31
+            },
+            {
+              "label": "crypto-js",
+              "batch": 23,
+              "samples": 2362,
+              "msPerOp": 0.03682201343739644,
+              "opsPerSec": 27157.667564815994,
+              "rme": 0.922199165603431,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.26
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 97157.80743776851,
+          "msPerOp": 0.010292533625159457,
+          "rme": 1.5560440206957271,
+          "samples": 1279,
+          "batch": 152,
+          "spread": 8.116210425804283,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 123,
+              "samples": 1580,
+              "msPerOp": 0.010292814541525181,
+              "opsPerSec": 97155.15576090626,
+              "rme": 1.6554493465497366,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.52
+            },
+            {
+              "label": "cryptolite",
+              "batch": 152,
+              "samples": 1279,
+              "msPerOp": 0.010292533625159458,
+              "opsPerSec": 97157.80743776851,
+              "rme": 1.5560440206957271,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.2
+            },
+            {
+              "label": "cryptolite",
+              "batch": 138,
+              "samples": 1364,
+              "msPerOp": 0.01062705213247482,
+              "opsPerSec": 94099.47250979758,
+              "rme": 1.4064985621357886,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.1
+            },
+            {
+              "label": "cryptolite",
+              "batch": 149,
+              "samples": 1475,
+              "msPerOp": 0.00910162114435217,
+              "opsPerSec": 109870.53670329161,
+              "rme": 0.9700785249411524,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.29
+            },
+            {
+              "label": "cryptolite",
+              "batch": 161,
+              "samples": 1282,
+              "msPerOp": 0.009692098763577881,
+              "opsPerSec": 103176.8272686117,
+              "rme": 1.2039568198885118,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA3 short (43 B string)",
+      "call": "CryptoJS.SHA3(str).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 14398.015521520672,
+          "msPerOp": 0.0694540159722222,
+          "rme": 0.7200469977573047,
+          "samples": 1200,
+          "batch": 24,
+          "spread": 7.1187615165484175,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 21,
+              "samples": 1497,
+              "msPerOp": 0.06365469574068773,
+              "opsPerSec": 15709.760110608862,
+              "rme": 0.5752766325715615,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.48
+            },
+            {
+              "label": "crypto-js",
+              "batch": 20,
+              "samples": 1464,
+              "msPerOp": 0.06830694463797839,
+              "opsPerSec": 14639.79988125547,
+              "rme": 0.7525317040938146,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.2
+            },
+            {
+              "label": "crypto-js",
+              "batch": 22,
+              "samples": 1242,
+              "msPerOp": 0.07320730321329244,
+              "opsPerSec": 13659.8393344235,
+              "rme": 0.9453804081352345,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.1
+            },
+            {
+              "label": "crypto-js",
+              "batch": 22,
+              "samples": 1302,
+              "msPerOp": 0.06984914432341846,
+              "opsPerSec": 14316.567649988063,
+              "rme": 0.8621477167190068,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.5
+            },
+            {
+              "label": "crypto-js",
+              "batch": 24,
+              "samples": 1200,
+              "msPerOp": 0.06945401597222221,
+              "opsPerSec": 14398.015521520672,
+              "rme": 0.7200469977573047,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.29
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 55723.95654684043,
+          "msPerOp": 0.017945602968077477,
+          "rme": 0.7569007546432809,
+          "samples": 1394,
+          "batch": 80,
+          "spread": 7.437528739367473,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 79,
+              "samples": 1359,
+              "msPerOp": 0.018638028678943007,
+              "opsPerSec": 53653.74295886703,
+              "rme": 0.9196892502277885,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.48
+            },
+            {
+              "label": "cryptolite",
+              "batch": 85,
+              "samples": 1299,
+              "msPerOp": 0.018120850826427583,
+              "opsPerSec": 55185.046749658824,
+              "rme": 0.8977038517433606,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.18
+            },
+            {
+              "label": "cryptolite",
+              "batch": 80,
+              "samples": 1394,
+              "msPerOp": 0.017945602968077477,
+              "opsPerSec": 55723.95654684043,
+              "rme": 0.7569007546432809,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.1
+            },
+            {
+              "label": "cryptolite",
+              "batch": 83,
+              "samples": 1493,
+              "msPerOp": 0.016143948869826258,
+              "opsPerSec": 61942.713524634826,
+              "rme": 0.6886372803939064,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.5
+            },
+            {
+              "label": "cryptolite",
+              "batch": 85,
+              "samples": 1375,
+              "msPerOp": 0.017118886434224614,
+              "opsPerSec": 58415.01454211231,
+              "rme": 0.6553001485807085,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.29
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "MD5 1 MiB (WordArray)",
+      "call": "CryptoJS.MD5(wordArray).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 27.62925788066929,
+          "msPerOp": 36.19351646428572,
+          "rme": 1.6512432944498605,
+          "samples": 56,
+          "batch": 1,
+          "spread": 3.807355950825051,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 54,
+              "msPerOp": 37.80246914814816,
+              "opsPerSec": 26.45329848907468,
+              "rme": 2.4717551794802564,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.44
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 58,
+              "msPerOp": 35.01745477586208,
+              "opsPerSec": 28.557186877251603,
+              "rme": 2.019087603329567,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.17
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 56,
+              "msPerOp": 36.26194571428574,
+              "opsPerSec": 27.57711921691065,
+              "rme": 1.920872805940558,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.09
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 56,
+              "msPerOp": 36.19351646428572,
+              "opsPerSec": 27.62925788066929,
+              "rme": 1.6512432944498605,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.46
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 56,
+              "msPerOp": 36.046114125,
+              "opsPerSec": 27.74224141143813,
+              "rme": 1.5822841738784503,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.27
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 53.710007343903584,
+          "msPerOp": 18.618504249999997,
+          "rme": 0.834602194497033,
+          "samples": 108,
+          "batch": 1,
+          "spread": 2.5871167444218512,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 109,
+              "msPerOp": 18.44181059633027,
+              "opsPerSec": 54.224610689743756,
+              "rme": 0.7038551653452879,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.41
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 108,
+              "msPerOp": 18.618504249999997,
+              "opsPerSec": 53.710007343903584,
+              "rme": 0.834602194497033,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.17
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 108,
+              "msPerOp": 18.63904316666667,
+              "opsPerSec": 53.65082268752725,
+              "rme": 1.096410340584757,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.09
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 104,
+              "msPerOp": 19.237388471153842,
+              "opsPerSec": 51.98210773252742,
+              "rme": 1.4520960239637515,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.43
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 110,
+              "msPerOp": 18.261108272727277,
+              "opsPerSec": 54.76118891937609,
+              "rme": 0.8917096465186801,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.25
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA1 1 MiB (WordArray)",
+      "call": "CryptoJS.SHA1(wordArray).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 43.87600741220129,
+          "msPerOp": 22.791499477272726,
+          "rme": 1.9006735356575089,
+          "samples": 88,
+          "batch": 1,
+          "spread": 5.451901561795773,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 85,
+              "msPerOp": 23.595346717647065,
+              "opsPerSec": 42.38123779092831,
+              "rme": 2.5074197567917516,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.41
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 88,
+              "msPerOp": 22.769449147727276,
+              "opsPerSec": 43.91849769891402,
+              "rme": 2.237198036073335,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.15
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 88,
+              "msPerOp": 22.791499477272726,
+              "opsPerSec": 43.87600741220129,
+              "rme": 1.9006735356575089,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.08
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 84,
+              "msPerOp": 23.98875452380953,
+              "opsPerSec": 41.686199215030996,
+              "rme": 2.459475921505748,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.43
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 93,
+              "msPerOp": 21.51909641935484,
+              "opsPerSec": 46.47035268174986,
+              "rme": 1.6700410236777985,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.25
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 54.46503380232165,
+          "msPerOp": 18.36040355045871,
+          "rme": 1.1612025078961836,
+          "samples": 109,
+          "batch": 1,
+          "spread": 4.356373417752045,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 109,
+              "msPerOp": 18.36040355045871,
+              "opsPerSec": 54.46503380232165,
+              "rme": 1.1612025078961836,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.37
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 107,
+              "msPerOp": 18.7796701682243,
+              "opsPerSec": 53.2490715248038,
+              "rme": 1.3640605591548778,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.14
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 112,
+              "msPerOp": 17.96101905357142,
+              "opsPerSec": 55.6761282317752,
+              "rme": 1.3686238558933033,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.07
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 105,
+              "msPerOp": 19.21632431428571,
+              "opsPerSec": 52.03908841487363,
+              "rme": 1.6458731799311181,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.39
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 114,
+              "msPerOp": 17.610442903508762,
+              "opsPerSec": 56.784488923941645,
+              "rme": 0.7183405796899668,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.23
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA256 1 MiB (WordArray)",
+      "call": "CryptoJS.SHA256(wordArray).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 38.868253500770486,
+          "msPerOp": 25.72793758227848,
+          "rme": 3.8023548158361438,
+          "samples": 79,
+          "batch": 1,
+          "spread": 3.7537516119221617,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 81,
+              "msPerOp": 24.845959864197525,
+              "opsPerSec": 40.247992247664286,
+              "rme": 1.8385327332973014,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.34
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 82,
+              "msPerOp": 24.51009045121951,
+              "opsPerSec": 40.79952303685785,
+              "rme": 2.257867823706965,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.14
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 79,
+              "msPerOp": 25.72793758227848,
+              "opsPerSec": 38.868253500770486,
+              "rme": 3.8023548158361438,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.07
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 77,
+              "msPerOp": 26.157457246753246,
+              "opsPerSec": 38.23001565353312,
+              "rme": 3.018365193061676,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.36
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 76,
+              "msPerOp": 26.3981185,
+              "opsPerSec": 37.88148765223552,
+              "rme": 3.981139493505412,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.29
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 53.98114047399975,
+          "msPerOp": 18.52498837962963,
+          "rme": 1.6594875737094446,
+          "samples": 108,
+          "batch": 1,
+          "spread": 1.5945456909498863,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 109,
+              "msPerOp": 18.408441201834858,
+              "opsPerSec": 54.32290485846923,
+              "rme": 0.6127760007404578,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.34
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 107,
+              "msPerOp": 18.783179971962614,
+              "opsPerSec": 53.23912146360125,
+              "rme": 0.8187822640021245,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.13
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 110,
+              "msPerOp": 18.308690499999997,
+              "opsPerSec": 54.6188707488392,
+              "rme": 1.2188503298296678,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.07
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 106,
+              "msPerOp": 18.904534103773585,
+              "opsPerSec": 52.897362850131664,
+              "rme": 1.4085705965227704,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.36
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 108,
+              "msPerOp": 18.52498837962963,
+              "opsPerSec": 53.98114047399975,
+              "rme": 1.6594875737094446,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.29
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA512 1 MiB (WordArray)",
+      "call": "CryptoJS.SHA512(wordArray).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 5.697849570897985,
+          "msPerOp": 175.50480888571428,
+          "rme": 1.2175878849474413,
+          "samples": 35,
+          "batch": 1,
+          "spread": 2.769487080659518,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 17,
+              "msPerOp": 178.88682023529412,
+              "opsPerSec": 5.590126755479671,
+              "rme": 1.7594307013318187,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.48
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 35,
+              "msPerOp": 175.50480888571428,
+              "opsPerSec": 5.697849570897985,
+              "rme": 1.2175878849474413,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.11
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 17,
+              "msPerOp": 185.65519735294117,
+              "opsPerSec": 5.386329142722262,
+              "rme": 2.4391827240776776,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.06
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 18,
+              "msPerOp": 175.41600077777778,
+              "opsPerSec": 5.700734229295478,
+              "rme": 1.5671983836547676,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.33
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 18,
+              "msPerOp": 175.37916577777776,
+              "opsPerSec": 5.701931558205129,
+              "rme": 1.2847886615848543,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.75
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 31.209886502582513,
+          "msPerOp": 32.04112901587301,
+          "rme": 1.1148831972849373,
+          "samples": 63,
+          "batch": 1,
+          "spread": 4.247240659362396,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 62,
+              "msPerOp": 32.733212758064525,
+              "opsPerSec": 30.55001069987023,
+              "rme": 0.927342257201896,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.44
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 65,
+              "msPerOp": 31.133715046153846,
+              "opsPerSec": 32.11952054284433,
+              "rme": 0.8250570120071856,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.1
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 59,
+              "msPerOp": 33.934652474576275,
+              "opsPerSec": 29.468402564287246,
+              "rme": 1.0257672289475206,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.06
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 63,
+              "msPerOp": 32.04112901587301,
+              "opsPerSec": 31.209886502582513,
+              "rme": 1.1148831972849373,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.3
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 64,
+              "msPerOp": 31.500234046874997,
+              "opsPerSec": 31.745795872878784,
+              "rme": 1.1081462593991978,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.77
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA3 1 MiB (WordArray)",
+      "call": "CryptoJS.SHA3(wordArray).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 1.310718300054149,
+          "msPerOp": 762.9404426250001,
+          "rme": 0.6320104028637974,
+          "samples": 8,
+          "batch": 1,
+          "spread": 3.4497338864117646,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 8,
+              "msPerOp": 736.645970625,
+              "opsPerSec": 1.3575042013079361,
+              "rme": 1.7828259787364353,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.37
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 8,
+              "msPerOp": 789.2213735,
+              "opsPerSec": 1.2670716146031997,
+              "rme": 2.331821172734024,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.08
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 8,
+              "msPerOp": 772.001484375,
+              "opsPerSec": 1.2953342969406125,
+              "rme": 2.0543283086141497,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.05
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 8,
+              "msPerOp": 762.9404426250001,
+              "opsPerSec": 1.310718300054149,
+              "rme": 0.6320104028637974,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.26
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 8,
+              "msPerOp": 749.1067175,
+              "opsPerSec": 1.3349232848122206,
+              "rme": 0.6526627865706947,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.65
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 5.882736347556692,
+          "msPerOp": 169.98892027777774,
+          "rme": 0.6143205522540557,
+          "samples": 18,
+          "batch": 1,
+          "spread": 1.522685521533447,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 18,
+              "msPerOp": 174.55894594444447,
+              "opsPerSec": 5.728723867972153,
+              "rme": 0.5340600209351551,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.34
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 18,
+              "msPerOp": 169.75910527777773,
+              "opsPerSec": 5.890700227028733,
+              "rme": 0.3411737031654719,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.08
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 18,
+              "msPerOp": 173.7122150555556,
+              "opsPerSec": 5.756647566091918,
+              "rme": 0.33406161920148886,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.05
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 18,
+              "msPerOp": 169.26559838888886,
+              "opsPerSec": 5.907875017240616,
+              "rme": 0.2859099576510917,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.24
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 18,
+              "msPerOp": 169.98892027777774,
+              "opsPerSec": 5.882736347556692,
+              "rme": 0.6143205522540557,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.68
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "SHA256 progressive: create() + 16 × 64 KiB update() + finalize()",
+      "call": "h = CryptoJS.algo.SHA256.create(); h.update(chunk) x16; h.finalize().toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 45.917196005176386,
+          "msPerOp": 21.778333326086962,
+          "rme": 2.389424026655536,
+          "samples": 92,
+          "batch": 1,
+          "spread": 1.6594954669513582,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 92,
+              "msPerOp": 21.80096141304348,
+              "opsPerSec": 45.86953671693128,
+              "rme": 2.1681677787690243,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.34
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 92,
+              "msPerOp": 21.778333326086962,
+              "opsPerSec": 45.917196005176386,
+              "rme": 2.389424026655536,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.08
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 92,
+              "msPerOp": 21.90060785869565,
+              "opsPerSec": 45.66083308975141,
+              "rme": 2.461594318614202,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.04
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 95,
+              "msPerOp": 21.193256347368422,
+              "opsPerSec": 47.18482066226555,
+              "rme": 2.16207662406396,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.24
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 94,
+              "msPerOp": 21.293913872340433,
+              "opsPerSec": 46.96177536901482,
+              "rme": 2.285076717548843,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.68
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 24.98024439869754,
+          "msPerOp": 40.03163395999999,
+          "rme": 2.1264117923344257,
+          "samples": 50,
+          "batch": 1,
+          "spread": 2.958895932331936,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 50,
+              "msPerOp": 40.03163395999999,
+              "opsPerSec": 24.98024439869754,
+              "rme": 2.1264117923344257,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.31
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 49,
+              "msPerOp": 41.49177546938776,
+              "opsPerSec": 24.101161945643675,
+              "rme": 2.8003583732567225,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.07
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 52,
+              "msPerOp": 39.09389603846152,
+              "opsPerSec": 25.57944081644295,
+              "rme": 1.5911067051864065,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.04
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 51,
+              "msPerOp": 39.26777566666667,
+              "opsPerSec": 25.466173803393513,
+              "rme": 1.527256898190732,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.22
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 50,
+              "msPerOp": 40.370531539999995,
+              "opsPerSec": 24.77054331100839,
+              "rme": 3.0927553164128114,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.62
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "HmacSHA256 short",
+      "call": "CryptoJS.HmacSHA256(str, key).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 23259.056089712434,
+          "msPerOp": 0.04299400612573885,
+          "rme": 1.6117581266861545,
+          "samples": 1861,
+          "batch": 25,
+          "spread": 1.573849068801575,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 22,
+              "samples": 2137,
+              "msPerOp": 0.042551262836601884,
+              "opsPerSec": 23501.065146762616,
+              "rme": 1.5684448209718367,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.37
+            },
+            {
+              "label": "crypto-js",
+              "batch": 22,
+              "samples": 2130,
+              "msPerOp": 0.04268237891591974,
+              "opsPerSec": 23428.872180950963,
+              "rme": 2.0401533709433384,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.06
+            },
+            {
+              "label": "crypto-js",
+              "batch": 24,
+              "samples": 1936,
+              "msPerOp": 0.043063778086260364,
+              "opsPerSec": 23221.37175230924,
+              "rme": 1.5135468422210998,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.04
+            },
+            {
+              "label": "crypto-js",
+              "batch": 19,
+              "samples": 2398,
+              "msPerOp": 0.04391947925903166,
+              "opsPerSec": 22768.940271402666,
+              "rme": 1.4831983412545848,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.52
+            },
+            {
+              "label": "crypto-js",
+              "batch": 25,
+              "samples": 1861,
+              "msPerOp": 0.04299400612573885,
+              "opsPerSec": 23259.056089712434,
+              "rme": 1.6117581266861545,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.65
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 57769.78337341202,
+          "msPerOp": 0.017310087412587397,
+          "rme": 1.4632570204078255,
+          "samples": 1111,
+          "batch": 104,
+          "spread": 15.577914910502052,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 104,
+              "samples": 1111,
+              "msPerOp": 0.017310087412587397,
+              "opsPerSec": 57769.78337341202,
+              "rme": 1.4632570204078255,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.37
+            },
+            {
+              "label": "cryptolite",
+              "batch": 92,
+              "samples": 1229,
+              "msPerOp": 0.01769574228782679,
+              "opsPerSec": 56510.76873378278,
+              "rme": 1.1505104670602193,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.06
+            },
+            {
+              "label": "cryptolite",
+              "batch": 84,
+              "samples": 1658,
+              "msPerOp": 0.01436359918002185,
+              "opsPerSec": 69620.43339324642,
+              "rme": 0.9386028529196292,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.2
+            },
+            {
+              "label": "cryptolite",
+              "batch": 94,
+              "samples": 1126,
+              "msPerOp": 0.01890178487207586,
+              "opsPerSec": 52905.05667945296,
+              "rme": 1.4883037191717627,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.52
+            },
+            {
+              "label": "cryptolite",
+              "batch": 88,
+              "samples": 1612,
+              "msPerOp": 0.014103633938642028,
+              "opsPerSec": 70903.71207523593,
+              "rme": 0.7742729456314165,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.65
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "PBKDF2 SHA256, 10k iterations, keySize 8",
+      "call": "CryptoJS.PBKDF2(pw, salt, { keySize: 8, iterations: 10000, hasher: CryptoJS.algo.SHA256 })",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 7.4650999429024685,
+          "msPerOp": 133.95667943478261,
+          "rme": 3.8044611322090396,
+          "samples": 23,
+          "batch": 1,
+          "spread": 4.214320083028205,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 23,
+              "msPerOp": 133.06657273913044,
+              "opsPerSec": 7.515035364745164,
+              "rme": 3.192985482395346,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.42
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 24,
+              "msPerOp": 130.13871679166667,
+              "opsPerSec": 7.6841083472557665,
+              "rme": 2.381652857230327,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.14
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 22,
+              "msPerOp": 141.74541463636365,
+              "opsPerSec": 7.054901935032035,
+              "rme": 2.4440658734326908,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.18
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 23,
+              "msPerOp": 133.95667943478261,
+              "opsPerSec": 7.4650999429024685,
+              "rme": 3.8044611322090396,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.56
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 23,
+              "msPerOp": 135.04876030434784,
+              "opsPerSec": 7.404732910886302,
+              "rme": 2.1690063322555364,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.68
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 33.050579101221935,
+          "msPerOp": 30.25665592537313,
+          "rme": 0.9018555832910228,
+          "samples": 67,
+          "batch": 1,
+          "spread": 3.5368865516780854,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 65,
+              "msPerOp": 31.182341107692302,
+              "opsPerSec": 32.06943303411277,
+              "rme": 0.72241017373598,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.55
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 67,
+              "msPerOp": 30.256655925373128,
+              "opsPerSec": 33.050579101221935,
+              "rme": 0.9018555832910228,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.13
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 66,
+              "msPerOp": 30.472048939393943,
+              "opsPerSec": 32.81695963369272,
+              "rme": 0.7616957744696885,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.17
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 138,
+              "msPerOp": 29.06355256521738,
+              "opsPerSec": 34.40735600907846,
+              "rme": 0.9158348634781922,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.47
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 67,
+              "msPerOp": 30.030349671641794,
+              "opsPerSec": 33.299645556385855,
+              "rme": 1.105352317914716,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.63
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "PBKDF2 crypto-js 4.2 defaults (SHA256, 250k, keySize 4)",
+      "call": "CryptoJS.PBKDF2(pw, salt)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 0.2956160739584371,
+          "msPerOp": 3382.7659863333333,
+          "rme": 7.62370632510304,
+          "samples": 3,
+          "batch": 1,
+          "spread": 4.847526119555978,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 3,
+              "msPerOp": 3382.7659863333333,
+              "opsPerSec": 0.2956160739584371,
+              "rme": 7.62370632510304,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.54
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 3,
+              "msPerOp": 3359.3443236666667,
+              "opsPerSec": 0.29767713686119474,
+              "rme": 6.30387122487399,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.19
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 3,
+              "msPerOp": 3708.2793696666668,
+              "opsPerSec": 0.2696668455402509,
+              "rme": 11.825469511520373,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.45
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 3,
+              "msPerOp": 3352.026711,
+              "opsPerSec": 0.2983269783377332,
+              "rme": 3.9219634986493603,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.4
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 3,
+              "msPerOp": 3439.3435763333337,
+              "opsPerSec": 0.29075315617816083,
+              "rme": 10.006148610194487,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.53
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 1.2971175344758632,
+          "msPerOp": 770.9401603333333,
+          "rme": 7.9210322618406686,
+          "samples": 3,
+          "batch": 1,
+          "spread": 2.8614786424336893,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 3,
+              "msPerOp": 770.9401603333333,
+              "opsPerSec": 1.2971175344758632,
+              "rme": 7.9210322618406686,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.49
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 3,
+              "msPerOp": 771.8700453333333,
+              "opsPerSec": 1.2955548748729437,
+              "rme": 6.4395836930948,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.17
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 3,
+              "msPerOp": 743.894524,
+              "opsPerSec": 1.3442765980086713,
+              "rme": 20.061237867082216,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.42
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 3,
+              "msPerOp": 762.3055710000001,
+              "opsPerSec": 1.3118099067388291,
+              "rme": 10.700000953176964,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.37
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 3,
+              "msPerOp": 787.374844,
+              "opsPerSec": 1.2700431155760927,
+              "rme": 7.6816182305799785,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.49
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "AES passphrase encrypt + toString (short)",
+      "call": "CryptoJS.AES.encrypt(str, passphrase).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 4275.478673396623,
+          "msPerOp": 0.23389193968439498,
+          "rme": 2.4040891029554987,
+          "samples": 1711,
+          "batch": 5,
+          "spread": 5.876158634820041,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 5,
+              "samples": 1711,
+              "msPerOp": 0.23389193968439498,
+              "opsPerSec": 4275.478673396623,
+              "rme": 2.4040891029554987,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.49
+            },
+            {
+              "label": "crypto-js",
+              "batch": 5,
+              "samples": 1787,
+              "msPerOp": 0.22395579921656417,
+              "opsPerSec": 4465.166802994929,
+              "rme": 1.925752142104871,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.17
+            },
+            {
+              "label": "crypto-js",
+              "batch": 4,
+              "samples": 2171,
+              "msPerOp": 0.230368288691847,
+              "opsPerSec": 4340.875237987524,
+              "rme": 2.0219837480242115,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.42
+            },
+            {
+              "label": "crypto-js",
+              "batch": 4,
+              "samples": 2119,
+              "msPerOp": 0.2360252017461066,
+              "opsPerSec": 4236.835696366461,
+              "rme": 2.123809996611987,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.37
+            },
+            {
+              "label": "crypto-js",
+              "batch": 4,
+              "samples": 1982,
+              "msPerOp": 0.2523532581987888,
+              "opsPerSec": 3962.6989845015587,
+              "rme": 2.0025224818598444,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.49
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 5403.590702320457,
+          "msPerOp": 0.18506212907105848,
+          "rme": 2.1518440264162555,
+          "samples": 1544,
+          "batch": 7,
+          "spread": 5.044136697624509,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 6,
+              "samples": 1673,
+              "msPerOp": 0.19932256684598512,
+              "opsPerSec": 5016.993388273449,
+              "rme": 2.479009761332758,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.53
+            },
+            {
+              "label": "cryptolite",
+              "batch": 6,
+              "samples": 1819,
+              "msPerOp": 0.18333850348176664,
+              "opsPerSec": 5454.391636285238,
+              "rme": 2.4447325049574262,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.16
+            },
+            {
+              "label": "cryptolite",
+              "batch": 6,
+              "samples": 1699,
+              "msPerOp": 0.19623891514616446,
+              "opsPerSec": 5095.829230686334,
+              "rme": 2.2326921142756238,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.38
+            },
+            {
+              "label": "cryptolite",
+              "batch": 7,
+              "samples": 1590,
+              "msPerOp": 0.17978748571428546,
+              "opsPerSec": 5562.122391483794,
+              "rme": 2.0964512352870868,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.34
+            },
+            {
+              "label": "cryptolite",
+              "batch": 7,
+              "samples": 1544,
+              "msPerOp": 0.18506212907105848,
+              "opsPerSec": 5403.590702320457,
+              "rme": 2.1518440264162555,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.53
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "AES passphrase decrypt + toString(Utf8) (short)",
+      "call": "CryptoJS.AES.decrypt(ciphertext, passphrase).toString(CryptoJS.enc.Utf8)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 5619.435449037048,
+          "msPerOp": 0.17795381921708187,
+          "rme": 2.011219347775458,
+          "samples": 2248,
+          "batch": 5,
+          "spread": 1.843957627413812,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 5,
+              "samples": 2248,
+              "msPerOp": 0.17795381921708184,
+              "opsPerSec": 5619.435449037048,
+              "rme": 2.011219347775458,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.49
+            },
+            {
+              "label": "crypto-js",
+              "batch": 8,
+              "samples": 1418,
+              "msPerOp": 0.17643443670662923,
+              "opsPerSec": 5667.827770282595,
+              "rme": 2.1258801980688236,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.23
+            },
+            {
+              "label": "crypto-js",
+              "batch": 6,
+              "samples": 1908,
+              "msPerOp": 0.17476966116352202,
+              "opsPerSec": 5721.816895120926,
+              "rme": 1.8307639963349447,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.35
+            },
+            {
+              "label": "crypto-js",
+              "batch": 7,
+              "samples": 1580,
+              "msPerOp": 0.18088233372513565,
+              "opsPerSec": 5528.455871868479,
+              "rme": 1.8230085129514204,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.31
+            },
+            {
+              "label": "crypto-js",
+              "batch": 8,
+              "samples": 1379,
+              "msPerOp": 0.18133757532632352,
+              "opsPerSec": 5514.576877960698,
+              "rme": 2.0420752975740992,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.49
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 6785.536626281953,
+          "msPerOp": 0.14737227946375953,
+          "rme": 1.9610527276001322,
+          "samples": 1697,
+          "batch": 8,
+          "spread": 0.6821259312687493,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 8,
+              "samples": 1689,
+              "msPerOp": 0.1480505200562463,
+              "opsPerSec": 6754.4511131746585,
+              "rme": 1.925253677768831,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.49
+            },
+            {
+              "label": "cryptolite",
+              "batch": 8,
+              "samples": 1699,
+              "msPerOp": 0.1471743464537962,
+              "opsPerSec": 6794.662412949387,
+              "rme": 2.139140350918183,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.23
+            },
+            {
+              "label": "cryptolite",
+              "batch": 8,
+              "samples": 1712,
+              "msPerOp": 0.14604887573014005,
+              "opsPerSec": 6847.022922981874,
+              "rme": 2.0468642186178534,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.35
+            },
+            {
+              "label": "cryptolite",
+              "batch": 7,
+              "samples": 1932,
+              "msPerOp": 0.14789355789707187,
+              "opsPerSec": 6761.619736648441,
+              "rme": 2.0592523280148636,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.31
+            },
+            {
+              "label": "cryptolite",
+              "batch": 8,
+              "samples": 1697,
+              "msPerOp": 0.14737227946375953,
+              "opsPerSec": 6785.536626281953,
+              "rme": 1.9610527276001322,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.49
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "AES-256-CBC key+iv encrypt 1 MiB",
+      "call": "CryptoJS.AES.encrypt(wordArray, key, { iv, mode: CBC, padding: Pkcs7 })",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 22.82985828187795,
+          "msPerOp": 43.80228679710146,
+          "rme": 1.9255504035979816,
+          "samples": 69,
+          "batch": 1,
+          "spread": 4.203044157605619,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 70,
+              "msPerOp": 43.332973914285716,
+              "opsPerSec": 23.077114485104076,
+              "rme": 2.373971021262122,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 1,
+              "loadavg1m": 1.53
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 73,
+              "msPerOp": 41.380368082191794,
+              "opsPerSec": 24.16604893445484,
+              "rme": 2.898117728527673,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 2,
+              "loadavg1m": 1.21
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 68,
+              "msPerOp": 44.17109179411766,
+              "opsPerSec": 22.63924117296036,
+              "rme": 2.33540298157156,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 3,
+              "loadavg1m": 1.32
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 67,
+              "msPerOp": 44.94998011940298,
+              "opsPerSec": 22.24695088504261,
+              "rme": 3.096265256530671,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 4,
+              "loadavg1m": 1.37
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 69,
+              "msPerOp": 43.80228679710146,
+              "opsPerSec": 22.82985828187795,
+              "rme": 1.9255504035979816,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 5,
+              "loadavg1m": 1.45
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 29.13016652275493,
+          "msPerOp": 34.32867433898304,
+          "rme": 2.3277874987912286,
+          "samples": 59,
+          "batch": 1,
+          "spread": 4.100546865049695,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 58,
+              "msPerOp": 35.04545837931035,
+              "opsPerSec": 28.53436782525767,
+              "rme": 1.9660976421128642,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 1,
+              "loadavg1m": 1.49
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 61,
+              "msPerOp": 32.96750649180326,
+              "opsPerSec": 30.332897644188854,
+              "rme": 2.1653192765229297,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 2,
+              "loadavg1m": 1.19
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 59,
+              "msPerOp": 34.32867433898304,
+              "opsPerSec": 29.13016652275493,
+              "rme": 2.3277874987912286,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 3,
+              "loadavg1m": 1.3
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 58,
+              "msPerOp": 34.74715591379311,
+              "opsPerSec": 28.77933383903353,
+              "rme": 2.4235424358148125,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 4,
+              "loadavg1m": 1.34
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 62,
+              "msPerOp": 32.33801233870968,
+              "opsPerSec": 30.923360085522837,
+              "rme": 2.1592395929105117,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 5,
+              "loadavg1m": 1.41
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "AES-256-CBC key+iv decrypt 1 MiB",
+      "call": "CryptoJS.AES.decrypt(cipherParams, key, { iv, mode: CBC, padding: Pkcs7 })",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 22.767635395280298,
+          "msPerOp": 43.921996405797096,
+          "rme": 1.4837341915493014,
+          "samples": 69,
+          "batch": 1,
+          "spread": 3.9409182125271993,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 69,
+              "msPerOp": 43.921996405797096,
+              "opsPerSec": 22.767635395280298,
+              "rme": 1.4837341915493014,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 1,
+              "loadavg1m": 1.45
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 48,
+              "msPerOp": 41.789847458333334,
+              "opsPerSec": 23.929257004277233,
+              "rme": 1.5388598098168602,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 2,
+              "loadavg1m": 1.1
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 67,
+              "msPerOp": 45.17783282089551,
+              "opsPerSec": 22.134749224568452,
+              "rme": 2.583937855108296,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 3,
+              "loadavg1m": 1.43
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 70,
+              "msPerOp": 43.38595132857143,
+              "opsPerSec": 23.04893564340167,
+              "rme": 1.5140716242759547,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 4,
+              "loadavg1m": 1.63
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 136,
+              "msPerOp": 44.26720749264703,
+              "opsPerSec": 22.590085452444775,
+              "rme": 1.6926737744870202,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 5,
+              "loadavg1m": 1.35
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 25.655924610795733,
+          "msPerOp": 38.97735182692308,
+          "rme": 1.1251507406228494,
+          "samples": 52,
+          "batch": 1,
+          "spread": 7.289632590223779,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 81,
+              "msPerOp": 37.2063278765432,
+              "opsPerSec": 26.8771485140422,
+              "rme": 1.1106944397242584,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 1,
+              "loadavg1m": 1.49
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 54,
+              "msPerOp": 37.53038938888887,
+              "opsPerSec": 26.64507393296742,
+              "rme": 1.2536591800623313,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 2,
+              "loadavg1m": 1.1
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 51,
+              "msPerOp": 39.95819376470588,
+              "opsPerSec": 25.026156234401068,
+              "rme": 2.4077598265732068,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 3,
+              "loadavg1m": 1.43
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 70,
+              "msPerOp": 43.22136952857141,
+              "opsPerSec": 23.136703230538583,
+              "rme": 3.273407759158707,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 4,
+              "loadavg1m": 1.63
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 52,
+              "msPerOp": 38.97735182692308,
+              "opsPerSec": 25.655924610795733,
+              "rme": 1.1251507406228494,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 5,
+              "loadavg1m": 1.32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "Base64 stringify 1 MiB",
+      "call": "CryptoJS.enc.Base64.stringify(wordArray)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 10.413604087345957,
+          "msPerOp": 96.02823303174598,
+          "rme": 2.7124718639911833,
+          "samples": 63,
+          "batch": 1,
+          "spread": 9.168454639097517,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 32,
+              "msPerOp": 96.076812625,
+              "opsPerSec": 10.408338626960148,
+              "rme": 4.361208685553988,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.49
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 34,
+              "msPerOp": 90.88399208823527,
+              "opsPerSec": 11.00303779601961,
+              "rme": 3.459248318449563,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.09
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 63,
+              "msPerOp": 96.02823303174598,
+              "opsPerSec": 10.413604087345957,
+              "rme": 2.7124718639911833,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.66
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 59,
+              "msPerOp": 101.88946949152545,
+              "opsPerSec": 9.814556940873796,
+              "rme": 3.384579911658323,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.62
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 36,
+              "msPerOp": 85.29446580555555,
+              "opsPerSec": 11.724090074960834,
+              "rme": 2.1255622591576486,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.32
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 12.370745678170227,
+          "msPerOp": 80.83587085333333,
+          "rme": 4.966771457173494,
+          "samples": 75,
+          "batch": 1,
+          "spread": 1.170089752391378,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 75,
+              "msPerOp": 80.83587085333333,
+              "opsPerSec": 12.370745678170227,
+              "rme": 4.966771457173494,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.66
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 75,
+              "msPerOp": 80.51682742666668,
+              "opsPerSec": 12.419764066223083,
+              "rme": 4.047931517309196,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.07
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 75,
+              "msPerOp": 80.49751665333334,
+              "opsPerSec": 12.422743477995118,
+              "rme": 4.4185237949105565,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.6
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 74,
+              "msPerOp": 81.70626170270272,
+              "opsPerSec": 12.238964054414957,
+              "rme": 4.7520389389159226,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.6
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 73,
+              "msPerOp": 82.41817684931503,
+              "opsPerSec": 12.13324582304578,
+              "rme": 4.543265051727641,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "Base64 parse 1 MiB",
+      "call": "CryptoJS.enc.Base64.parse(base64)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 51.49730025403419,
+          "msPerOp": 19.418493689320385,
+          "rme": 2.8164018225104663,
+          "samples": 103,
+          "batch": 1,
+          "spread": 4.735008449592898,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 100,
+              "msPerOp": 20.183799579999995,
+              "opsPerSec": 49.54468538177985,
+              "rme": 3.9379005242314205,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 1,
+              "loadavg1m": 1.66
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 103,
+              "msPerOp": 19.418493689320385,
+              "opsPerSec": 51.49730025403419,
+              "rme": 2.8164018225104663,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 2,
+              "loadavg1m": 1.07
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 97,
+              "msPerOp": 20.805949855670104,
+              "opsPerSec": 48.06317456962806,
+              "rme": 2.9034205511309983,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 3,
+              "loadavg1m": 1.6
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 106,
+              "msPerOp": 18.88931664150944,
+              "opsPerSec": 52.93997760630955,
+              "rme": 2.589574015156446,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 4,
+              "loadavg1m": 1.6
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 106,
+              "msPerOp": 18.92125383962264,
+              "opsPerSec": 52.85062017961616,
+              "rme": 3.3119369689294804,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 5,
+              "loadavg1m": 1.32
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 50.478396357131324,
+          "msPerOp": 19.810455009803917,
+          "rme": 2.674803803847107,
+          "samples": 102,
+          "batch": 1,
+          "spread": 3.896082934495288,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 96,
+              "msPerOp": 20.997350854166672,
+              "opsPerSec": 47.62505551035082,
+              "rme": 2.2644300335084817,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 1,
+              "loadavg1m": 1.6
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 104,
+              "msPerOp": 19.395475653846148,
+              "opsPerSec": 51.55841588250499,
+              "rme": 2.83766392028083,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 2,
+              "loadavg1m": 1.07
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 101,
+              "msPerOp": 19.861431217821785,
+              "opsPerSec": 50.34883886427549,
+              "rme": 3.3537430475784067,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 3,
+              "loadavg1m": 1.55
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 103,
+              "msPerOp": 19.565784174757287,
+              "opsPerSec": 51.109630519698044,
+              "rme": 2.6214761465112204,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 4,
+              "loadavg1m": 1.79
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 102,
+              "msPerOp": 19.810455009803917,
+              "opsPerSec": 50.478396357131324,
+              "rme": 2.674803803847107,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 5,
+              "loadavg1m": 1.29
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "Utf8 parse 1 MiB",
+      "call": "CryptoJS.enc.Utf8.parse(text)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 21.009018735806137,
+          "msPerOp": 47.59860575000001,
+          "rme": 2.0909500110462664,
+          "samples": 64,
+          "batch": 1,
+          "spread": 4.206934793174197,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 62,
+              "msPerOp": 48.66852072580645,
+              "opsPerSec": 20.547162418062783,
+              "rme": 2.1769706619918963,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 1,
+              "loadavg1m": 1.55
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 44,
+              "msPerOp": 46.16430784090908,
+              "opsPerSec": 21.661756598759993,
+              "rme": 2.2824367489305106,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 2,
+              "loadavg1m": 1.06
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 66,
+              "msPerOp": 45.60069599999999,
+              "opsPerSec": 21.929489848137408,
+              "rme": 1.9433746365106424,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 3,
+              "loadavg1m": 1.5
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 64,
+              "msPerOp": 47.59860575000001,
+              "opsPerSec": 21.009018735806137,
+              "rme": 2.0909500110462664,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 4,
+              "loadavg1m": 1.73
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 41,
+              "msPerOp": 49.59870085365854,
+              "opsPerSec": 20.16181841033518,
+              "rme": 2.528614750826975,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 5,
+              "loadavg1m": 1.27
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 187.75752655057698,
+          "msPerOp": 5.326018180851067,
+          "rme": 2.3544022686870445,
+          "samples": 376,
+          "batch": 1,
+          "spread": 6.683724964659088,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 367,
+              "msPerOp": 5.457838730245233,
+              "opsPerSec": 183.2227094689307,
+              "rme": 2.263166442503694,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 1,
+              "loadavg1m": 1.55
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 396,
+              "msPerOp": 5.053357616161615,
+              "opsPerSec": 197.8882311439441,
+              "rme": 2.2273646241643674,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 2,
+              "loadavg1m": 1.06
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 346,
+              "msPerOp": 5.787377387283239,
+              "opsPerSec": 172.78983779376944,
+              "rme": 2.3545237932464627,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 3,
+              "loadavg1m": 1.5
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 391,
+              "msPerOp": 5.11582840153453,
+              "opsPerSec": 195.4717636150663,
+              "rme": 2.0931590964430105,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 4,
+              "loadavg1m": 1.67
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 376,
+              "msPerOp": 5.326018180851067,
+              "opsPerSec": 187.75752655057698,
+              "rme": 2.3544022686870445,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 5,
+              "loadavg1m": 1.27
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "compat",
+      "title": "Utf8 stringify 1 MiB",
+      "call": "CryptoJS.enc.Utf8.stringify(wordArray)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 11.830033369814732,
+          "msPerOp": 84.53061531944444,
+          "rme": 1.5712059987212732,
+          "samples": 72,
+          "batch": 1,
+          "spread": 4.37859354214038,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 34,
+              "msPerOp": 88.27226708823531,
+              "opsPerSec": 11.328586349780942,
+              "rme": 2.221440835622751,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.59
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 72,
+              "msPerOp": 84.53061531944444,
+              "opsPerSec": 11.830033369814732,
+              "rme": 1.5712059987212732,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.05
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 34,
+              "msPerOp": 88.52850749999998,
+              "opsPerSec": 11.295796441615153,
+              "rme": 2.141186385282565,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.46
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 38,
+              "msPerOp": 81.0913297368421,
+              "opsPerSec": 12.331774595942672,
+              "rme": 2.6449490574191175,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.67
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 36,
+              "msPerOp": 84.52450208333333,
+              "opsPerSec": 11.830888977187852,
+              "rme": 1.8228291773095515,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.25
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 146.8246571492187,
+          "msPerOp": 6.81084512244898,
+          "rme": 2.2301278145856642,
+          "samples": 294,
+          "batch": 1,
+          "spread": 4.083637892120877,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 303,
+              "msPerOp": 6.604644537953796,
+              "opsPerSec": 151.40860257557677,
+              "rme": 1.7363255510704956,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.54
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 280,
+              "msPerOp": 7.172724989285717,
+              "opsPerSec": 139.41702790693265,
+              "rme": 2.123084584429121,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.12
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 282,
+              "msPerOp": 7.101204925531915,
+              "opsPerSec": 140.82117196823398,
+              "rme": 1.6797568599313109,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.43
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 298,
+              "msPerOp": 6.721009627516776,
+              "opsPerSec": 148.78716969930483,
+              "rme": 1.8761699623997528,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.7
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 294,
+              "msPerOp": 6.810845122448981,
+              "opsPerSec": 146.8246571492187,
+              "rme": 2.2301278145856642,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.23
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "modern",
+      "title": "encrypt() short, Web Crypto path, 600k iterations",
+      "call": "encrypt(str, password)",
+      "results": {
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 7.940517783765019,
+          "msPerOp": 125.93637181250001,
+          "rme": 1.8002192717052574,
+          "samples": 32,
+          "batch": 1,
+          "spread": 1.139719366123309,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 32,
+              "msPerOp": 125.93637181250001,
+              "opsPerSec": 7.940517783765019,
+              "rme": 1.8002192717052574,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.5
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 32,
+              "msPerOp": 126.5990291875,
+              "opsPerSec": 7.898954726729745,
+              "rme": 1.1688108030404964,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.11
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 32,
+              "msPerOp": 125.58957890624998,
+              "opsPerSec": 7.9624440873910345,
+              "rme": 1.2286944510002995,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.39
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 32,
+              "msPerOp": 126.92027675,
+              "opsPerSec": 7.878961704202241,
+              "rme": 1.4922541841001127,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.64
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 65,
+              "msPerOp": 124.07008013846153,
+              "opsPerSec": 8.059960942106311,
+              "rme": 0.3599339899202537,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.32
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "modern",
+      "title": "decrypt() short, Web Crypto path, 600k iterations",
+      "call": "decrypt(token, password)",
+      "results": {
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 7.875793460348682,
+          "msPerOp": 126.97133375000001,
+          "rme": 1.376073683151674,
+          "samples": 64,
+          "batch": 1,
+          "spread": 1.7010199543676174,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 64,
+              "msPerOp": 126.97133375000001,
+              "opsPerSec": 7.875793460348682,
+              "rme": 1.376073683151674,
+              "attempts": 2,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.39
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 32,
+              "msPerOp": 127.65991118749997,
+              "opsPerSec": 7.833312671910401,
+              "rme": 1.2107494536185286,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.1
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 33,
+              "msPerOp": 123.94379996969695,
+              "opsPerSec": 8.068172835143752,
+              "rme": 0.9415032833652639,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.36
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 33,
+              "msPerOp": 124.02601724242425,
+              "opsPerSec": 8.062824415665753,
+              "rme": 0.5174734880267782,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.59
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 32,
+              "msPerOp": 128.20126246875,
+              "opsPerSec": 7.80023519849313,
+              "rme": 3.232179066438709,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.29
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "modern",
+      "title": "sha256() short (43 B string)",
+      "call": "sha256(str)  vs  CryptoJS.SHA256(str).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 132842.23561949813,
+          "msPerOp": 0.0075277263690767295,
+          "rme": 0.650940474788714,
+          "samples": 1630,
+          "batch": 163,
+          "spread": 3.0613685103441632,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 197,
+              "samples": 1287,
+              "msPerOp": 0.007894217276237576,
+              "opsPerSec": 126675.00336101784,
+              "rme": 0.63980379903831,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.39
+            },
+            {
+              "label": "crypto-js",
+              "batch": 189,
+              "samples": 1410,
+              "msPerOp": 0.007511915051221431,
+              "opsPerSec": 133121.84618453597,
+              "rme": 0.6343893970115819,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.1
+            },
+            {
+              "label": "crypto-js",
+              "batch": 163,
+              "samples": 1630,
+              "msPerOp": 0.007527726369076729,
+              "opsPerSec": 132842.23561949813,
+              "rme": 0.650940474788714,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.33
+            },
+            {
+              "label": "crypto-js",
+              "batch": 193,
+              "samples": 1397,
+              "msPerOp": 0.007417925250629583,
+              "opsPerSec": 134808.58410040286,
+              "rme": 0.5798158139678509,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.54
+            },
+            {
+              "label": "crypto-js",
+              "batch": 156,
+              "samples": 1643,
+              "msPerOp": 0.007803516710364098,
+              "opsPerSec": 128147.35165132256,
+              "rme": 0.7054169744040546,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.29
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 156682.94959632476,
+          "msPerOp": 0.0063823153864308955,
+          "rme": 1.0936411868702218,
+          "samples": 1104,
+          "batch": 284,
+          "spread": 13.716366850668397,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 278,
+              "samples": 1098,
+              "msPerOp": 0.0065542422848606395,
+              "opsPerSec": 152572.9377307056,
+              "rme": 1.5362834179082847,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.36
+            },
+            {
+              "label": "cryptolite",
+              "batch": 217,
+              "samples": 1802,
+              "msPerOp": 0.005115932640128476,
+              "opsPerSec": 195467.7808218536,
+              "rme": 0.6241094020885548,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.1
+            },
+            {
+              "label": "cryptolite",
+              "batch": 270,
+              "samples": 1130,
+              "msPerOp": 0.006558006424123242,
+              "opsPerSec": 152485.3645036941,
+              "rme": 1.3147604372088733,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.33
+            },
+            {
+              "label": "cryptolite",
+              "batch": 263,
+              "samples": 1230,
+              "msPerOp": 0.006183085464774796,
+              "opsPerSec": 161731.55064684563,
+              "rme": 1.0783572687053429,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.5
+            },
+            {
+              "label": "cryptolite",
+              "batch": 284,
+              "samples": 1104,
+              "msPerOp": 0.0063823153864308955,
+              "opsPerSec": 156682.94959632476,
+              "rme": 1.0936411868702218,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.59
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "modern",
+      "title": "sha256() 1 MiB (Uint8Array; crypto-js: WordArray)",
+      "call": "sha256(bytes)  vs  CryptoJS.SHA256(wordArray).toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 40.716283137030835,
+          "msPerOp": 24.56019859756097,
+          "rme": 2.242350162258324,
+          "samples": 82,
+          "batch": 1,
+          "spread": 3.59346436305389,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 83,
+              "msPerOp": 24.125896433734944,
+              "opsPerSec": 41.449237036502915,
+              "rme": 1.8688119634667024,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.33
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 86,
+              "msPerOp": 23.37469472093024,
+              "opsPerSec": 42.78130738984912,
+              "rme": 2.0846683509334216,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.17
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 80,
+              "msPerOp": 25.090918737499997,
+              "opsPerSec": 39.85505714087047,
+              "rme": 2.2972538673662752,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.3
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 82,
+              "msPerOp": 24.560198597560966,
+              "opsPerSec": 40.716283137030835,
+              "rme": 2.242350162258324,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.5
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 81,
+              "msPerOp": 24.92674039506173,
+              "opsPerSec": 40.1175598634674,
+              "rme": 2.7086363368467756,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.54
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 59.26327391906924,
+          "msPerOp": 16.873856840336124,
+          "rme": 1.5236361360757122,
+          "samples": 119,
+          "batch": 1,
+          "spread": 4.42862299024952,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 115,
+              "msPerOp": 17.476077747826082,
+              "opsPerSec": 57.221077545526136,
+              "rme": 1.3684194675201866,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.33
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 117,
+              "msPerOp": 17.145548538461544,
+              "opsPerSec": 58.32417654977688,
+              "rme": 2.0648835853848255,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.17
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 125,
+              "msPerOp": 16.007639743999995,
+              "opsPerSec": 62.47017149263503,
+              "rme": 0.7205743351826562,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.28
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 119,
+              "msPerOp": 16.873856840336124,
+              "opsPerSec": 59.26327391906924,
+              "rme": 1.5236361360757122,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.46
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 122,
+              "msPerOp": 16.399216254098356,
+              "opsPerSec": 60.97852388220616,
+              "rme": 0.5056185516214039,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.54
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "supplementary",
+      "title": "encrypt() short, noble path (crypto.subtle hidden), 600k",
+      "call": "encrypt(str, password) with globalThis.crypto.subtle removed",
+      "results": {
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 0.47393039367929,
+          "msPerOp": 2110.0144944,
+          "rme": 1.8769797832958215,
+          "samples": 5,
+          "batch": 1,
+          "spread": 3.6064606986510235,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 2110.0144944,
+              "opsPerSec": 0.47393039367929,
+              "rme": 1.8769797832958215,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.25
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 2012.7941928,
+              "opsPerSec": 0.4968217831595087,
+              "rme": 1.1443913455982888,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.13
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 2161.5192848,
+              "opsPerSec": 0.46263755638549736,
+              "rme": 9.15914489228096,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.16
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 2069.9296568,
+              "opsPerSec": 0.48310820452997727,
+              "rme": 2.152666627004213,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.39
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 2111.6687294,
+              "opsPerSec": 0.47355912699627634,
+              "rme": 1.5115881305051906,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.42
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "supplementary",
+      "title": "decrypt() short, noble path (crypto.subtle hidden), 600k",
+      "call": "decrypt(token, password) with globalThis.crypto.subtle removed",
+      "results": {
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 0.4704951244196997,
+          "msPerOp": 2125.420537,
+          "rme": 1.3269215479787824,
+          "samples": 5,
+          "batch": 1,
+          "spread": 2.642666386531033,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 2125.420537,
+              "opsPerSec": 0.4704951244196997,
+              "rme": 1.3269215479787824,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.04
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 2032.296776,
+              "opsPerSec": 0.49205411916669795,
+              "rme": 2.6378419417476033,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.1
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 2137.4891215999996,
+              "opsPerSec": 0.46783863828577443,
+              "rme": 2.91795097336837,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.19
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 2086.9245422,
+              "opsPerSec": 0.4791740093035742,
+              "rme": 0.9132514315727279,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.37
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 2140.4710397999997,
+              "opsPerSec": 0.4671868861600844,
+              "rme": 4.100272259449779,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.25
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "supplementary",
+      "title": "compat PBKDF2 SHA256, 600k, keySize 8 (sync noble)",
+      "call": "CryptoJS.PBKDF2(pw, salt, { keySize: 8, iterations: 600000, hasher: CryptoJS.algo.SHA256 })",
+      "results": {
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 0.5469468340230443,
+          "msPerOp": 1828.3312706000002,
+          "rme": 1.9258691371413128,
+          "samples": 5,
+          "batch": 1,
+          "spread": 1.7681157404564192,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 1837.3343974,
+              "opsPerSec": 0.5442667384963203,
+              "rme": 1.130081583482287,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 1,
+              "loadavg1m": 1.04
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 1784.78159,
+              "opsPerSec": 0.5602926462279343,
+              "rme": 0.737378684565198,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 2,
+              "loadavg1m": 1.08
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 1828.3312706,
+              "opsPerSec": 0.5469468340230443,
+              "rme": 1.9258691371413128,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 3,
+              "loadavg1m": 1.15
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 1848.5951062,
+              "opsPerSec": 0.5409513400993553,
+              "rme": 1.025882008491206,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 4,
+              "loadavg1m": 1.43
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 5,
+              "msPerOp": 1820.4454552,
+              "opsPerSec": 0.5493161012561822,
+              "rme": 2.444312929771551,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "object",
+              "run": 5,
+              "loadavg1m": 1.21
+            }
+          ]
+        }
+      }
+    },
+    {
+      "table": "supplementary",
+      "title": "SHA256 of the 1 MiB UTF-8 text as a string",
+      "call": "CryptoJS.SHA256(text).toString()  /  modern sha256(text)",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 13.259888389470776,
+          "msPerOp": 75.41541607499998,
+          "rme": 1.913880629380753,
+          "samples": 40,
+          "batch": 1,
+          "spread": 2.942813471270071,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 40,
+              "msPerOp": 75.78487472500001,
+              "opsPerSec": 13.195245141312066,
+              "rme": 2.383425137854363,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.03
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 42,
+              "msPerOp": 71.55290633333335,
+              "opsPerSec": 13.97567270491351,
+              "rme": 1.7233576099354835,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.08
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 40,
+              "msPerOp": 75.47681884999999,
+              "opsPerSec": 13.24910105164031,
+              "rme": 1.8485173583207897,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.15
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 40,
+              "msPerOp": 75.41541607499998,
+              "opsPerSec": 13.259888389470776,
+              "rme": 1.913880629380753,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.43
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 41,
+              "msPerOp": 73.42462748780487,
+              "opsPerSec": 13.619408558335422,
+              "rme": 2.834881978115046,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.2
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 51.51152420029482,
+          "msPerOp": 19.413131634615397,
+          "rme": 1.1123114655590673,
+          "samples": 104,
+          "batch": 1,
+          "spread": 1.9703821298057989,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 104,
+              "msPerOp": 19.336002586538466,
+              "opsPerSec": 51.71699763301594,
+              "rme": 1.1625969106422527,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.11
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 107,
+              "msPerOp": 18.71969580373832,
+              "opsPerSec": 53.41967147779721,
+              "rme": 1.5170788018918098,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.07
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 103,
+              "msPerOp": 19.45432601941747,
+              "opsPerSec": 51.402448946414005,
+              "rme": 0.9916149463244327,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.13
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 104,
+              "msPerOp": 19.413131634615397,
+              "opsPerSec": 51.51152420029482,
+              "rme": 1.1123114655590673,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.39
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 103,
+              "msPerOp": 19.45914333009708,
+              "opsPerSec": 51.38972374253081,
+              "rme": 0.8124381308049597,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.18
+            }
+          ]
+        },
+        "cryptolite modern": {
+          "label": "cryptolite modern",
+          "opsPerSec": 41.188713149436595,
+          "msPerOp": 24.278495819277097,
+          "rme": 1.356404424465505,
+          "samples": 83,
+          "batch": 1,
+          "spread": 20.988810859509137,
+          "runs": [
+            {
+              "label": "cryptolite modern",
+              "batch": 1,
+              "samples": 86,
+              "msPerOp": 23.527548523255806,
+              "opsPerSec": 42.503365746395126,
+              "rme": 1.8439759706441048,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.11
+            },
+            {
+              "label": "cryptolite modern",
+              "batch": 1,
+              "samples": 89,
+              "msPerOp": 22.553858674157308,
+              "opsPerSec": 44.33831099357829,
+              "rme": 0.6996644400766486,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.07
+            },
+            {
+              "label": "cryptolite modern",
+              "batch": 1,
+              "samples": 55,
+              "msPerOp": 36.970942854545456,
+              "opsPerSec": 27.04826879677626,
+              "rme": 1.2506252669322453,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.12
+            },
+            {
+              "label": "cryptolite modern",
+              "batch": 1,
+              "samples": 83,
+              "msPerOp": 24.278495819277097,
+              "opsPerSec": 41.188713149436595,
+              "rme": 1.356404424465505,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.36
+            },
+            {
+              "label": "cryptolite modern",
+              "batch": 1,
+              "samples": 81,
+              "msPerOp": 24.851727172839507,
+              "opsPerSec": 40.23865194741481,
+              "rme": 2.3153730513185242,
+              "attempts": 1,
+              "distSha256": "6e74d9b7f415f8f84ca412b73328916d0455d411aad1816ca58e26db80629c3d",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.18
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

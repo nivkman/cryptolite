@@ -245,3 +245,61 @@ describe('L1/L2: Utf8.parse of non-strings; WordArray.random words', () => {
   });
 });
 
+
+describe('streaming hashers: random mixes of clean, dirty and fractional updates, with clones', () => {
+  // Deterministic PRNG so failures reproduce.
+  function prng(seed: number) {
+    return () => {
+      seed = (seed + 0x6d2b79f5) | 0;
+      let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  type Op = { kind: string; n: number; g: number };
+  function plan(rand: () => number): Op[] {
+    const kinds = ['str', 'clean', 'dirty', 'dirty', 'frac', 'empty', 'clone', 'buffer'];
+    return Array.from({ length: 4 + Math.floor(rand() * 10) }, () => ({
+      kind: kinds[Math.floor(rand() * kinds.length)]!,
+      n: Math.floor(rand() * 150),
+      g: 1 + Math.floor(rand() * 255),
+    }));
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function execute(C: any, h: string, ops: Op[]): string {
+    const out: string[] = [];
+    try {
+      let x = C.algo[h].create();
+      for (const op of ops) {
+        if (op.kind === 'str') x.update('é'.repeat(op.n % 7) + 'a'.repeat(op.n));
+        else if (op.kind === 'clean') x.update(C.lib.WordArray.create(new Uint8Array(range(op.n, op.g))));
+        else if (op.kind === 'dirty') x.update(dirty(C, range(op.n, op.g), op.g));
+        else if (op.kind === 'frac') x.update(C.enc.Hex.parse('ab'.repeat(op.n % 9) + 'c'));
+        else if (op.kind === 'empty') x.update('');
+        else if (op.kind === 'buffer') x.update(Buffer.from([op.n]));
+        else if (op.kind === 'clone') {
+          out.push(x.clone().finalize(dirty(C, range(op.n % 9, op.g), op.g)).toString());
+        }
+      }
+      out.push(x.finalize().toString());
+      x.reset();
+      out.push(x.finalize('after reset').toString());
+      x = null;
+    } catch (e) {
+      out.push(`THROW ${(e as Error)?.constructor?.name}`);
+    }
+    return out.join('|');
+  }
+
+  it.each(HASHERS)('%s: 200 random update sequences match crypto-js', (h) => {
+    const rand = prng(0xc0ffee ^ h.length);
+    for (let i = 0; i < 200; i++) {
+      const ops = plan(rand);
+      const expected = execute(R, h, ops);
+      const actual = execute(Lx, h, ops);
+      if (actual !== expected) {
+        throw new Error(`${h} sequence #${i} differs: ${JSON.stringify(ops)}\n  crypto-js : ${expected}\n  cryptolite: ${actual}`);
+      }
+    }
+  });
+});

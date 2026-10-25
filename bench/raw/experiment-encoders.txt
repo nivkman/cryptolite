@@ -1,0 +1,5 @@
+b64-stringify-current          80.0 ms | 73.4 ms | 79.6 ms
+b64-stringify-chunked          30.6 ms | 31.2 ms | 30.5 ms
+b64-parse-current              17.7 ms | 18.2 ms | 18.9 ms
+b64-parse-fast                 6.6 ms | 8.5 ms | 7.6 ms
+sha256-progressive-streaming   12.4 ms | 12.5 ms | 12.4 ms

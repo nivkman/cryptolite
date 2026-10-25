@@ -1,0 +1,192 @@
+{
+  "env": {
+    "date": "2026-10-25T04:04:22.204Z",
+    "cpu": "AMD EPYC 7713 64-Core Processor",
+    "logicalCpus": 4,
+    "ramGiB": 7.8,
+    "os": "Linux 6.12.88+deb13-amd64 x64",
+    "node": "v20.19.2",
+    "v8": "11.3.244.8-node.38",
+    "loadavg1m": 1.25,
+    "cryptolite": "1.0.0",
+    "crypto-js": "4.2.0",
+    "tinybench": "6.2.2",
+    "esbuild": "0.28.2",
+    "build": {
+      "entry": "dist/index.js",
+      "sha256": "5d2435a4d7d20f46338483399eaede09fd66e285583d1c8ddbf2a373601e0bff",
+      "builtAt": "2026-10-25T04:04:05.568Z",
+      "gitHead": "4b858cd",
+      "uncommittedBuildInputs": [
+        " M src/compat/hashers.ts"
+      ]
+    },
+    "cryptoliteResolvedTo": "file:///root/cryptolite/dist/index.js",
+    "gcExposed": false,
+    "mode": "isolated, 5 run(s) per case",
+    "loadavg1mEnd": 1.31,
+    "finished": "2026-10-25T04:04:55.724Z"
+  },
+  "quick": false,
+  "rows": [
+    {
+      "table": "compat",
+      "title": "SHA256 progressive: create() + 16 × 64 KiB update() + finalize()",
+      "call": "h = CryptoJS.algo.SHA256.create(); h.update(chunk) x16; h.finalize().toString()",
+      "results": {
+        "crypto-js": {
+          "label": "crypto-js",
+          "opsPerSec": 45.80585014065362,
+          "msPerOp": 21.831272576086953,
+          "rme": 2.6879357103698625,
+          "samples": 92,
+          "batch": 1,
+          "spread": 4.299413549313854,
+          "runs": [
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 95,
+              "msPerOp": 21.101886410526326,
+              "opsPerSec": 47.389128182453234,
+              "rme": 2.0524670108647283,
+              "attempts": 1,
+              "distSha256": "5d2435a4d7d20f46338483399eaede09fd66e285583d1c8ddbf2a373601e0bff",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.23
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 92,
+              "msPerOp": 21.831272576086953,
+              "opsPerSec": 45.80585014065362,
+              "rme": 2.6879357103698625,
+              "attempts": 1,
+              "distSha256": "5d2435a4d7d20f46338483399eaede09fd66e285583d1c8ddbf2a373601e0bff",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.37
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 87,
+              "msPerOp": 23.014767804597696,
+              "opsPerSec": 43.45036232780191,
+              "rme": 2.4368196258608306,
+              "attempts": 1,
+              "distSha256": "5d2435a4d7d20f46338483399eaede09fd66e285583d1c8ddbf2a373601e0bff",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.34
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 92,
+              "msPerOp": 21.77915046739131,
+              "opsPerSec": 45.915473218169986,
+              "rme": 2.590288227720477,
+              "attempts": 1,
+              "distSha256": "5d2435a4d7d20f46338483399eaede09fd66e285583d1c8ddbf2a373601e0bff",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.37
+            },
+            {
+              "label": "crypto-js",
+              "batch": 1,
+              "samples": 91,
+              "msPerOp": 22.176702384615382,
+              "opsPerSec": 45.09236687478517,
+              "rme": 2.7571113361972137,
+              "attempts": 1,
+              "distSha256": "5d2435a4d7d20f46338483399eaede09fd66e285583d1c8ddbf2a373601e0bff",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.34
+            }
+          ]
+        },
+        "cryptolite": {
+          "label": "cryptolite",
+          "opsPerSec": 52.4952231446747,
+          "msPerOp": 19.049352304761914,
+          "rme": 1.271883428852989,
+          "samples": 105,
+          "batch": 1,
+          "spread": 3.921495106458421,
+          "runs": [
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 110,
+              "msPerOp": 18.346972027272727,
+              "opsPerSec": 54.50490677772346,
+              "rme": 0.7223603642286066,
+              "attempts": 1,
+              "distSha256": "5d2435a4d7d20f46338483399eaede09fd66e285583d1c8ddbf2a373601e0bff",
+              "sinkType": "string",
+              "run": 1,
+              "loadavg1m": 1.23
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 105,
+              "msPerOp": 19.049352304761914,
+              "opsPerSec": 52.4952231446747,
+              "rme": 1.271883428852989,
+              "attempts": 1,
+              "distSha256": "5d2435a4d7d20f46338483399eaede09fd66e285583d1c8ddbf2a373601e0bff",
+              "sinkType": "string",
+              "run": 2,
+              "loadavg1m": 1.34
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 103,
+              "msPerOp": 19.429911941747584,
+              "opsPerSec": 51.4670371640427,
+              "rme": 1.3196660942506129,
+              "attempts": 1,
+              "distSha256": "5d2435a4d7d20f46338483399eaede09fd66e285583d1c8ddbf2a373601e0bff",
+              "sinkType": "string",
+              "run": 3,
+              "loadavg1m": 1.32
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 101,
+              "msPerOp": 19.84610868316832,
+              "opsPerSec": 50.38771156423777,
+              "rme": 1.3568374124515639,
+              "attempts": 1,
+              "distSha256": "5d2435a4d7d20f46338483399eaede09fd66e285583d1c8ddbf2a373601e0bff",
+              "sinkType": "string",
+              "run": 4,
+              "loadavg1m": 1.37
+            },
+            {
+              "label": "cryptolite",
+              "batch": 1,
+              "samples": 107,
+              "msPerOp": 18.792671084112154,
+              "opsPerSec": 53.21223340334136,
+              "rme": 0.8129631280573446,
+              "attempts": 1,
+              "distSha256": "5d2435a4d7d20f46338483399eaede09fd66e285583d1c8ddbf2a373601e0bff",
+              "sinkType": "string",
+              "run": 5,
+              "loadavg1m": 1.31
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

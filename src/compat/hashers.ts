@@ -35,8 +35,19 @@ function swapEndian(word: number): number {
 // ---------------------------------------------------------------------------------------------
 
 /**
- * Base for MD-family hashers. `_newCore()` returns a fresh noble hash object (initial state);
- * crypto-js's BufferedBlockAlgorithm hands it one block of words at a time.
+ * Base for MD-family hashers. `_newCore()` returns a fresh noble hash object (initial state).
+ *
+ * Two modes, one result:
+ * - **streaming** (the normal case): every update that is "clean" — or a WordArray with a whole
+ *   number of bytes — goes straight into noble's own streaming `update()`. If such a WordArray
+ *   carries bytes beyond `sigBytes` and lands on a word boundary, crypto-js would have copied
+ *   those bytes into its buffer; we remember that word (`_pendingTail`) until the next update,
+ *   which in crypto-js clamps them away again.
+ * - **word mode**: at `finalize()`, or as soon as an update arrives that only crypto-js's own
+ *   code handles exactly (fractional `sigBytes`, non-WordArray objects), the buffered bytes and
+ *   any pending tail word move into crypto-js's `_data` buffer, and from then on crypto-js's
+ *   BufferedBlockAlgorithm feeds noble's compression function (`process`) one block at a time.
+ *   `_doFinalize` is crypto-js's padding, verbatim, so the digest always matches crypto-js.
  */
 const MDHasher: Any = Hasher.extend({
   _newCore(): Any {
@@ -46,6 +57,53 @@ const MDHasher: Any = Hasher.extend({
   _doReset(this: Any): void {
     this._core = this._newCore();
     this._hashSigBytes = undefined;
+    this._wordMode = false;
+    this._pendingTail = undefined;
+    this._blockView = undefined;
+  },
+
+  update(this: Any, messageUpdate: Any): Any {
+    this._appendMessage(messageUpdate);
+    if (this._wordMode) this._process();
+    return this;
+  },
+
+  finalize(this: Any, messageUpdate?: Any): Any {
+    if (messageUpdate) {
+      this._appendMessage(messageUpdate);
+    }
+    this._enterWordMode();
+    return this._doFinalize();
+  },
+
+  _appendMessage(this: Any, message: Any): void {
+    if (!this._wordMode) {
+      const clean = isCleanMessage(message);
+      if (clean || isWordArrayLike(message)) {
+        const bytes = toBytes(message);
+        // crypto-js copies whole words only when its buffer is word-aligned.
+        const aligned = this._nDataBytes % 4 === 0;
+        this._core.update(bytes);
+        this._pendingTail = !clean && aligned ? message.words[(message.sigBytes - 1) >>> 2] | 0 : undefined;
+        this._nDataBytes += bytes.length;
+        return;
+      }
+      this._enterWordMode();
+    }
+    this._append(message);
+  },
+
+  _enterWordMode(this: Any): void {
+    if (this._wordMode) return;
+    const core = this._core;
+    // noble keeps less than one block buffered; that is exactly crypto-js's `_data`.
+    const pending = fromBytes(core.buffer.subarray(0, core.pos));
+    if (this._pendingTail !== undefined) {
+      pending.words[pending.words.length - 1] = this._pendingTail;
+    }
+    this._data = pending;
+    this._pendingTail = undefined;
+    this._wordMode = true;
     this._blockView = new DataView(new ArrayBuffer(this.blockSize * 4));
   },
 
@@ -64,7 +122,7 @@ const MDHasher: Any = Hasher.extend({
   clone(this: Any): Any {
     const clone = Hasher.clone.call(this);
     clone._core = this._core.clone();
-    clone._blockView = new DataView(new ArrayBuffer(this.blockSize * 4));
+    clone._blockView = this._wordMode ? new DataView(new ArrayBuffer(this.blockSize * 4)) : undefined;
     return clone;
   },
 });

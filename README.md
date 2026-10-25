@@ -101,7 +101,7 @@ See [MIGRATION.md](MIGRATION.md) for the full walkthrough, including library aut
 - **ESM and CJS**, zero runtime dependencies (`@noble/*` are bundled into `dist/`, not installed separately).
 - **An actual security upgrade alongside the compat layer**: a modern, authenticated encryption API (below) and an opt-in path to read and upgrade old crypto-js ciphertexts.
 
-**Where this runs.** Pure JS, ES2020, no Node built-ins or DOM types assumed by design (`docs/DECISIONS.md` D4, D7, D11) — targeting Node ≥ 20, browsers, Deno, Bun, Cloudflare Workers and React Native (Hermes). Honestly: **CI only runs Node 20/22/24** (`.github/workflows/ci.yml`, ubuntu-latest). Browsers/Deno/Bun/Workers/React Native are expected to work from the design and are not yet exercised by an automated cross-platform test matrix. One platform limit, per Cloudflare's own public issue tracker (not independently tested by this project): **Cloudflare Workers' `subtle.deriveBits` rejects PBKDF2 iteration counts above 100,000** ([workerd#1346](https://github.com/cloudflare/workerd/issues/1346)), so `encrypt`/`decrypt` at the 600,000 default fall back to pure-JS PBKDF2 there (R6 in `docs/SPEC-modern.md`) — on the order of 1.6 seconds of CPU per call. Pass `{ iterations: 100000 }` on Workers to stay on the native, capped path; see [React Native](#react-native) below for the same trade-off spelled out. (Tokens already issued with a higher count still decrypt there — just slowly, on the same fallback.)
+**Where this runs.** Pure JS, ES2020, no Node built-ins or DOM types assumed by design (`docs/DECISIONS.md` D4, D7, D11) — targeting Node ≥ 20, browsers, Deno, Bun, Cloudflare Workers and React Native (Hermes). Honestly: **CI only runs Node 20/22/24** (`.github/workflows/ci.yml`, ubuntu-latest). Browsers/Deno/Bun/Workers/React Native are expected to work from the design and are not yet exercised by an automated cross-platform test matrix. One platform limit, per Cloudflare's own public issue tracker (not independently tested by this project): **Cloudflare Workers' `subtle.deriveBits` rejects PBKDF2 iteration counts above 100,000** ([workerd#1346](https://github.com/cloudflare/workerd/issues/1346)), so `encrypt`/`decrypt` at the 600,000 default fall back to pure-JS PBKDF2 there (R6 in `docs/SPEC-modern.md`) — about 2 seconds of CPU per call (2.1 s measured for that path on Node; not measured on Workers). Pass `{ iterations: 100000 }` on Workers to stay on the native, capped path; see [React Native](#react-native) below for the same trade-off spelled out. (Tokens already issued with a higher count still decrypt there — just slowly, on the same fallback.)
 
 ## cryptolite vs. the alternatives
 
@@ -210,7 +210,8 @@ await decrypt(token, password, { maxIterations: 600000 }); // reject anything hi
 ## React Native
 
 - Install [`react-native-get-random-values`](https://github.com/LinusU/react-native-get-random-values) and `import 'react-native-get-random-values'` once, at the top of your entry file, before anything uses cryptolite. React Native has no built-in `crypto.getRandomValues`; without the polyfill, `randomBytes` (and anything that needs randomness) throws `ERR_RANDOM`.
-- Hermes has no `crypto.subtle`, so `encrypt`/`decrypt`/`upgrade` always run PBKDF2 in pure JS there. cryptolite does **not** silently lower the iteration count per platform (`docs/DECISIONS.md` D10) — a token's strength shouldn't depend on which device made it, and the count is stored in the token anyway. On a slow device this can be noticeably slower than on Node with Web Crypto; measure it on your actual target. Your options, consciously: ship a native Web Crypto provider, or pass `{ iterations: 100000 }` (the lowest `encrypt` accepts) as an explicit trade-off — not a silent one.
+- Hermes has no `crypto.subtle`, so `encrypt`/`decrypt`/`upgrade` run PBKDF2 in pure JS there, and that is **very slow**: on Hermes 0.12 (measured on a server CPU; Hermes V1 and real phones not measured) one `encrypt` or `decrypt` took **about 74 s** at the 600,000 default and **about 12 s** at the 100,000 minimum. In practice the modern password API on React Native needs a native Web Crypto implementation of `crypto.subtle` (PBKDF2 + AES-GCM). cryptolite does **not** silently lower the iteration count per platform (`docs/DECISIONS.md` D10, D15) — a token's strength shouldn't depend on which device made it.
+- The **compat API is unaffected**: `CryptoJS.AES.encrypt(text, passphrase)` uses one MD5 round for its key, so it is as fast on React Native as it was with crypto-js (cryptolite's PBKDF2 there is about 1.15× crypto-js's, measured on Hermes).
 
 ## What's not supported
 
@@ -228,7 +229,25 @@ await decrypt(token, password, { maxIterations: 600000 }); // reject anything hi
 
 ## Benchmarks and size
 
-<!-- BENCH: filled from bench/RESULTS.md -->
+Same calls on both libraries, identical output, measured on an AMD EPYC 7713 VM with Node 20.19.2 (each library in its own process, median of 5 runs). Full method, margins and raw data: [bench/RESULTS.md](bench/RESULTS.md).
+
+| Compat API (vs crypto-js 4.2.0) | crypto-js | cryptolite | |
+|---|--:|--:|--:|
+| PBKDF2 at crypto-js 4.2's defaults (SHA-256, 250k iterations) | 3.38 s | 0.77 s | **4.4× faster** |
+| PBKDF2, 10k iterations | 134 ms | 30.3 ms | 4.5× |
+| SHA-512, 1 MiB | 176 ms | 32.0 ms | 5.5× |
+| SHA3 (Keccak), 1 MiB | 763 ms | 170 ms | 4.4× |
+| SHA-256, 1 MiB | 25.7 ms | 18.5 ms | 1.4× |
+| SHA-256 progressive (`update()` × 16 × 64 KiB) | 21.8 ms | 19.0 ms | 1.15× |
+| HmacSHA256, short | 43.0 µs | 17.3 µs | 2.5× |
+| AES passphrase encrypt, short | 234 µs | 185 µs | 1.2× |
+| AES-256-CBC encrypt, 1 MiB | 43.8 ms | 34.3 ms | 1.3× |
+| Utf8 parse / stringify, 1 MiB | 47.6 / 84.5 ms | 5.3 / 6.8 ms | 9× / 12× |
+| Base64 stringify / parse, 1 MiB | 96.0 / 19.4 ms | 80.8 / 19.8 ms | 1.2× / ~1× |
+
+Short-input timings (≈40 bytes) vary by ±20% between processes; treat those ratios as ranges. The modern `encrypt`/`decrypt` take about 126 ms each at the default 600,000 iterations with Web Crypto (Node) — that cost is the point of the KDF.
+
+**Size** (esbuild, minified): the whole library is 79 KB min / 27.8 KiB gzip, vs crypto-js's 71 KB / 25.5 KiB. Every import currently costs the whole library — including `cryptolite/sha256` and modern-only imports — because the compat layer isn't tree-shakeable yet; a slimmer modern-only entry is on the roadmap.
 
 A size breakdown (including the bundled `@noble/*` code) is available once published at [bundlephobia](https://bundlephobia.com/package/cryptolite) and [pkg-size.dev](https://pkg-size.dev/cryptolite).
 

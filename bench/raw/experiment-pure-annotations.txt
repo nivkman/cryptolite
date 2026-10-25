@@ -1,0 +1,8 @@
+esbuild 0.28.2  variant A  import { sha256 }: compat code kept: yes  modern code kept: yes
+rollup 4.65.0   variant A  import { sha256 }: compat code kept: yes  modern code kept: yes
+esbuild 0.28.2  variant A  import { SHA256 }: compat code kept: yes  modern code kept: no
+rollup 4.65.0   variant A  import { SHA256 }: compat code kept: yes  modern code kept: no
+esbuild 0.28.2  variant B  import { sha256 }: compat code kept: no   modern code kept: yes
+rollup 4.65.0   variant B  import { sha256 }: compat code kept: no   modern code kept: yes
+esbuild 0.28.2  variant B  import { SHA256 }: compat code kept: yes  modern code kept: no
+rollup 4.65.0   variant B  import { SHA256 }: compat code kept: yes  modern code kept: no
