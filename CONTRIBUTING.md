@@ -58,12 +58,6 @@ Run it locally before a compat-layer change that touches anything parameterized 
 
 ## Release process
 
-Releases are **tag-triggered, by design owner-only** (`docs/DECISIONS.md` D9) — there is no "publish from CI on merge" path, and contributors cannot publish directly: the `NPM_TOKEN` repository secret and the `npm` GitHub Environment the publish job uses are both owner-controlled. As a contributor, you cannot make a release happen. (As of this writing, pushing a `v*` tag is not yet separately restricted by a repository ruleset, so this is enforced today by the credential, not by who can push a tag — a known hardening gap, not something a contributor should rely on or work around.)
+Releases are **automatic on every push to `main`**. `.github/workflows/release.yml` runs the same checks as every push (typecheck, build, test, `lint:pkg`), then bumps the patch version, commits and tags it back to `main` (`[skip ci]`), and runs `npm publish --provenance --access public` with the owner-controlled `NPM_TOKEN` repository secret. Nothing is published unless the checks pass first, and only people who can push to `main` can cause a release.
 
-For the owner, to ship a release:
-
-1. Bump `"version"` in `package.json`.
-2. `git tag v<version> && git push origin v<version>` — for example `git tag v1.0.1 && git push origin v1.0.1`.
-3. `.github/workflows/release.yml` runs the same checks as every push (typecheck, build, test, `lint:pkg`), confirms the tag matches `package.json`'s version, then `npm publish --provenance --access public`.
-
-Nothing is published without a `v*` tag; nothing is published without the checks passing first.
+For a minor or major release, run `npm version minor` (or `major`) locally and push; the workflow then adds its patch bump on top, so set the version one patch below the number you want.
