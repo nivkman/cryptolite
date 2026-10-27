@@ -125,7 +125,7 @@ describe('installed as crypto-js', () => {
       );
       expect(app.status, output(app)).toBe(0);
       expect(JSON.parse(app.stdout)).toEqual({
-        impl: 'cryptolite',
+        impl: '@nivkman/cryptolite',
         hash: 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad',
         rt: 'hello',
       });
