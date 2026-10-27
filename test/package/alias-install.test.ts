@@ -46,7 +46,7 @@ describe('installed as crypto-js', () => {
     install(dir);
 
     const installed = readJson<{ name: string; dependencies?: object }>(path.join(dir, 'node_modules/crypto-js/package.json'));
-    expect(installed.name).toBe('cryptolite');
+    expect(installed.name).toBe('@nivkman/cryptolite');
     expect(installed.dependencies).toBeUndefined();
     // Zero runtime dependencies: nothing but the aliased package was installed.
     expect(fs.readdirSync(path.join(dir, 'node_modules')).filter((f) => !f.startsWith('.'))).toEqual(['crypto-js']);
@@ -117,7 +117,7 @@ describe('installed as crypto-js', () => {
       const found = run('find', ['node_modules', '-path', '*node_modules/crypto-js/package.json'], { cwd: dir });
       const manifests = found.stdout.trim().split('\n').filter(Boolean);
       expect(manifests.length).toBeGreaterThan(0);
-      for (const manifest of manifests) expect(readJson<{ name: string }>(path.join(dir, manifest)).name, manifest).toBe('cryptolite');
+      for (const manifest of manifests) expect(readJson<{ name: string }>(path.join(dir, manifest)).name, manifest).toBe('@nivkman/cryptolite');
 
       const app = runNode(
         ['-e', "const d = require('legacy-dep'); console.log(JSON.stringify({ impl: d.impl, hash: d.hash('abc'), rt: d.roundTrip('hello', 'pw') }))"],

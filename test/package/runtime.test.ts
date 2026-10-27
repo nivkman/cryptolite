@@ -12,10 +12,10 @@ import { FIXTURES } from './helpers';
 
 describe('built package, resolved as `cryptolite`', () => {
   it('CommonJS: module.exports is the CryptoJS object; destructuring and every subpath work', () => {
-    expectCjsFacts(collectFacts('cjs', 'cryptolite', FIXTURES), 'cryptolite');
+    expectCjsFacts(collectFacts('cjs', '@nivkman/cryptolite', FIXTURES), '@nivkman/cryptolite');
   });
 
   it('ESM: default, named and namespace imports; every subpath default-exports its member', () => {
-    expectEsmFacts(collectFacts('mjs', 'cryptolite', FIXTURES), 'cryptolite');
+    expectEsmFacts(collectFacts('mjs', '@nivkman/cryptolite', FIXTURES), '@nivkman/cryptolite');
   });
 });

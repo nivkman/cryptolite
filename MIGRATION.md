@@ -7,19 +7,19 @@ For the one-paragraph version, see the README's [10-second migration](README.md#
 1. **Install.**
 
    ```sh
-   npm install cryptolite
+   npm install @nivkman/cryptolite
    ```
 
 2. **Swap the import.** Every crypto-js import path has the same cryptolite path:
 
    ```diff
    - import CryptoJS from 'crypto-js';
-   + import CryptoJS from 'cryptolite';
+   + import CryptoJS from '@nivkman/cryptolite';
    ```
 
    ```diff
    - const sha256 = require('crypto-js/sha256');
-   + const sha256 = require('cryptolite/sha256');
+   + const sha256 = require('@nivkman/cryptolite/sha256');
    ```
 
    Everything else in your code — `CryptoJS.AES.encrypt(...)`, `CryptoJS.enc.Utf8`, `CryptoJS.algo.SHA256.create()`, and so on — is unchanged. That's the point of the compat API: it mirrors crypto-js 4.2.0's module paths and object shapes exactly.
@@ -51,7 +51,7 @@ If you publish a package that currently depends on `crypto-js`:
 Compat-API output (crypto-js-shaped ciphertexts, e.g. from `CryptoJS.AES.encrypt(text, passphrase).toString()`) keeps working forever in cryptolite's compat layer — switching to cryptolite does not, by itself, require migrating anything you've already stored. Migrate when you choose to move to the modern, authenticated format:
 
 ```ts
-import { isLegacy, decrypt, upgrade } from 'cryptolite';
+import { isLegacy, decrypt, upgrade } from '@nivkman/cryptolite';
 
 if (isLegacy(stored)) {
   stored = await upgrade(stored, password);
@@ -65,7 +65,7 @@ if (isLegacy(stored)) {
 - If the legacy ciphertext holds **binary** data (not text), `upgrade()` can't be used directly — decode and re-encrypt by hand instead, and verify the result yourself since this path has no built-in check against a wrong password:
 
   ```ts
-  import { decryptBytes, encrypt } from 'cryptolite';
+  import { decryptBytes, encrypt } from '@nivkman/cryptolite';
 
   const bytes = await decryptBytes(stored, password, { legacy: true });
   stored = await encrypt(bytes, password);
@@ -83,7 +83,7 @@ Don't take byte-identical output on faith — check it against your own data and
 
    ```ts
    import RealCryptoJS from 'crypto-js';
-   import CryptoJS from 'cryptolite';
+   import CryptoJS from '@nivkman/cryptolite';
 
    console.log(RealCryptoJS.SHA256('abc').toString() === CryptoJS.SHA256('abc').toString()); // true
    console.log(RealCryptoJS.AES.decrypt(CryptoJS.AES.encrypt('hi', 'pw').toString(), 'pw').toString(RealCryptoJS.enc.Utf8)); // 'hi', decrypted by the *other* library

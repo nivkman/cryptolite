@@ -1,5 +1,5 @@
 {
-  "name": "cryptolite",
+  "name": "@nivkman/cryptolite",
   "version": "1.0.1",
   "description": "Drop-in replacement for the deprecated crypto-js: same API, same module paths, same output, built on audited @noble cryptography. Plus authenticated encryption. Zero dependencies.",
   "keywords": [

@@ -69,7 +69,7 @@ describe('package.json', () => {
 
   it('has the required metadata', () => {
     expect(pkg).toMatchObject({
-      name: 'cryptolite',
+      name: '@nivkman/cryptolite',
       type: 'module',
       sideEffects: false,
       license: 'MIT',

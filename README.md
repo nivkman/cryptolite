@@ -2,14 +2,14 @@
 
 A maintained, drop-in successor to [`crypto-js`](https://www.npmjs.com/package/crypto-js) — same API, byte-identical output, built on audited [`@noble`](https://github.com/paulmillr) cryptography.
 
-[![npm version](https://img.shields.io/npm/v/cryptolite)](https://www.npmjs.com/package/cryptolite)
-[![npm downloads](https://img.shields.io/npm/dw/cryptolite)](https://www.npmjs.com/package/cryptolite)
-[![minzipped size](https://img.shields.io/bundlephobia/minzip/cryptolite)](https://bundlephobia.com/package/cryptolite)
+[![npm version](https://img.shields.io/npm/v/@nivkman/cryptolite)](https://www.npmjs.com/package/@nivkman/cryptolite)
+[![npm downloads](https://img.shields.io/npm/dw/@nivkman/cryptolite)](https://www.npmjs.com/package/@nivkman/cryptolite)
+[![minzipped size](https://img.shields.io/bundlephobia/minzip/@nivkman/cryptolite)](https://bundlephobia.com/package/@nivkman/cryptolite)
 [![CI](https://img.shields.io/github/actions/workflow/status/nivkman/cryptolite/ci.yml?branch=main)](https://github.com/nivkman/cryptolite/actions/workflows/ci.yml)
-[![license](https://img.shields.io/npm/l/cryptolite)](LICENSE)
+[![license](https://img.shields.io/npm/l/@nivkman/cryptolite)](LICENSE)
 
 ```sh
-npm install cryptolite
+npm install @nivkman/cryptolite
 ```
 
 crypto-js's maintainers [discontinued it](https://github.com/brix/crypto-js): *"Active development of CryptoJS has been discontinued. This library is no longer maintained."* It is still enormous — about 11.8M downloads a week and 12,414 direct dependents (deps.dev, checked 2026-10-24) — with no maintained drop-in replacement on npm. cryptolite is one.
@@ -19,20 +19,20 @@ crypto-js's maintainers [discontinued it](https://github.com/brix/crypto-js): *"
 **Option 1 — new code.** Install, then change the import:
 
 ```sh
-npm install cryptolite
+npm install @nivkman/cryptolite
 ```
 
 ```diff
 - import CryptoJS from 'crypto-js';
-+ import CryptoJS from 'cryptolite';
++ import CryptoJS from '@nivkman/cryptolite';
 ```
 
-Subpath imports work the same way: `require('crypto-js/sha256')` → `require('cryptolite/sha256')`.
+Subpath imports work the same way: `require('crypto-js/sha256')` → `require('@nivkman/cryptolite/sha256')`.
 
 **Option 2 — zero code changes.** Install cryptolite *as* crypto-js:
 
 ```sh
-npm install crypto-js@npm:cryptolite
+npm install crypto-js@npm:@nivkman/cryptolite
 ```
 
 Every `require('crypto-js')` / `import ... from 'crypto-js'` in your code now resolves to cryptolite. Nothing to edit.
@@ -45,7 +45,7 @@ Every `require('crypto-js')` / `import ... from 'crypto-js'` in your code now re
 ```json
 {
   "overrides": {
-    "crypto-js": "npm:cryptolite@^1"
+    "crypto-js": "npm:@nivkman/cryptolite@^1"
   }
 }
 ```
@@ -56,7 +56,7 @@ Every `require('crypto-js')` / `import ... from 'crypto-js'` in your code now re
 ```json
 {
   "resolutions": {
-    "crypto-js": "npm:cryptolite@^1"
+    "crypto-js": "npm:@nivkman/cryptolite@^1"
   }
 }
 ```
@@ -67,7 +67,7 @@ Every `require('crypto-js')` / `import ... from 'crypto-js'` in your code now re
 ```yaml
 # pnpm-workspace.yaml
 overrides:
-  crypto-js: "npm:cryptolite@^1"
+  crypto-js: "npm:@nivkman/cryptolite@^1"
 ```
 
 </td></tr>
@@ -77,7 +77,7 @@ overrides:
 {
   "pnpm": {
     "overrides": {
-      "crypto-js": "npm:cryptolite@^1"
+      "crypto-js": "npm:@nivkman/cryptolite@^1"
     }
   }
 }
@@ -123,7 +123,7 @@ Named exports, alongside the compat default export. Promises, not callbacks; a s
 ### Encrypt / decrypt
 
 ```ts
-import { encrypt, decrypt } from 'cryptolite';
+import { encrypt, decrypt } from '@nivkman/cryptolite';
 
 const token = await encrypt('meet at noon', password);
 // 'cl1.600000.Xb3k…' — see "The cl1 token format" below
@@ -133,7 +133,7 @@ const text = await decrypt(token, password); // 'meet at noon'
 ### Migrating stored crypto-js ciphertexts
 
 ```ts
-import { isLegacy, decrypt, upgrade } from 'cryptolite';
+import { isLegacy, decrypt, upgrade } from '@nivkman/cryptolite';
 
 if (isLegacy(stored)) {
   // Read it once, explicitly opting into the unauthenticated legacy format...
@@ -148,7 +148,7 @@ if (isLegacy(stored)) {
 ### Hashing, with encodings
 
 ```ts
-import { sha256 } from 'cryptolite';
+import { sha256 } from '@nivkman/cryptolite';
 
 sha256('hello'); // '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
 sha256('hello', 'base64url'); // 'LPJNul-wow4m6DsqxbninhsWHlwfp0JecwQzYpOLmCQ'
@@ -160,7 +160,7 @@ sha256('hello', 'bytes'); // Uint8Array(32)
 ### HMAC
 
 ```ts
-import { hmac } from 'cryptolite';
+import { hmac } from '@nivkman/cryptolite';
 
 hmac('sha256', key, message, 'base64url');
 ```
@@ -168,7 +168,7 @@ hmac('sha256', key, message, 'base64url');
 ### Random bytes
 
 ```ts
-import { randomBytes } from 'cryptolite';
+import { randomBytes } from '@nivkman/cryptolite';
 
 const key = randomBytes(32);
 ```
@@ -178,7 +178,7 @@ const key = randomBytes(32);
 Every error is a `CryptoliteError` with a stable `code`; branch on `code`, not the message text:
 
 ```ts
-import { decrypt, CryptoliteError } from 'cryptolite';
+import { decrypt, CryptoliteError } from '@nivkman/cryptolite';
 
 try {
   await decrypt(token, password);
